@@ -14,45 +14,34 @@ interface PageProps {
 }
 
 export async function getStaticPaths() {
-  try {
-    const data = await fetchData<{
-      allPages: {
-        slug: string;
-        lastUpdated: string;
-        pageHeadline: string;
-        pageText: {
-          value: any;
-        };
-      }[];
-    }>(`
-      query {
-        allPages {
-          slug
-          lastUpdated
-          pageHeadline
-          pageText {
-            value
-          }
+  const data = await fetchData<{
+    page: {
+      slug: string;
+      lastUpdated: string;
+      pageHeadline: string;
+      pageText: {
+        value: any;
+      };
+    }[];
+  }>(`
+    {
+      page: allPages {
+        slug
+        lastUpdated
+        pageHeadline
+        pageText {
+          value
         }
       }
-    `);
-
-    console.log("Fetched data:", data); // Log the fetched data
-
-    if (!data || !data.allPages) {
-      throw new Error("No data returned from API");
     }
+  `);
 
-    return data.allPages.map(({ slug, pageHeadline, lastUpdated, pageText }) => {
-      return {
-        params: { slug },
-        props: { slug, pageHeadline, lastUpdated, pageText },
-      };
-    });
-  } catch (error) {
-    console.error("Error in getStaticPaths:", error);
-    throw error; // Re-throw the error so Astro knows something went wrong
-  }
+  return data.page.map(({ slug, pageHeadline, lastUpdated, pageText }) => {
+    return {
+      params: { slug },
+      props: { slug, pageHeadline, lastUpdated, pageText },
+    };
+  });
 }
 
 const { pageHeadline, lastUpdated, pageText } = Astro.props as PageProps;
