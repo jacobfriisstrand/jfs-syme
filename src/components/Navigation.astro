@@ -1,0 +1,61 @@
+---
+import { fetchData } from "../lib/fetchData";
+import Image from "astro/components/Image.astro";
+import BiSendFill from "../../public/icons/BiSendFill.svg?raw";
+
+interface FetchedData {
+  logo: {
+    logo: {
+      alt: string;
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+
+  contact: {
+    contactLinkName: string;
+    contactEmail: string;
+    pressLinkName: string;
+    pressEmail: string;
+  };
+}
+const data: FetchedData = await fetchData<FetchedData>(`{
+  logo: generalInfo {
+    logo {
+      alt
+      url
+      width
+      height
+    }
+  }
+
+   contact: generalInfo {
+    contactLinkName
+    contactEmail
+    pressLinkName
+    pressEmail
+  }
+
+}`);
+---
+
+<header class="sticky top-0 bg-baseLight bg-opacity-50 backdrop-blur">
+  <nav class="border-b border-b-baseLightGray py-3 md:py-4 px-6">
+    <ul class="flex items-center justify-between [&>a]:hover:text-baseLightGray">
+      <li><a class="flex gap-2 items-center text-2xl font-semibold" aria-label="Home" href="/"><Image loading={"eager"} class="size-[1em]" src={data.logo.logo.url} alt={data.logo.logo.alt} width={data.logo.logo.width} height={data.logo.logo.height} /><span>SYME</span></a></li>
+      <div class="flex gap-4 md:gap-10 text-sm md:text-base">
+        <li>
+          <a class="flex group gap-2 items-center" aria-label={data.contact.pressLinkName} href={`mailto:${data.contact.pressEmail}`}
+            >{data.contact.pressLinkName}<span class="flex size-[1em] opacity-0 ease-in-out transition-all group-hover:opacity-100 group-hover:translate-x-1 group-focus:opacity-100 group-focus:translate-x-2" set:html={BiSendFill} /></a
+          >
+        </li>
+        <li>
+          <a class="flex group gap-2 items-center transition-all" aria-label={data.contact.contactLinkName} href={`mailto:${data.contact.contactEmail}`}
+            >{data.contact.contactLinkName} <span class="flex size-[1em] opacity-0 ease-in-out transition-all group-hover:opacity-100 group-hover:translate-x-1 group-focus:opacity-100 group-focus:translate-x-2" set:html={BiSendFill} /></a
+          >
+        </li>
+      </div>
+    </ul>
+  </nav>
+</header>

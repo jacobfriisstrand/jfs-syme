@@ -1,0 +1,45 @@
+---
+import { fetchData } from "@/lib/fetchData";
+import Link from "./Link.astro";
+
+interface FetchedData {
+  companyName: {
+    companyName: string;
+  };
+  links: {
+    pageHeadline: string;
+    slug: string;
+  }[];
+}
+
+const data: FetchedData = await fetchData<FetchedData>(`{
+  companyName: generalInfo {
+    companyName
+  }
+  links: allPages {
+    pageHeadline
+    slug
+  }
+}`);
+---
+
+<footer class="py-4 px-6 text-sm md:text-base">
+  <nav>
+    <ul class="flex gap-1 items-center justify-between md:justify-normal md:gap-5">
+      <li class="">{new Date().getFullYear()} <span>&copy;</span> {data.companyName.companyName}</li>
+      <hr class="w-5 border-baseLightGray border-[0.5px]" />
+      {
+        data.links.map((link, index) => (
+          <Fragment key={link.slug}>
+            {index > 0 && <hr class="w-5 border-baseLightGray border-[0.5px]" />}
+            <li class="flex">
+              <Link ariaLabel={link.pageHeadline} href={link.slug}>
+                {link.pageHeadline}
+              </Link>
+            </li>
+          </Fragment>
+        ))
+      }
+    </ul>
+  </nav>
+</footer>

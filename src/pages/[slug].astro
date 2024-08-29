@@ -1,0 +1,67 @@
+---
+import { fetchData } from "@/lib/fetchData";
+import Layout from "@/layouts/Layout.astro";
+import { StructuredText } from "@datocms/astro/StructuredText";
+import { format } from "date-fns";
+
+interface PageProps {
+  slug: string;
+  pageHeadline: string;
+  lastUpdated: string;
+  pageText: {
+    value: any;
+  };
+}
+
+export async function getStaticPaths() {
+  const data = await fetchData<{
+    page: {
+      slug: string;
+      lastUpdated: string;
+      pageHeadline: string;
+      pageText: {
+        value: any;
+      };
+    }[];
+  }>(`
+    {
+      page: allPages {
+        slug
+        lastUpdated
+        pageHeadline
+        pageText {
+          value
+        }
+      }
+    }
+  `);
+
+  return data.page.map(({ slug, pageHeadline, lastUpdated, pageText }) => {
+    return {
+      params: { slug },
+      props: { slug, pageHeadline, lastUpdated, pageText },
+    };
+  });
+}
+
+const { pageHeadline, lastUpdated, pageText } = Astro.props as PageProps;
+
+const formattedDate = format(new Date(lastUpdated), "PP");
+---
+
+<Layout>
+  <div class="space-y-5 mt-16">
+    <section>
+      <h1 class="text-2xl md:text-4xl font-semibold">{pageHeadline}</h1>
+      <div class="mt-6">
+        <p class="text-sm">Last updated</p>
+        <p class="text-base">{formattedDate}</p>
+      </div>
+      <hr class="border-baseLightGray w-40 mt-4" />
+    </section>
+
+    <div class="prose">
+      <StructuredText data={pageText.value} />
+    </div>
+  </div>
+</Layout>

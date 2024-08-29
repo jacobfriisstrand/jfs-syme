@@ -3,6 +3,8 @@ import { Seo } from "@datocms/astro/Seo";
 import { fetchData } from "../lib/fetchData";
 import CTALinkButton from "@/components/CTALinkButton.astro";
 import UpRightArrow from "../../public/icons/up-right-arrow.svg?raw";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 interface MetaTag {
   attributes: Record<string, string>;
@@ -23,10 +25,18 @@ interface Site {
 interface FetchedData {
   page: LandingPage;
   site: Site;
+  generalInfo: {
+    logo: {
+      url: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
+  };
 }
 
 const data: FetchedData = await fetchData<FetchedData>(`{
-  page:  landingPage{
+  page: landingPage {
     seo: _seoMetaTags {
       attributes
       content
@@ -42,12 +52,25 @@ const data: FetchedData = await fetchData<FetchedData>(`{
       tag
     }
   }
+  generalInfo {
+    logo: logo {
+      url
+      alt
+      width
+      height
+    }
+  }
 }`);
 ---
 
 <Seo data={[...data.page.seo, ...data.site.favicon]} />
 
-<section class="min-h-[100svh] flex items-center justify-center">
-  <h1 class="sr-only">{data.page.seo[0].content}</h1>
-  <CTALinkButton ctaLink={data.page.ctaLink}>{data.page.ctaText} <span class="size-4" set:html={UpRightArrow} /></CTALinkButton>
-</section>
+<Layout>
+  <section class="flex h-full justify-center items-center">
+    <header><h1 class="sr-only">{data.page.seo[0].content}</h1></header>
+    <div class="grid place-items-center gap-16">
+      <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt="A description of my image." />
+      <CTALinkButton ctaLink={data.page.ctaLink}>{data.page.ctaText} <span class="size-2 md:size-3" set:html={UpRightArrow} /></CTALinkButton>
+    </div>
+  </section>
+</Layout>

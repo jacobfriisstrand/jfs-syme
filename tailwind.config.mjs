@@ -1,14 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+
   theme: {
     fontFamily: {
-      sans: ["Inter", "sans-serif"],
+      sans: ["Avenir", "Montserrat", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"],
+    },
+    container: {
+      center: true,
+      padding: "1.5rem",
     },
     fontSize: {
       xs: "0.5rem",
       sm: "0.625rem",
-      base: "0.75rem",
+      base: "1rem",
       md: "0.875rem",
       lg: "1.0625rem",
       xl: "1.3125rem",
@@ -25,5 +30,5 @@ export default {
       baseDarkGray: "#3D3D3D",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
