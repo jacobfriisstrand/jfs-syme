@@ -5,6 +5,7 @@ import CTALinkButton from "@/components/CTALinkButton.astro";
 import UpRightArrow from "../../public/icons/up-right-arrow.svg?raw";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import SignUpForm from "@/components/SignUpForm.astro";
 
 interface MetaTag {
   attributes: Record<string, string>;
@@ -69,7 +70,8 @@ const data: FetchedData = await fetchData<FetchedData>(`{
   <section class="flex h-full justify-center items-center">
     <header><h1 class="sr-only">{data.page.seo[0].content}</h1></header>
     <div class="grid place-items-center gap-16">
-      <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt="A description of my image." />
+      <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt={data.generalInfo.logo.alt} />
+      <SignUpForm />
       <CTALinkButton ctaLink={data.page.ctaLink}>{data.page.ctaText} <span class="size-2 md:size-3" set:html={UpRightArrow} /></CTALinkButton>
     </div>
   </section>

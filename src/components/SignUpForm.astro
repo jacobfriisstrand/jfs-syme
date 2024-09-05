@@ -1,0 +1,58 @@
+---
+import { ApifyClient } from "apify-client";
+
+let username = "";
+let items = [];
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    username = data.get("username")?.toString() ?? "";
+
+    if (username) {
+      items = await fetchInstagramData(username);
+      // Clear the username after processing
+      username = "";
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
+// POST the username to Apify and run the actor
+async function fetchInstagramData(username: string) {
+  const client = new ApifyClient({ token: import.meta.env.APIFY_TOKEN });
+
+  const { defaultDatasetId } = await client.actor("apify/instagram-profile-scraper").call(
+    {
+      usernames: [username],
+    },
+    { waitSecs: 60 }
+  );
+
+  const { items } = await client.dataset(defaultDatasetId).listItems();
+
+  return items;
+}
+
+// Fetch the data
+// const items = await fetchInstagramData();
+
+// You can process the data here if needed
+// console.log(items); -->
+
+// TODO fix the form submission.
+---
+
+<form method="POST">
+  <fieldset>
+    <legend>Instagram Profile Scraper</legend>
+    <label for="username">
+      <span>Instagram Username</span>
+      <input type="text" name="username" id="username" required />
+    </label>
+    <button type="submit">Fetch Data</button>
+  </fieldset>
+</form>

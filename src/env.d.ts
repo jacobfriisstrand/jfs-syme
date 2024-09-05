@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly DATOCMS_TOKEN: string;
+  readonly APIFY_TOKEN: string;
   // more env variables...
 }
 
