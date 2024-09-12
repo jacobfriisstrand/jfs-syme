@@ -11,8 +11,7 @@ const formSchema = z.object({
     .string()
     .regex(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/, "Invalid username format.")
     .min(1, "Username must not be empty")
-    .max(30, "Username must not exceed 30 characters")
-    .refine((value) => !value.includes("@"), "Username cannot include @"),
+    .max(30, "Username must not exceed 30 characters"),
 
   url: z.string().max(0, "This field must be empty"),
   compliance: z.any().refine((val) => val === true || val === "on", {
