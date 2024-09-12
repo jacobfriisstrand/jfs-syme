@@ -1,11 +1,10 @@
 ---
 import { Seo } from "@datocms/astro/Seo";
 import { fetchData } from "../lib/fetchData";
-import CTALinkButton from "@/components/CTALinkButton.astro";
-import UpRightArrow from "../../public/icons/up-right-arrow.svg?raw";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import SignUpForm from "@/components/SignUpForm.astro";
+import SignUpForm from "@/components/SignUpForm";
+import InstagramLogo from "@/icons/InstagramLogo.svg?raw";
 
 interface MetaTag {
   attributes: Record<string, string>;
@@ -15,8 +14,19 @@ interface MetaTag {
 
 interface LandingPage {
   seo: MetaTag[];
+  emailLabel: string;
+  usernameLabel: string;
+  termsAndConditionsLabel: {
+    value: any;
+    links: {
+      __typename: string;
+      id: string;
+      slug: string;
+      pageHeadline: string;
+    }[];
+  };
   ctaText: string;
-  ctaLink: string;
+  thankYouText: string;
 }
 
 interface Site {
@@ -33,6 +43,8 @@ interface FetchedData {
       width: number;
       height: number;
     };
+    companyInstagramUsername: string;
+    companyInstagramLink: string;
   };
 }
 
@@ -43,8 +55,22 @@ const data: FetchedData = await fetchData<FetchedData>(`{
       content
       tag
     }
+    emailLabel
+    usernameLabel
+    termsAndConditionsLabel {
+  value
+  links {
+    __typename
+    ... on PageRecord {
+      id
+      slug
+      pageHeadline
+    }
+  }
+}
     ctaText
-    ctaLink
+    thankYouText
+
   }
   site: _site {
     favicon: faviconMetaTags {
@@ -60,6 +86,8 @@ const data: FetchedData = await fetchData<FetchedData>(`{
       width
       height
     }
+    companyInstagramUsername
+    companyInstagramLink
   }
 }`);
 ---
@@ -67,12 +95,12 @@ const data: FetchedData = await fetchData<FetchedData>(`{
 <Seo data={[...data.page.seo, ...data.site.favicon]} />
 
 <Layout>
-  <section class="flex h-full justify-center items-center">
+  <section class="flex h-full justify-center items-center mt-4 md:mt-0">
     <header><h1 class="sr-only">{data.page.seo[0].content}</h1></header>
-    <div class="grid place-items-center gap-16">
+    <div class="grid place-items-center gap-8">
       <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt={data.generalInfo.logo.alt} />
-      <SignUpForm />
-      <CTALinkButton ctaLink={data.page.ctaLink}>{data.page.ctaText} <span class="size-2 md:size-3" set:html={UpRightArrow} /></CTALinkButton>
+      <SignUpForm logo={data.generalInfo.logo.url} thankYouText={data.page.thankYouText} buttonText={data.page.ctaText} emailLabel={data.page.emailLabel} usernameLabel={data.page.usernameLabel} termsAndConditionsLabel={data.page.termsAndConditionsLabel} client:load />
+      <a target="_blank" class="flex items-center gap-2 hover:-translate-y-1 transition-[transform_opacity] hover:opacity-50" href={data.generalInfo.companyInstagramLink}><span set:html={InstagramLogo} /> @{data.generalInfo.companyInstagramUsername}</a>
     </div>
   </section>
 </Layout>

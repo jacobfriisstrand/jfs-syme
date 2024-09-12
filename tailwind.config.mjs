@@ -28,6 +28,8 @@ export default {
       baseDark: "#252525",
       baseLightGray: "#D9D9D9",
       baseDarkGray: "#3D3D3D",
+      error: "#FF0000",
+      link: "#006CFF",
     },
   },
   plugins: [require("@tailwindcss/typography")],

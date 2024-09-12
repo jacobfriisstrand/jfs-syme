@@ -1,7 +1,7 @@
 ---
 import { fetchData } from "../lib/fetchData";
 import Image from "astro/components/Image.astro";
-import BiSendFill from "../../public/icons/BiSendFill.svg?raw";
+import BiSendFill from "@/icons/BiSendFill.svg?raw";
 
 interface FetchedData {
   logo: {
@@ -14,6 +14,7 @@ interface FetchedData {
   };
 
   contact: {
+    companyName: string;
     contactLinkName: string;
     contactEmail: string;
     pressLinkName: string;
@@ -31,6 +32,7 @@ const data: FetchedData = await fetchData<FetchedData>(`{
   }
 
    contact: generalInfo {
+    companyName
     contactLinkName
     contactEmail
     pressLinkName
@@ -43,7 +45,11 @@ const data: FetchedData = await fetchData<FetchedData>(`{
 <header class="sticky top-0 bg-baseLight bg-opacity-50 backdrop-blur">
   <nav class="border-b border-b-baseLightGray py-3 md:py-4 px-6">
     <ul class="flex items-center justify-between [&>a]:hover:text-baseLightGray">
-      <li><a class="flex gap-2 items-center text-2xl font-semibold" aria-label="Home" href="/"><Image loading={"eager"} class="size-[1em]" src={data.logo.logo.url} alt={data.logo.logo.alt} width={data.logo.logo.width} height={data.logo.logo.height} /><span>SYME</span></a></li>
+      <li>
+        <a class="flex gap-2 items-center text-2xl font-semibold" aria-label="Home" href="/"
+          ><Image loading={"eager"} class="size-[1em]" src={data.logo.logo.url} alt={data.logo.logo.alt} width={data.logo.logo.width} height={data.logo.logo.height} /><span>{data.contact.companyName.split("").join(" ")}</span></a
+        >
+      </li>
       <div class="flex gap-4 md:gap-10 text-sm md:text-base">
         <li>
           <a class="flex group gap-2 items-center" aria-label={data.contact.pressLinkName} href={`mailto:${data.contact.pressEmail}`}

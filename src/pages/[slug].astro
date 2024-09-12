@@ -47,6 +47,8 @@ export async function getStaticPaths() {
 const { pageHeadline, lastUpdated, pageText } = Astro.props as PageProps;
 
 const formattedDate = format(new Date(lastUpdated), "PP");
+
+console.log(formattedDate);
 ---
 
 <Layout>

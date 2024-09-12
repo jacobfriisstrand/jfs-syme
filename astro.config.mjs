@@ -9,5 +9,5 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  output: "server",
+  output: "hybrid",
 });
