@@ -13,6 +13,6 @@ export default defineConfig({
     enabled: false,
   },
 
-  output: "hybrid",
+  output: "server",
   adapter: vercel(),
 });
