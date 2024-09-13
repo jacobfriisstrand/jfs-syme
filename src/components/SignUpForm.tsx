@@ -6,7 +6,7 @@ import { StructuredText } from "react-datocms";
 import UpRightArrow from "@/icons/UpRightArrow";
 import { CloseIcon } from "@/icons/CloseIcon";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
-import { Input } from "./ui/input";
+import { Input } from "./ui/Input";
 import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
 import { Toaster } from "./ui/toaster";
