@@ -5,19 +5,29 @@ import Layout from "@/layouts/Layout.astro";
 import { StructuredText } from "@datocms/astro/StructuredText";
 import { format } from "date-fns";
 import "@/styles/globals.css";
+import { Seo } from "@datocms/astro/Seo";
+
+interface MetaTag {
+  attributes: Record<string, string>;
+  content: string;
+  tag: string;
+}
 
 interface PageProps {
+  seo: MetaTag[];
   slug: string;
   pageHeadline: string;
   lastUpdated: string;
   pageText: {
     value: any;
   };
+  favicon: MetaTag[];
 }
 
 export async function getStaticPaths() {
   const data = await fetchData<{
     page: {
+      seo: MetaTag[];
       slug: string;
       lastUpdated: string;
       pageHeadline: string;
@@ -25,30 +35,47 @@ export async function getStaticPaths() {
         value: any;
       };
     }[];
+    site: {
+      favicon: MetaTag[];
+    };
   }>(`
-    {
-      page: allPages {
-        slug
-        lastUpdated
-        pageHeadline
-        pageText {
-          value
-        }
+  {
+    page: allPages {
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
+      slug
+      lastUpdated
+      pageHeadline
+      pageText {
+        value
       }
     }
+    site: _site {
+      favicon: faviconMetaTags {
+        attributes
+        content
+        tag
+      }
+    }
+  }
   `);
 
-  return data.page.map(({ slug, pageHeadline, lastUpdated, pageText }) => {
+  return data.page.map(({ seo, slug, pageHeadline, lastUpdated, pageText }) => {
     return {
       params: { slug },
-      props: { slug, pageHeadline, lastUpdated, pageText },
+      props: { seo, slug, pageHeadline, lastUpdated, pageText, favicon: data.site.favicon },
     };
   });
 }
 
-const { pageHeadline, lastUpdated, pageText } = Astro.props as PageProps;
+const { seo, pageHeadline, lastUpdated, pageText, favicon } = Astro.props as PageProps;
 const formattedDate = format(lastUpdated, "MMMM dd, yyyy");
 ---
+
+<Seo data={[...seo, ...favicon]} />
 
 <Layout>
   <div class="space-y-5 mt-16">

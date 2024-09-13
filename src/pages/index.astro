@@ -110,7 +110,7 @@ const data: FetchedData = await fetchData<FetchedData>(`{
       {data.page.ctaText}
       <UpRightArrow />
     </Button>
-    <a target="_blank" class="flex items-center gap-2 hover:-translate-y-1 transition-[transform_opacity] hover:opacity-50" href={data.generalInfo.companyInstagramLink}><span set:html={InstagramLogo} /> @{data.generalInfo.companyInstagramUsername}</a>
+    <a target="_blank" class="flex items-center gap-2 hover:-translate-y-1 transition-[transform_opacity] hover:opacity-50" href={data.generalInfo.companyInstagramLink}><span set:html={InstagramLogo} /></a>
   </section>
 </Layout>
 
