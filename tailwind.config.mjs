@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 
   theme: {
@@ -7,7 +8,7 @@ export default {
       sans: ["Avenir", "Montserrat", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"],
     },
     container: {
-      center: true,
+      center: "true",
       padding: "1.5rem",
     },
     fontSize: {
@@ -28,9 +29,18 @@ export default {
       baseDark: "#252525",
       baseLightGray: "#D9D9D9",
       baseDarkGray: "#3D3D3D",
+      success: "#ADEBB3",
       error: "#FF0000",
       link: "#006CFF",
     },
+    extend: {
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {},
+    },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 };

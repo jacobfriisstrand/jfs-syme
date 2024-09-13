@@ -1,8 +1,10 @@
 ---
+export const prerender = true;
 import { fetchData } from "@/lib/fetchData";
 import Layout from "@/layouts/Layout.astro";
 import { StructuredText } from "@datocms/astro/StructuredText";
 import { format } from "date-fns";
+import "@/styles/globals.css";
 
 interface PageProps {
   slug: string;
@@ -45,10 +47,7 @@ export async function getStaticPaths() {
 }
 
 const { pageHeadline, lastUpdated, pageText } = Astro.props as PageProps;
-
-const formattedDate = format(new Date(lastUpdated), "PP");
-
-console.log(formattedDate);
+const formattedDate = format(lastUpdated, "MMMM dd, yyyy");
 ---
 
 <Layout>

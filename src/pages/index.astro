@@ -5,6 +5,9 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import SignUpForm from "@/components/SignUpForm";
 import InstagramLogo from "@/icons/InstagramLogo.svg?raw";
+import UpRightArrow from "@/icons/UpRightArrow";
+import "@/styles/globals.css";
+import { Button } from "@/components/ui/button";
 
 interface MetaTag {
   attributes: Record<string, string>;
@@ -27,6 +30,7 @@ interface LandingPage {
   };
   ctaText: string;
   thankYouText: string;
+  submitText: string;
 }
 
 interface Site {
@@ -70,6 +74,7 @@ const data: FetchedData = await fetchData<FetchedData>(`{
 }
     ctaText
     thankYouText
+    submitText
 
   }
   site: _site {
@@ -95,12 +100,44 @@ const data: FetchedData = await fetchData<FetchedData>(`{
 <Seo data={[...data.page.seo, ...data.site.favicon]} />
 
 <Layout>
-  <section class="flex h-full justify-center items-center mt-4 md:mt-0">
+  <section class="flex h-full flex-col gap-10 justify-center items-center mt-4 md:mt-0">
     <header><h1 class="sr-only">{data.page.seo[0].content}</h1></header>
-    <div class="grid place-items-center gap-8">
-      <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt={data.generalInfo.logo.alt} />
-      <SignUpForm logo={data.generalInfo.logo.url} thankYouText={data.page.thankYouText} buttonText={data.page.ctaText} emailLabel={data.page.emailLabel} usernameLabel={data.page.usernameLabel} termsAndConditionsLabel={data.page.termsAndConditionsLabel} client:load />
-      <a target="_blank" class="flex items-center gap-2 hover:-translate-y-1 transition-[transform_opacity] hover:opacity-50" href={data.generalInfo.companyInstagramLink}><span set:html={InstagramLogo} /> @{data.generalInfo.companyInstagramUsername}</a>
-    </div>
+    <dialog id="signup-dialog" class="min-w-[90%] md:min-w-[500px] rounded-sm shadow-lg bg-baseLight">
+      <SignUpForm submitText={data.page.submitText} thankYouText={data.page.thankYouText} buttonText={data.page.ctaText} emailLabel={data.page.emailLabel} usernameLabel={data.page.usernameLabel} termsAndConditionsLabel={data.page.termsAndConditionsLabel} client:load />
+    </dialog>
+    <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt={data.generalInfo.logo.alt} />
+    <Button id="signup-dialog-trigger" variant={"cta"}>
+      {data.page.ctaText}
+      <UpRightArrow />
+    </Button>
+    <a target="_blank" class="flex items-center gap-2 hover:-translate-y-1 transition-[transform_opacity] hover:opacity-50" href={data.generalInfo.companyInstagramLink}><span set:html={InstagramLogo} /> @{data.generalInfo.companyInstagramUsername}</a>
   </section>
 </Layout>
+
+<script>
+  const dialog = document.querySelector("#signup-dialog") as HTMLDialogElement;
+  const dialogTrigger = document.querySelector("#signup-dialog-trigger");
+
+  dialogTrigger?.addEventListener("click", () => {
+    dialog?.showModal();
+  });
+</script>
+
+<style>
+  dialog[open] {
+    animation: fade-in 250ms ease-in forwards;
+  }
+
+  dialog::backdrop {
+    backdrop-filter: blur(0.25rem);
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
