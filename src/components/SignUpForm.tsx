@@ -86,12 +86,6 @@ export default function SignUpForm({ submitText, thankYouText, emailLabel, usern
       }
 
       const responseData = await response.text();
-
-      if (responseData === "accepted") {
-        toast({
-          description: `${thankYouText}`,
-        });
-      }
     } catch (error) {
       console.error("Form submission error:", error);
       toast({
@@ -100,7 +94,9 @@ export default function SignUpForm({ submitText, thankYouText, emailLabel, usern
       });
     } finally {
       setIsSubmitting(false);
-
+      toast({
+        description: `${thankYouText}`,
+      });
       form.reset();
     }
   }
