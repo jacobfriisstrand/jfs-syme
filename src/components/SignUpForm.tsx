@@ -23,7 +23,7 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   username: z
     .string()
-    .regex(/^(?!.*\.\.)(?!.*\.$)[a-z][a-z.]{0,29}$/, "Invalid username. Please only use lowercase letters")
+    .regex(/^(?!.*\.\.)(?!.*\.$)[a-z0-9._]{1,30}$/, "Invalid username.")
     .max(30, "Username must not exceed 30 characters"),
   url: z.string().max(0, "This field must be empty"),
   compliance: z.boolean().refine((val) => val === true, {
