@@ -27,7 +27,7 @@ const formSchema = z.object({
     .max(30, "Username must not exceed 30 characters"),
   url: z.string().max(0, "This field must be empty"),
   compliance: z.boolean().refine((val) => val === true, {
-    message: "You must accept the terms and conditions",
+    message: "You must accept the terms and conditions.",
   }),
 });
 
