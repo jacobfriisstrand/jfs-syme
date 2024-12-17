@@ -5,6 +5,7 @@ export async function fetchData<T>(query: string): Promise<T> {
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorization: `Bearer ${import.meta.env.DATOCMS_TOKEN}`,
+      // "X-Environment": "develop",
     },
     body: JSON.stringify({ query }),
   });
