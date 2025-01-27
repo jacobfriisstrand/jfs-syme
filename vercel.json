@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/signup",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
