@@ -42,8 +42,8 @@ const data: FetchedData = await fetchData<FetchedData>(`{
 }`);
 ---
 
-<header class="sticky top-0 bg-baseLight bg-opacity-50 backdrop-blur">
-  <nav class="border-b border-b-baseLightGray py-3 md:py-4 px-6">
+<header class="sticky top-0 z-10 w-full min-w-0 bg-baseLight bg-opacity-50 backdrop-blur">
+  <nav class="w-full border-b border-b-baseLightGray py-3 md:py-4 px-6">
     <ul class="flex items-center justify-between [&>a]:hover:text-baseLightGray">
       <li>
         <a class="flex gap-2 items-center text-2xl font-semibold" aria-label="Home" href="/"

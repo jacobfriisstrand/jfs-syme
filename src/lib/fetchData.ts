@@ -11,5 +11,13 @@ export async function fetchData<T>(query: string): Promise<T> {
   });
 
   const json = await response.json();
+  if (!json.data) {
+    const message =
+      json.errors?.map((e: { message: string }) => e.message).join("; ") ??
+      `HTTP ${response.status} ${response.statusText}`;
+    throw new Error(
+      `DatoCMS GraphQL failed (${message}). Set a valid DATOCMS_TOKEN in .env and restart the dev server.`,
+    );
+  }
   return json.data;
 }

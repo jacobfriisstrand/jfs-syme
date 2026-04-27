@@ -105,7 +105,14 @@ const data: FetchedData = await fetchData<FetchedData>(`{
     <dialog id="signup-dialog" class="min-w-[90%] md:min-w-[500px] rounded-sm shadow-lg bg-baseLight">
       <SignUpForm submitText={data.page.submitText} thankYouText={data.page.thankYouText} buttonText={data.page.ctaText} emailLabel={data.page.emailLabel} usernameLabel={data.page.usernameLabel} termsAndConditionsLabel={data.page.termsAndConditionsLabel} client:load />
     </dialog>
-    <Image loading={"eager"} class="max-w-36" src={data.generalInfo.logo.url} alt={data.generalInfo.logo.alt} width={data.generalInfo.logo.width} height={data.generalInfo.logo.height} alt={data.generalInfo.logo.alt} />
+    <Image
+      loading={"eager"}
+      class="max-w-36"
+      src={data.generalInfo.logo.url}
+      alt={data.generalInfo.logo.alt}
+      width={data.generalInfo.logo.width}
+      height={data.generalInfo.logo.height}
+    />
     <Button id="signup-dialog-trigger" variant={"cta"}>
       {data.page.ctaText}
       <UpRightArrow />
