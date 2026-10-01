@@ -18,6 +18,8 @@
     --headline-italic-size: calc(45.2 / 900 * 100cqw);
     --headline-italic-leading: calc(57 / 45.2);
     --headline-italic-tracking: -0.043em;
+    --headline-stack-step: calc(55 / 900 * 100cqw);
+    --headline-inline-gap: calc(11 / 900 * 100cqw);
     --display-size: calc(60.2 / 900 * 100cqw);
     --display-leading: calc(75 / 60.2);
     --display-tracking: -0.062em;
@@ -95,6 +97,20 @@
     font-weight: 400;
     letter-spacing: var(--headline-italic-tracking);
     line-height: var(--headline-italic-leading);
+  }
+
+  .headline-stack {
+    display: grid;
+    grid-auto-rows: var(--headline-stack-step);
+    align-items: start;
+    justify-items: start;
+  }
+
+  .headline-row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--headline-inline-gap);
   }
 
   .display {
