@@ -1,0 +1,132 @@
+---
+import { Image } from "astro:assets";
+import caseStudy from "@/assets/market/case-study.png";
+
+interface Stat {
+  value: string;
+  text: string;
+  source: string;
+  ruleTop: string;
+  valueTop: string;
+  textTop: string;
+  sourceTop: string;
+}
+
+const graphicClass = "pointer-events-none absolute max-w-none";
+
+const stats: Stat[] = [
+  {
+    value: "61%",
+    text: "of travelers have booked a hotel after seeing it on Instagram.",
+    source: "EXPEDIA GROUP",
+    ruleTop: "top-[43.787%]",
+    valueTop: "top-[47.49%]",
+    textTop: "top-[49.99%]",
+    sourceTop: "top-[53.25%]",
+  },
+  {
+    value: "60%",
+    text: "say influencer content consistently outperforms brand-created content.",
+    source: "INFLUENCER MARKETING HUB",
+    ruleTop: "top-[59.566%]",
+    valueTop: "top-[62.82%]",
+    textTop: "top-[65.63%]",
+    sourceTop: "top-[68.78%]",
+  },
+  {
+    value: "8x",
+    text: "average return from restaurant influencer collaborations.",
+    source: "SEVENROOMS",
+    ruleTop: "top-[73.965%]",
+    valueTop: "top-[77.4%]",
+    textTop: "top-[80.09%]",
+    sourceTop: "top-[83.31%]",
+  },
+];
+---
+
+<div class="grid h-dvh w-full place-items-center overflow-hidden bg-baseLight [container-type:size]">
+  <section
+    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-baseLight font-inter text-ink antialiased [container-type:size]"
+    aria-label="Why it matters"
+  >
+    <p class="eyebrow absolute right-[4.0747%] top-[4.9312%] m-0 whitespace-nowrap">
+      THE MARKET HAS MOVED
+    </p>
+
+    <h2 class="absolute left-[4.02%] top-[24.83%] m-0 whitespace-nowrap">
+      <span class="headline">Why it matters</span>
+      <span class="headline-italic"> now.</span>
+    </h2>
+
+    <p
+      class="body absolute left-[4.02%] top-[37.06%] m-0 whitespace-nowrap"
+    >
+      Traveler, hospitality, and lifestyle decisions are increasingly made on the feeds of
+      <br />
+      people they trust - not on the feeds of brands.
+    </p>
+
+    {
+      stats.map((stat) => (
+        <>
+          <div
+            class:list={[
+              "absolute left-[3.6%] h-[calc(1/900*100cqw)] w-[57.5%] bg-baseLightGray",
+              stat.ruleTop,
+            ]}
+          />
+          <p
+            class:list={[
+              "stat-small absolute left-[6.06%] m-0 whitespace-nowrap",
+              stat.valueTop,
+            ]}
+          >
+            {stat.value}
+          </p>
+          <p
+            class:list={[
+              "copy absolute left-[18.52%] m-0 whitespace-nowrap text-ink",
+              stat.textTop,
+            ]}
+          >
+            {stat.text}
+          </p>
+          <p
+            class:list={[
+              "caption absolute left-[18.52%] m-0 whitespace-nowrap text-ink",
+              stat.sourceTop,
+            ]}
+          >
+            {stat.source}
+          </p>
+        </>
+      ))
+    }
+
+    <div class="absolute left-[63.8778%] top-[18.7377%] h-[70.8679%] w-[33.7444%] rounded-[calc(12/900*100cqw)] bg-[#10100d]"></div>
+
+    <Image
+      src={caseStudy}
+      alt="Hands wearing gold rings holding a drink at the Camille Brinch jewellery launch"
+      class:list={[
+        graphicClass,
+        "left-[66.08%] top-[23.51%] h-[45.78%] w-[29.03%] rounded-[calc(8/900*100cqw)] object-cover",
+      ]}
+    />
+
+    <p class="caption absolute left-[66.3222%] top-[70.4931%] m-0 whitespace-nowrap text-baseLight">
+      CASE STUDY – CAMILLE BRINCH JEWELLERY
+    </p>
+
+    <p class="copy absolute left-[66.3222%] top-[73.2347%] m-0 whitespace-nowrap text-baseLight">
+      Intimate dinner & afterparty of the Sparkly<br />
+      Collection launch - handpicked guest list, strong<br />
+      brand alignment, cohesive content.
+    </p>
+
+    <p class="eyebrow absolute right-[4.0747%] top-[93.4876%] m-0 whitespace-nowrap">
+      EXTERNAL RESEARCH, 2025-26
+    </p>
+  </section>
+</div>

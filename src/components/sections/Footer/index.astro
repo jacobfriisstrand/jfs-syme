@@ -1,0 +1,77 @@
+---
+import { Image } from "astro:assets";
+import { fetchData } from "@/lib/fetchData";
+import logo from "@/assets/forma-logo.png";
+
+interface FooterLink {
+  pageHeadline: string;
+  slug: string;
+}
+
+interface FetchedData {
+  companyName: {
+    companyName: string;
+  };
+  links: FooterLink[];
+}
+
+const data = await fetchData<FetchedData>(`{
+  companyName: generalInfo {
+    companyName
+  }
+  links: allPages(filter: {showInFooter: {eq: true}}) {
+    pageHeadline
+    slug
+  }
+}`);
+
+const year = new Date().getFullYear();
+const metaClass =
+  "eyebrow m-0 whitespace-nowrap no-underline transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted";
+
+function hrefFor(slug: string) {
+  if (slug.startsWith("/") || slug.startsWith("http")) return slug;
+  return `/${slug}`;
+}
+---
+
+<footer class="bg-baseLight font-inter text-ink antialiased">
+  <div
+    class="mx-auto grid w-[var(--board-w)] grid-cols-[1fr_auto_1fr] items-center gap-[2cqw] border-t border-ink/10 px-[4.02%] py-[2.6cqw] [container-type:inline-size]"
+  >
+    <div class="flex items-center gap-[2.4cqw]">
+      <a href="/" class="block w-[6.9973cqw] shrink-0" aria-label="Forma">
+        <Image src={logo} alt="" class="block h-auto w-full object-contain object-left" />
+      </a>
+      <p class="eyebrow m-0 whitespace-nowrap">
+        {year}
+        <span>&copy;</span>
+        {data.companyName.companyName}
+      </p>
+    </div>
+
+    <nav aria-label="Footer" class="justify-self-center">
+      <ul class="m-0 flex list-none items-center gap-[1.8cqw] p-0">
+        {
+          data.links.map((link) => (
+            <li>
+              <a class={metaClass} href={hrefFor(link.slug)}>
+                {link.pageHeadline}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center justify-end gap-[1.8cqw]">
+      <a class={metaClass} href="mailto:sb@formaint.com">
+        sb@formaint.com
+      </a>
+      <a class={metaClass} href="tel:+4531370925">
+        +45 31 37 09 25
+      </a>
+      <p class="eyebrow m-0 whitespace-nowrap">COPENHAGEN - GLOBAL</p>
+    </div>
+  </div>
+</footer>

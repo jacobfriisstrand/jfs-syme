@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import { fetchData } from "@/lib/fetchData";
 import Layout from "@/layouts/Layout.astro";
 import { StructuredText } from "@datocms/astro/StructuredText";
@@ -13,7 +12,7 @@ interface MetaTag {
   tag: string;
 }
 
-interface PageProps {
+interface PageRecord {
   seo: MetaTag[];
   slug: string;
   pageHeadline: string;
@@ -21,26 +20,23 @@ interface PageProps {
   pageText: {
     value: any;
   };
-  favicon: MetaTag[];
 }
 
-export async function getStaticPaths() {
-  const data = await fetchData<{
-    page: {
-      seo: MetaTag[];
-      slug: string;
-      lastUpdated: string;
-      pageHeadline: string;
-      pageText: {
-        value: any;
-      };
-    }[];
-    site: {
-      favicon: MetaTag[];
-    };
-  }>(`
-  {
-    page: allPages {
+const slug = Astro.params.slug;
+
+if (!slug) {
+  return Astro.rewrite("/404");
+}
+
+const data = await fetchData<{
+  page: PageRecord | null;
+  site: {
+    favicon: MetaTag[];
+  };
+}>(
+  `
+  query PageBySlug($slug: String!) {
+    page(filter: { slug: { eq: $slug } }) {
       seo: _seoMetaTags {
         attributes
         content
@@ -61,17 +57,18 @@ export async function getStaticPaths() {
       }
     }
   }
-  `);
+  `,
+  { slug },
+);
 
-  return data.page.map(({ seo, slug, pageHeadline, lastUpdated, pageText }) => {
-    return {
-      params: { slug },
-      props: { seo, slug, pageHeadline, lastUpdated, pageText, favicon: data.site.favicon },
-    };
-  });
+if (!data.page) {
+  return Astro.rewrite("/404");
 }
 
-const { seo, pageHeadline, lastUpdated, pageText, favicon } = Astro.props as PageProps;
+Astro.response.headers.set("Cache-Control", "no-store");
+
+const { seo, pageHeadline, lastUpdated, pageText } = data.page;
+const favicon = data.site.favicon;
 const formattedDate = lastUpdated ? format(new Date(lastUpdated), "MMMM dd, yyyy") : "";
 ---
 

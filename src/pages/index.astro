@@ -2,12 +2,20 @@
 import { Seo } from "@datocms/astro/Seo";
 import { fetchData } from "../lib/fetchData";
 import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
-import SignUpForm from "@/components/SignUpForm";
-import InstagramLogo from "@/icons/InstagramLogo.svg?raw";
-import UpRightArrow from "@/icons/UpRightArrow";
+import Cover from "@/components/sections/Cover/index.astro";
+import Partners from "@/components/sections/Partners/index.astro";
+import Mobile from "@/components/sections/Mobile/index.astro";
+import Web from "@/components/sections/Web/index.astro";
+import Problem from "@/components/sections/Problem/index.astro";
+import Market from "@/components/sections/Market/index.astro";
+import Offer from "@/components/sections/Offer/index.astro";
+import Numbers from "@/components/sections/Numbers/index.astro";
+import Clicks from "@/components/sections/Clicks/index.astro";
+import Partner from "@/components/sections/Partner/index.astro";
+import Launch from "@/components/sections/Launch/index.astro";
+import Footer from "@/components/sections/Footer/index.astro";
+import Header from "@/components/Header.astro";
 import "@/styles/globals.css";
-import { Button } from "@/components/ui/button";
 
 interface MetaTag {
   attributes: Record<string, string>;
@@ -15,67 +23,22 @@ interface MetaTag {
   tag: string;
 }
 
-interface LandingPage {
-  seo: MetaTag[];
-  emailLabel: string;
-  usernameLabel: string;
-  termsAndConditionsLabel: {
-    value: any;
-    links: {
-      __typename: string;
-      id: string;
-      slug: string;
-      pageHeadline: string;
-    }[];
-  };
-  ctaText: string;
-  thankYouText: string;
-  submitText: string;
-}
-
-interface Site {
-  favicon: MetaTag[];
-}
-
 interface FetchedData {
-  page: LandingPage;
-  site: Site;
-  generalInfo: {
-    logo: {
-      url: string;
-      alt: string;
-      width: number;
-      height: number;
-    };
-    companyInstagramUsername: string;
-    companyInstagramLink: string;
+  page: {
+    seo: MetaTag[];
+  };
+  site: {
+    favicon: MetaTag[];
   };
 }
 
-const data: FetchedData = await fetchData<FetchedData>(`{
+const data = await fetchData<FetchedData>(`{
   page: landingPage {
     seo: _seoMetaTags {
       attributes
       content
       tag
     }
-    emailLabel
-    usernameLabel
-    termsAndConditionsLabel {
-  value
-  links {
-    __typename
-    ... on PageRecord {
-      id
-      slug
-      pageHeadline
-    }
-  }
-}
-    ctaText
-    thankYouText
-    submitText
-
   }
   site: _site {
     favicon: faviconMetaTags {
@@ -84,67 +47,31 @@ const data: FetchedData = await fetchData<FetchedData>(`{
       tag
     }
   }
-  generalInfo {
-    logo: logo {
-      url
-      alt
-      width
-      height
-    }
-    companyInstagramUsername
-    companyInstagramLink
-  }
 }`);
 ---
 
 <Seo data={[...data.page.seo, ...data.site.favicon]} />
 
-<Layout>
-  <section class="flex h-full flex-col gap-10 justify-center items-center mt-4 md:mt-0">
-    <header><h1 class="sr-only">{data.page.seo[0].content}</h1></header>
-    <dialog id="signup-dialog" class="min-w-[90%] md:min-w-[500px] rounded-sm shadow-lg bg-baseLight">
-      <SignUpForm submitText={data.page.submitText} thankYouText={data.page.thankYouText} buttonText={data.page.ctaText} emailLabel={data.page.emailLabel} usernameLabel={data.page.usernameLabel} termsAndConditionsLabel={data.page.termsAndConditionsLabel} client:load />
-    </dialog>
-    <Image
-      loading={"eager"}
-      class="max-w-36"
-      src={data.generalInfo.logo.url}
-      alt={data.generalInfo.logo.alt}
-      width={data.generalInfo.logo.width}
-      height={data.generalInfo.logo.height}
-    />
-    <Button id="signup-dialog-trigger" variant={"cta"}>
-      {data.page.ctaText}
-      <UpRightArrow />
-    </Button>
-    <a target="_blank" class="flex items-center gap-2 hover:-translate-y-1 transition-[transform_opacity] hover:opacity-50" href={data.generalInfo.companyInstagramLink}><span set:html={InstagramLogo} /></a>
-  </section>
+<link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+<link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  slot="head"
+  href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Fira+Code:wght@300;400&family=IBM+Plex+Mono&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,700;1,14..32,400&family=Libre+Baskerville:ital,wght@1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<Layout fullBleed>
+  <Header />
+  <Cover />
+  <Partners />
+  <Mobile />
+  <Web />
+  <Problem />
+  <Market />
+  <Offer />
+  <Numbers />
+  <Clicks />
+  <Launch />
+  <Partner />
+  <Footer />
 </Layout>
-
-<script>
-  const dialog = document.querySelector("#signup-dialog") as HTMLDialogElement;
-  const dialogTrigger = document.querySelector("#signup-dialog-trigger");
-
-  dialogTrigger?.addEventListener("click", () => {
-    dialog?.showModal();
-  });
-</script>
-
-<style>
-  dialog[open] {
-    animation: fade-in 250ms ease-in forwards;
-  }
-
-  dialog::backdrop {
-    backdrop-filter: blur(0.25rem);
-  }
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-</style>

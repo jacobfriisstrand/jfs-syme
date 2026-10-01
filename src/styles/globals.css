@@ -5,6 +5,54 @@
 @layer base {
   :root {
     --radius: 0.5rem;
+    --ink: #1e1e1e;
+    --ink-muted: #4d4b4b;
+    --ink-faint: #8f8f8f;
+    --eyebrow-size: calc(7.56 / 900 * 100cqw);
+    --eyebrow-leading: calc(8 / 6.3);
+    --eyebrow-tracking: 0.0937em;
+    --cover-label-size: var(--eyebrow-size);
+    --headline-size: calc(46 / 900 * 100cqw);
+    --headline-leading: calc(58 / 46);
+    --headline-tracking: -0.0518em;
+    --headline-italic-size: calc(45.2 / 900 * 100cqw);
+    --headline-italic-leading: calc(57 / 45.2);
+    --headline-italic-tracking: -0.043em;
+    --display-size: calc(60.2 / 900 * 100cqw);
+    --display-leading: calc(75 / 60.2);
+    --display-tracking: -0.062em;
+    --deck-size: calc(11.1 / 900 * 100cqw);
+    --deck-leading: 1.171;
+    --deck-tracking: -0.016em;
+    --body-size: calc(10.3 / 900 * 100cqw);
+    --body-leading: 1.4;
+    --body-tracking: 0.02em;
+    --title-size: calc(17.9 / 900 * 100cqw);
+    --title-leading: 1.2;
+    --title-tracking: -0.021em;
+    --copy-size: calc(10.3 / 900 * 100cqw);
+    --copy-leading: 1.36;
+    --caption-size: calc(6.3 / 900 * 100cqw);
+    --caption-leading: 1.43;
+    --caption-tracking: 0.12em;
+    --quote-size: calc(14.7 / 900 * 100cqw);
+    --quote-leading: calc(17.716 / 14.7);
+    --quote-tracking: -0.1006em;
+    --stat-size: calc(53.6 / 900 * 100cqw);
+    --stat-small-size: calc(36.5 / 900 * 100cqw);
+    --stat-small-leading: 1.178;
+    --stat-small-tracking: -0.031em;
+    --stat-suffix-size: calc(23.9 / 900 * 100cqw);
+    --stat-label-size: calc(10 / 900 * 100cqw);
+    --stat-label-tracking: 0.03125em;
+    --stat-note-size: calc(8.7 / 900 * 100cqw);
+    --stat-note-leading: 1.55;
+    --stat-note-tracking: 0.06em;
+    --board-w: min(100vw, calc(100dvh * 900 / 507));
+    --board-h: calc(var(--board-w) * 507 / 900);
+    --header-offset: calc((100dvh - var(--board-h)) / 2 + var(--board-h) * 0.063996);
+    --header-bar: calc(var(--board-h) * 0.022485);
+    --header-height: calc(var(--header-offset) * 2 + var(--header-bar));
   }
 
   html {
@@ -13,5 +61,166 @@
 
   *:focus-visible {
     @apply ring-baseDark outline-baseDark;
+  }
+}
+
+@layer components {
+  .eyebrow,
+  .cover-label,
+  .attribution {
+    font-family: Inter, sans-serif;
+    font-size: var(--eyebrow-size);
+    font-weight: 400;
+    letter-spacing: var(--eyebrow-tracking);
+    line-height: var(--eyebrow-leading);
+  }
+
+  .eyebrow,
+  .cover-label {
+    color: var(--ink-muted);
+  }
+
+  .headline {
+    font-family: Inter, sans-serif;
+    font-size: var(--headline-size);
+    font-weight: 700;
+    letter-spacing: var(--headline-tracking);
+    line-height: var(--headline-leading);
+  }
+
+  .headline-italic {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: var(--headline-italic-size);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: var(--headline-italic-tracking);
+    line-height: var(--headline-italic-leading);
+  }
+
+  .display {
+    font-family: Inter, sans-serif;
+    font-size: var(--display-size);
+    font-weight: 700;
+    letter-spacing: var(--display-tracking);
+    line-height: var(--display-leading);
+  }
+
+  .deck {
+    font-family: Inter, sans-serif;
+    font-size: var(--deck-size);
+    font-weight: 400;
+    letter-spacing: var(--deck-tracking);
+    line-height: var(--deck-leading);
+    color: var(--ink-muted);
+  }
+
+  .body,
+  .body-muted {
+    font-family: Inter, sans-serif;
+    font-size: var(--body-size);
+    font-weight: 400;
+    letter-spacing: var(--body-tracking);
+    line-height: var(--body-leading);
+  }
+
+  .body {
+    color: color-mix(in srgb, var(--ink) 80%, transparent);
+  }
+
+  .body-muted {
+    color: var(--ink-faint);
+  }
+
+  .title {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--title-size);
+    font-weight: 700;
+    letter-spacing: var(--title-tracking);
+    line-height: var(--title-leading);
+    color: var(--ink);
+  }
+
+  .copy {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--copy-size);
+    font-weight: 400;
+    line-height: var(--copy-leading);
+  }
+
+  .caption {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--caption-size);
+    font-weight: 400;
+    letter-spacing: var(--caption-tracking);
+    line-height: var(--caption-leading);
+  }
+
+  .quote {
+    font-family: Inter, sans-serif;
+    font-size: var(--quote-size);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: var(--quote-tracking);
+    line-height: var(--quote-leading);
+  }
+
+  .stat {
+    font-family: Inter, sans-serif;
+    font-size: var(--stat-size);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-small {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--stat-small-size);
+    font-weight: 400;
+    letter-spacing: var(--stat-small-tracking);
+    line-height: var(--stat-small-leading);
+    color: var(--ink);
+  }
+
+  .stat-suffix {
+    font-family: Inter, sans-serif;
+    font-size: var(--stat-suffix-size);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-label {
+    font-family: Inter, sans-serif;
+    font-size: var(--stat-label-size);
+    font-weight: 700;
+    letter-spacing: var(--stat-label-tracking);
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-note {
+    font-family: Inter, sans-serif;
+    font-size: var(--stat-note-size);
+    font-weight: 400;
+    letter-spacing: var(--stat-note-tracking);
+    line-height: var(--stat-note-leading);
+    color: var(--ink);
+  }
+
+  button.cover-label {
+    position: relative;
+    text-decoration: none;
+  }
+
+  button.cover-label::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.22em;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleY(0.35);
+    transform-origin: center;
   }
 }

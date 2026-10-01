@@ -6,6 +6,12 @@ export default {
   theme: {
     fontFamily: {
       sans: ["Avenir", "Montserrat", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
+      arimo: ["Arimo", "sans-serif"],
+      serif: ["Libre Baskerville", "Georgia", "serif"],
+      mono: ["Fira Code", "ui-monospace", "monospace"],
+      dm: ["DM Sans", "sans-serif"],
+      plex: ["IBM Plex Mono", "ui-monospace", "monospace"],
     },
     container: {
       center: "true",
@@ -21,6 +27,7 @@ export default {
       "2xl": "1.5625rem",
       "3xl": "1.875rem",
       "4xl": "2.25rem",
+      "cover-label": "var(--cover-label-size)",
     },
     colors: {
       transparent: "transparent",
@@ -29,6 +36,9 @@ export default {
       baseDark: "#252525",
       baseLightGray: "#D9D9D9",
       baseDarkGray: "#3D3D3D",
+      ink: "#1e1e1e",
+      inkMuted: "#4d4b4b",
+      inkFaint: "#8f8f8f",
       success: "#ADEBB3",
       error: "#FF0000",
       link: "#006CFF",
@@ -40,6 +50,17 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {},
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 36s linear infinite",
+        "marquee-mid": "marquee 48s linear infinite",
+        "marquee-slow": "marquee 42s linear infinite",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],

@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import radisson from "@/assets/partners/radisson.png";
+import wonHundred from "@/assets/partners/won-hundred.png";
+import nrd55 from "@/assets/partners/nrd55.png";
+import vernon from "@/assets/partners/vernon.png";
+import lucieKaas from "@/assets/partners/lucie-kaas.png";
+import babylon from "@/assets/partners/babylon.png";
+import camilleBrinch from "@/assets/partners/camille-brinch.svg";
+import sopavillonen from "@/assets/partners/sopavillonen.svg";
+import theMoment from "@/assets/partners/the-moment.svg";
+import aura from "@/assets/partners/aura.svg";
+import darling from "@/assets/partners/darling.svg";
+import arneAksel from "@/assets/partners/arne-aksel.svg";
+import woods from "@/assets/partners/woods.svg";
+import visitDenmark from "@/assets/partners/visit-denmark.svg";
+
+interface PartnerLogo {
+  src: ImageMetadata;
+  alt: string;
+  class: string;
+}
+
+const rowOne: Array<PartnerLogo | "issei"> = [
+  { src: radisson, alt: "Radisson Collection", class: "w-[10.16cqw]" },
+  { src: wonHundred, alt: "Won Hundred", class: "w-[10.58cqw]" },
+  { src: nrd55, alt: "NRD55", class: "w-[6.58cqw]" },
+  { src: vernon, alt: "Vernon", class: "w-[8.75cqw]" },
+  "issei",
+];
+
+const rowTwo: PartnerLogo[] = [
+  { src: camilleBrinch, alt: "Camille Brinch", class: "w-[12.75cqw]" },
+  { src: sopavillonen, alt: "Søpavillonen", class: "w-[13.58cqw]" },
+  { src: theMoment, alt: "The Moment", class: "w-[11.08cqw]" },
+  { src: arneAksel, alt: "Arne Aksel", class: "w-[6.83cqw]" },
+  { src: darling, alt: "Darling", class: "w-[8.83cqw]" },
+];
+
+const rowThree: PartnerLogo[] = [
+  { src: lucieKaas, alt: "Lucie Kaas", class: "w-[10cqw]" },
+  { src: aura, alt: "Aura", class: "w-[12.42cqw]" },
+  { src: woods, alt: "woods", class: "w-[8.83cqw]" },
+  { src: babylon, alt: "Babylon", class: "w-[3.08cqw]" },
+  { src: visitDenmark, alt: "VisitDenmark", class: "w-[12.58cqw]" },
+];
+
+const rows = [rowOne, rowTwo, rowThree];
+const motions = ["animate-marquee", "animate-marquee-mid", "animate-marquee-slow"];
+
+const logoClass = "h-auto max-w-none shrink-0 object-contain";
+---
+
+<div class="w-full overflow-x-clip bg-baseLight">
+  <section
+    class="relative aspect-[900/363] w-full bg-baseLight font-inter text-ink antialiased [container-type:size]"
+    aria-label="Partners"
+  >
+    <h2 class="sr-only">Partners, at a glance.</h2>
+
+    <p aria-hidden="true" class="headline absolute left-[4.41%] top-[13.22%] m-0 whitespace-nowrap">
+      Partners,
+    </p>
+
+    <p aria-hidden="true" class="headline-italic absolute left-[4.41%] top-[28.38%] m-0 whitespace-nowrap">
+      at a glance.
+    </p>
+
+    <div class="absolute left-1/2 top-[49.48%] flex w-screen -translate-x-1/2 flex-col gap-[calc(18/900*100cqw)]">
+      {
+        rows.map((row, rowIndex) => (
+          <div class="overflow-hidden">
+            <div class:list={["flex w-max motion-reduce:animate-none", motions[rowIndex]]}>
+              {[false, true].map((hidden) =>
+                [0, 1, 2].map((copy) => (
+                  <div class="flex shrink-0 items-center gap-[4.5cqw] pr-[4.5cqw]" aria-hidden={hidden || copy > 0 || undefined}>
+                    {row.map((partner) =>
+                      partner === "issei" ? (
+                        <p class="m-0 shrink-0 font-inter text-[length:calc(19.7/900*100cqw)] font-bold leading-none tracking-[0.0078em] text-black">
+                          ISSEI
+                        </p>
+                      ) : (
+                        <Image src={partner.src} alt={hidden || copy > 0 ? "" : partner.alt} class:list={[logoClass, partner.class]} />
+                      ),
+                    )}
+                  </div>
+                )),
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</div>

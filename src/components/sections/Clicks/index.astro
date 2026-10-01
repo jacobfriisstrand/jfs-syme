@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import arrow from "@/assets/clicks/arrow.png";
+import strike from "@/assets/clicks/strike.png";
+import suite from "@/assets/clicks/suite.png";
+
+const graphicClass = "pointer-events-none absolute max-w-none";
+---
+
+<div class="grid h-dvh w-full place-items-center overflow-hidden bg-baseLight [container-type:size]">
+  <section
+    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-baseLight font-inter text-ink antialiased [container-type:size]"
+    aria-label="From 33 emails to 3 clicks"
+  >
+    <p
+      class="eyebrow absolute right-[3.411%] top-[4.931%] m-0 whitespace-nowrap"
+    >
+      CASE STUDY • RADISSON • ISSEI
+    </p>
+
+    <h2 class="m-0">
+      <span
+        class="display absolute left-[10.2444%] top-[21.3412%] m-0 whitespace-nowrap"
+      >
+        From <span class="text-inkFaint">33 Emails</span>
+      </span>
+      <span
+        class="display absolute left-[16.3928%] top-[32.07%] m-0 whitespace-nowrap"
+      >
+        3 Clicks.
+      </span>
+    </h2>
+
+    <Image
+      src={arrow}
+      alt=""
+      class:list={[graphicClass, "left-[4.0222%] top-[35.1874%] h-[8.7179%] w-[11.2444%]"]}
+    />
+    <Image
+      src={strike}
+      alt=""
+      class:list={[graphicClass, "left-[26.8556%] top-[25.9172%] z-10 h-[7.1006%] w-[28.5889%]"]}
+    />
+
+    <p
+      class="body absolute left-[4.41%] top-[54.9%] m-0 whitespace-nowrap"
+    >
+      A previously slow, multi-stakeholder process compressed into a precurated offer.
+    </p>
+
+    <p
+      class="body absolute left-[4.41%] top-[57.86%] m-0 whitespace-nowrap"
+    >
+      Created, sent, matched, accepted - all in a few clicks. Influencer Emil Thorup and his
+      <br />
+      partner were welcomed by a concierge already briefed on the collaboration.
+    </p>
+
+    <p
+      class="body-muted absolute left-[4.4%] top-[66.647%] m-0 whitespace-nowrap"
+    >
+      High-quality content, increased visibility, and bookings - delivered through a simplified,
+      <br />
+      repeatable process the team now ships weekly.
+    </p>
+
+    <div
+      class="absolute left-[63.8778%] top-[18.7377%] h-[70.8679%] w-[33.7444%] rounded-[calc(12/900*100cqw)] bg-[#10100d]"
+    >
+    </div>
+
+    <Image
+      src={suite}
+      alt="Panorama suite in Copenhagen, with a city view beyond mirrored wall panels"
+      class:list={[
+        graphicClass,
+        "left-[66.08%] top-[23.51%] h-[45.78%] w-[29.03%] rounded-[calc(8/900*100cqw)] object-cover",
+      ]}
+    />
+
+    <p
+      class="caption absolute left-[66.3222%] top-[70.4931%] m-0 whitespace-nowrap text-baseLight"
+    >
+      PANORAMA SUITE - COPENHAGEN
+    </p>
+
+    <p
+      class="copy absolute left-[66.3222%] top-[73.2347%] m-0 whitespace-nowrap text-baseLight"
+    >
+      Stay at Radisson Royal Collection paired with
+      <br />
+      dining at Issei - concierge fully aligned on the
+      <br />
+      collaboration.
+    </p>
+  </section>
+</div>

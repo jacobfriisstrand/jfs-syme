@@ -1,4 +1,4 @@
-export async function fetchData<T>(query: string): Promise<T> {
+export async function fetchData<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
   const response = await fetch("https://graphql.datocms.com/", {
     method: "POST",
     headers: {
@@ -7,7 +7,8 @@ export async function fetchData<T>(query: string): Promise<T> {
       Authorization: `Bearer ${import.meta.env.DATOCMS_TOKEN}`,
       // "X-Environment": "develop",
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({ query, variables }),
+    cache: "no-store",
   });
 
   const json = await response.json();

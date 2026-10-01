@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/forma-logo.png";
+
+const loginClass =
+  "eyebrow m-0 cursor-pointer border-0 bg-transparent p-0 transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted";
+---
+
+<header
+  class="sticky top-0 z-50 -mb-[var(--header-height)] h-[length:var(--header-height)] bg-baseLight py-[var(--header-offset)] font-inter text-ink antialiased"
+>
+  <div class="relative mx-auto h-[var(--header-bar)] w-[var(--board-w)] [container-type:inline-size]">
+    <a href="/" class="absolute left-[4.0213%] top-0 flex h-full w-[6.9973%] items-center" aria-label="Forma">
+      <Image src={logo} alt="" loading="eager" class="block h-auto w-full object-contain object-left" />
+    </a>
+    <nav
+      class="absolute right-[4.1163%] top-0 m-0 flex h-full items-center gap-[1.4em] whitespace-nowrap"
+      aria-label="Log in"
+    >
+      <button type="button" class={loginClass}>LOG IN - INFLUENCERS</button>
+      <button type="button" class={loginClass}>LOG IN - COMPANIES</button>
+    </nav>
+  </div>
+</header>
