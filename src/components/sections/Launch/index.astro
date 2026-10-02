@@ -3,56 +3,52 @@ import { Image } from "astro:assets";
 import portrait from "@/assets/launch/portrait.png";
 ---
 
-<div class="grid h-dvh w-full place-items-center overflow-hidden bg-[#0f0f0d] [container-type:size]">
+<div class="bg-canvasInk min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
   <section
-    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-[#0f0f0d] font-inter text-[#ffffff] antialiased [container-type:size]"
+    class="bg-canvasInk px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
     aria-label="An intimate launch, fully produced"
   >
-    <p
-      class="eyebrow absolute right-[1.975%] top-[4.931%] m-0 whitespace-nowrap text-[#fff]"
-    >
-      CASE STUDY • NRD55 × LAILA HASANOVIC
-    </p>
+    <div class="flex flex-col gap-8 md:grid md:grid-cols-2 md:items-start md:gap-12 min-[1200px]:contents">
+      <div class="flex min-w-0 flex-col gap-6 min-[1200px]:contents">
+        <p class="eyebrow m-0 text-paper min-[1200px]:absolute min-[1200px]:right-[1.975%] min-[1200px]:top-[4.931%] min-[1200px]:whitespace-nowrap">
+          CASE STUDY • NRD55 × LAILA HASANOVIC
+        </p>
 
-    <h2 class="headline-stack absolute left-[4.02%] top-[26.81%] m-0">
-      <span class="headline whitespace-nowrap">An intimate launch,</span>
-      <span class="headline-italic whitespace-nowrap">fully produced.</span>
-    </h2>
+        <h2 class="headline-stack m-0 min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[26.81%]">
+          <span class="headline min-[1200px]:whitespace-nowrap">An intimate launch,</span>
+          <span class="headline-italic min-[1200px]:whitespace-nowrap">fully produced.</span>
+        </h2>
 
-    <p
-      class="body absolute left-[4.02%] top-[54.89%] m-0 whitespace-nowrap text-[#fff]"
-    >
-      FORMA curated and executed the NRD55 launch in collaboration with Laila
-      <br />
-      Hasanovic - an intimate dinner at Bar Moro followed by an afterparty at Sopavillon.
-    </p>
+        <p class="body m-0 text-paper min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[54.89%] min-[1200px]:whitespace-nowrap">
+          FORMA curated and executed the NRD55 launch in collaboration with Laila
+          <br class="hidden min-[1200px]:inline" />
+          Hasanovic - an intimate dinner at Bar Moro followed by an afterparty at Sopavillon.
+        </p>
 
-    <p
-      class="body-muted absolute left-[4%] top-[64.24%] m-0 whitespace-nowrap"
-    >
-      Concept, production, transportation, execution, and guest list - all managed end-to-end.
-    </p>
+        <p class="body-muted m-0 min-[1200px]:absolute min-[1200px]:left-[4%] min-[1200px]:top-[64.24%] min-[1200px]:whitespace-nowrap">
+          Concept, production, transportation, execution, and guest list - all managed end-to-end.
+        </p>
+      </div>
 
-    <Image
-      src={portrait}
-      alt="Close portrait of Laila Hasanovic with a bronze product swatch on her cheek"
-      class="pointer-events-none absolute left-[53.3%] top-[16.73%] h-[44.47%] w-[42.94%] max-w-none object-cover"
-    />
+      <div class="flex min-w-0 flex-col gap-4 min-[1200px]:contents">
+        <Image
+          src={portrait}
+          alt="Close portrait of Laila Hasanovic with a bronze product swatch on her cheek"
+          class="pointer-events-none aspect-[4/3] w-full max-w-none object-cover min-[1200px]:absolute min-[1200px]:left-[53.3%] min-[1200px]:top-[16.73%] min-[1200px]:aspect-auto min-[1200px]:h-[44.47%] min-[1200px]:w-[42.94%]"
+        />
 
-    <p
-      class="quote absolute left-[53.249%] top-[64.574%] m-0 whitespace-nowrap"
-    >
-      “Working with FORMA felt easy and natural from start to finish. They
-      <br />
-      truly understood the vision and created a setting that felt personal,
-      <br />
-      thoughtful, and aligned with everything we wanted to achieve.”
-    </p>
+        <p class="quote m-0 min-[1200px]:absolute min-[1200px]:left-[53.249%] min-[1200px]:top-[64.574%] min-[1200px]:whitespace-nowrap">
+          “Working with FORMA felt easy and natural from start to finish. They
+          <br class="hidden min-[1200px]:inline" />
+          truly understood the vision and created a setting that felt personal,
+          <br class="hidden min-[1200px]:inline" />
+          thoughtful, and aligned with everything we wanted to achieve.”
+        </p>
 
-    <p
-      class="attribution absolute left-[53.249%] top-[76.644%] m-0 whitespace-nowrap opacity-65"
-    >
-      — LAILA HASANOVIC • FOUNDER, NRD55
-    </p>
+        <p class="attribution m-0 opacity-65 min-[1200px]:absolute min-[1200px]:left-[53.249%] min-[1200px]:top-[76.644%] min-[1200px]:whitespace-nowrap">
+          — LAILA HASANOVIC • FOUNDER, NRD55
+        </p>
+      </div>
+    </div>
   </section>
 </div>

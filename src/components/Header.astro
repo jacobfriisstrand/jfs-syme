@@ -1,20 +1,30 @@
 ---
 import { Image } from "astro:assets";
 import logo from "@/assets/forma-logo.png";
+import HeaderMenu from "@/components/HeaderMenu.tsx";
 
 const loginClass =
-  "eyebrow m-0 cursor-pointer border-0 bg-transparent p-0 underline underline-offset-4 transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted";
+  "eyebrow m-0 cursor-pointer border-0 bg-transparent px-0 py-2 text-left underline underline-offset-4 transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted min-[1200px]:p-0";
 ---
 
 <header
-  class="sticky top-0 z-50 -mb-[var(--header-height)] h-[length:var(--header-height)] bg-baseLight py-[var(--header-offset)] font-inter text-ink antialiased"
+  id="site-header"
+  class="group sticky top-0 z-50 bg-baseLight font-inter text-ink antialiased min-[1200px]:-mb-[var(--header-height)] min-[1200px]:h-[var(--header-height)] min-[1200px]:bg-baseLight min-[1200px]:py-[var(--header-offset)] min-[1200px]:transition-[height,padding,margin,background-color] min-[1200px]:duration-300 min-[1200px]:ease-out min-[1200px]:motion-reduce:transition-none min-[1200px]:[--header-pill:calc(var(--header-bar)+2rem)] min-[1200px]:[&.is-compact]:-mb-[calc(0.75rem+var(--header-pill))] min-[1200px]:[&.is-compact]:h-[calc(0.75rem+var(--header-pill))] min-[1200px]:[&.is-compact]:bg-transparent min-[1200px]:[&.is-compact]:pb-0 min-[1200px]:[&.is-compact]:pt-3"
 >
-  <div class="relative mx-auto h-[var(--header-bar)] w-[var(--board-w)] [container-type:inline-size]">
-    <a href="/" class="absolute left-[4.0213%] top-0 flex h-full w-[6.9973%] items-center" aria-label="Forma">
+  <div
+    class="relative mx-auto flex h-14 items-center justify-between gap-4 px-6 min-[1200px]:h-[var(--header-bar)] min-[1200px]:w-[var(--board-w)] min-[1200px]:border min-[1200px]:border-transparent min-[1200px]:px-0 min-[1200px]:transition-[height,border-radius,border-color,background-color,box-shadow] min-[1200px]:duration-300 min-[1200px]:ease-out min-[1200px]:[container-type:inline-size] min-[1200px]:motion-reduce:transition-none min-[1200px]:group-[.is-compact]:h-[var(--header-pill)] min-[1200px]:group-[.is-compact]:rounded-full min-[1200px]:group-[.is-compact]:border-ink/10 min-[1200px]:group-[.is-compact]:bg-baseLight min-[1200px]:group-[.is-compact]:shadow-header"
+  >
+    <a
+      href="/"
+      class="block w-20 shrink-0 min-[1200px]:absolute min-[1200px]:left-[4.0213%] min-[1200px]:top-0 min-[1200px]:flex min-[1200px]:h-full min-[1200px]:w-[8.3968%] min-[1200px]:items-center min-[1200px]:transition-[left,top,height,transform] min-[1200px]:duration-300 min-[1200px]:ease-out min-[1200px]:motion-reduce:transition-none min-[1200px]:group-[.is-compact]:left-[6%] min-[1200px]:group-[.is-compact]:top-1/2 min-[1200px]:group-[.is-compact]:h-[var(--header-bar)] min-[1200px]:group-[.is-compact]:-translate-y-1/2"
+      aria-label="Forma"
+    >
       <Image src={logo} alt="" loading="eager" class="block h-auto w-full object-contain object-left" />
     </a>
+    <HeaderMenu client:load menuId="login-menu" />
     <nav
-      class="absolute right-[4.1163%] top-0 m-0 flex h-full items-center gap-[1.4em] whitespace-nowrap"
+      id="login-menu"
+      class="absolute inset-x-0 top-full z-50 m-0 hidden flex-col items-start gap-1 border-t border-ink/10 bg-baseLight px-6 py-4 group-[.is-open]:flex min-[1200px]:inset-x-auto min-[1200px]:right-[4.1163%] min-[1200px]:top-0 min-[1200px]:z-auto min-[1200px]:flex min-[1200px]:h-full min-[1200px]:flex-row min-[1200px]:items-center min-[1200px]:gap-[1.4em] min-[1200px]:whitespace-nowrap min-[1200px]:border-0 min-[1200px]:bg-transparent min-[1200px]:p-0 min-[1200px]:transition-[right,top,height,transform] min-[1200px]:duration-300 min-[1200px]:ease-out min-[1200px]:motion-reduce:transition-none min-[1200px]:group-[.is-compact]:right-[6%] min-[1200px]:group-[.is-compact]:top-1/2 min-[1200px]:group-[.is-compact]:h-[var(--header-bar)] min-[1200px]:group-[.is-compact]:-translate-y-1/2"
       aria-label="Log in"
     >
       <button type="button" class={loginClass}>LOG IN - INFLUENCERS</button>
@@ -22,3 +32,29 @@ const loginClass =
     </nav>
   </div>
 </header>
+
+<script>
+  const header = document.getElementById("site-header");
+  const cover = document.getElementById("cover");
+  const desktop = window.matchMedia("(min-width: 1200px)");
+
+  if (header && cover) {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!desktop.matches) return;
+      header.classList.toggle("is-compact", !entry.isIntersecting);
+    });
+
+    const sync = () => {
+      if (desktop.matches) {
+        observer.observe(cover);
+        return;
+      }
+
+      observer.disconnect();
+      header.classList.remove("is-compact");
+    };
+
+    sync();
+    desktop.addEventListener("change", sync);
+  }
+</script>

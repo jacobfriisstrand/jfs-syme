@@ -5,13 +5,12 @@ export default {
 
   theme: {
     fontFamily: {
-      sans: ["Avenir", "Montserrat", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"],
-      inter: ["Inter", "sans-serif"],
-      arimo: ["Arimo", "sans-serif"],
-      serif: ["Libre Baskerville", "Georgia", "serif"],
-      mono: ["Fira Code", "ui-monospace", "monospace"],
-      dm: ["DM Sans", "sans-serif"],
-      plex: ["IBM Plex Mono", "ui-monospace", "monospace"],
+      sans: "var(--font-inter)",
+      inter: "var(--font-inter)",
+      arimo: "var(--font-arimo)",
+      serif: "var(--font-serif)",
+      dm: "var(--font-dm)",
+      plex: "var(--font-plex)",
     },
     container: {
       center: "true",
@@ -32,16 +31,22 @@ export default {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      baseLight: "#f8f8f8",
-      baseDark: "#252525",
-      baseLightGray: "#D9D9D9",
-      baseDarkGray: "#3D3D3D",
-      ink: "#1e1e1e",
-      inkMuted: "#4d4b4b",
-      inkFaint: "#8f8f8f",
-      success: "#ADEBB3",
-      error: "#FF0000",
-      link: "#006CFF",
+      baseLight: "rgb(var(--base-light-rgb) / <alpha-value>)",
+      baseDark: "rgb(var(--base-dark-rgb) / <alpha-value>)",
+      baseLightGray: "rgb(var(--base-light-gray-rgb) / <alpha-value>)",
+      baseDarkGray: "rgb(var(--base-dark-gray-rgb) / <alpha-value>)",
+      ink: "rgb(var(--ink-rgb) / <alpha-value>)",
+      inkMuted: "rgb(var(--ink-muted-rgb) / <alpha-value>)",
+      inkFaint: "rgb(var(--ink-faint-rgb) / <alpha-value>)",
+      success: "rgb(var(--success-rgb) / <alpha-value>)",
+      error: "rgb(var(--error-rgb) / <alpha-value>)",
+      link: "rgb(var(--link-rgb) / <alpha-value>)",
+      paper: "rgb(var(--paper-rgb) / <alpha-value>)",
+      canvasNight: "rgb(var(--canvas-night-rgb) / <alpha-value>)",
+      canvasInk: "rgb(var(--canvas-ink-rgb) / <alpha-value>)",
+      panel: "rgb(var(--panel-rgb) / <alpha-value>)",
+      cta: "rgb(var(--cta-rgb) / <alpha-value>)",
+      ctaHover: "rgb(var(--cta-hover-rgb) / <alpha-value>)",
     },
     extend: {
       borderRadius: {
@@ -49,7 +54,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      colors: {},
+      boxShadow: {
+        header: "var(--shadow-header)",
+      },
       keyframes: {
         marquee: {
           from: { transform: "translateX(0)" },

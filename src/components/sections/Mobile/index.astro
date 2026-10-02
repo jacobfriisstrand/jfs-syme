@@ -44,153 +44,151 @@ interface Phone {
   screenClass: string;
   chrome: Graphic[];
   shell: Graphic;
+  place: string;
 }
 
 const graphicClass = "pointer-events-none absolute max-w-none";
+const screenClass = "left-[7.08%] top-[2.86%] h-[94.39%] w-[85.93%]";
+const frameClass = "left-[2.06%] top-[0.48%] h-[99.02%] w-[95.93%]";
+const shellClass = "left-[1.06%] top-0 h-full w-[97.87%]";
+const islandClass = "left-[42.78%] top-[3.82%] h-[0.83%] w-[13.28%]";
+const cameraClass = "left-[60.32%] top-[3.63%] h-[1.23%] w-[2.42%]";
+const sideAClass = "left-0 top-[13.24%] h-[4.12%] w-[1.07%]";
+const sideBClass = "left-0 top-[20.41%] h-[7.43%] w-[1.07%]";
+const sideCClass = "left-0 top-[29.45%] h-[7.45%] w-[1.07%]";
+const sideDClass = "left-[98.82%] top-[22.71%] h-[12.24%] w-[1.18%]";
 
 const phones: Phone[] = [
   {
-    frame: {
-      src: frameLeft,
-      width: 163.464,
-      height: 333.792,
-      class: "left-[35.5%] top-[19.82%] h-[65.8367%] w-[18.1627%]",
-    },
+    place: "min-[1200px]:left-[35.11%] min-[1200px]:w-[18.934%]",
+    frame: { src: frameLeft, width: 163.464, height: 333.792, class: frameClass },
     screen: screenWelcome,
     screenAlt: "Forma app sign-in screen",
-    screenClass: "left-[36.45%] top-[21.4%] h-[62.76%] w-[16.27%]",
+    screenClass,
     chrome: [
-      { src: islandLeft, width: 22.632, height: 2.808, class: "left-[43.21%] top-[22.04%] h-[0.5538%] w-[2.5147%]" },
-      { src: cameraLeft, width: 4.128, height: 4.152, class: "left-[46.53%] top-[21.91%] h-[0.8189%] w-[0.4587%]" },
-      { src: sideLeftA, width: 1.824, height: 13.872, class: "left-[35.11%] top-[28.3%] h-[2.7361%] w-[0.2027%]" },
-      { src: sideLeftB, width: 1.824, height: 25.032, class: "left-[35.11%] top-[33.07%] h-[4.9373%] w-[0.2027%]" },
-      { src: sideLeftC, width: 1.824, height: 25.104, class: "left-[35.11%] top-[39.08%] h-[4.9515%] w-[0.2027%]" },
-      { src: sideLeftD, width: 2.016, height: 41.256, class: "left-[53.82%] top-[34.6%] h-[8.1373%] w-[0.224%]" },
+      { src: islandLeft, width: 22.632, height: 2.808, class: islandClass },
+      { src: cameraLeft, width: 4.128, height: 4.152, class: cameraClass },
+      { src: sideLeftA, width: 1.824, height: 13.872, class: sideAClass },
+      { src: sideLeftB, width: 1.824, height: 25.032, class: sideBClass },
+      { src: sideLeftC, width: 1.824, height: 25.104, class: sideCClass },
+      { src: sideLeftD, width: 2.016, height: 41.256, class: sideDClass },
     ],
-    shell: {
-      src: shellLeft,
-      width: 166.776,
-      height: 337.104,
-      class: "left-[35.31%] top-[19.5%] h-[66.4899%] w-[18.5307%]",
-    },
+    shell: { src: shellLeft, width: 166.776, height: 337.104, class: shellClass },
   },
   {
-    frame: {
-      src: frameMid,
-      width: 163.464,
-      height: 333.792,
-      class: "left-[56.69%] top-[19.82%] h-[65.8367%] w-[18.1627%]",
-    },
+    place: "min-[1200px]:left-[56.31%] min-[1200px]:w-[18.931%]",
+    frame: { src: frameMid, width: 163.464, height: 333.792, class: frameClass },
     screen: screenOffers,
     screenAlt: "Forma app offers list",
-    screenClass: "left-[57.63%] top-[21.5%] h-[62.63%] w-[16.27%]",
+    screenClass,
     chrome: [
-      { src: islandMid, width: 22.632, height: 2.808, class: "left-[64.41%] top-[22.04%] h-[0.5538%] w-[2.5147%]" },
-      { src: cameraMid, width: 4.128, height: 4.152, class: "left-[67.73%] top-[21.91%] h-[0.8189%] w-[0.4587%]" },
-      { src: sideMidA, width: 1.824, height: 13.872, class: "left-[56.31%] top-[28.3%] h-[2.7361%] w-[0.2027%]" },
-      { src: sideMidB, width: 1.824, height: 25.032, class: "left-[56.31%] top-[33.07%] h-[4.9373%] w-[0.2027%]" },
-      { src: sideMidC, width: 1.824, height: 25.104, class: "left-[56.31%] top-[39.08%] h-[4.9515%] w-[0.2027%]" },
-      { src: sideMidD, width: 1.992, height: 41.256, class: "left-[75.02%] top-[34.6%] h-[8.1373%] w-[0.2213%]" },
+      { src: islandMid, width: 22.632, height: 2.808, class: islandClass },
+      { src: cameraMid, width: 4.128, height: 4.152, class: cameraClass },
+      { src: sideMidA, width: 1.824, height: 13.872, class: sideAClass },
+      { src: sideMidB, width: 1.824, height: 25.032, class: sideBClass },
+      { src: sideMidC, width: 1.824, height: 25.104, class: sideCClass },
+      { src: sideMidD, width: 1.992, height: 41.256, class: sideDClass },
     ],
-    shell: {
-      src: shellMid,
-      width: 166.776,
-      height: 337.104,
-      class: "left-[56.51%] top-[19.5%] h-[66.4899%] w-[18.5307%]",
-    },
+    shell: { src: shellMid, width: 166.776, height: 337.104, class: shellClass },
   },
   {
-    frame: {
-      src: frameRight,
-      width: 163.488,
-      height: 333.792,
-      class: "left-[77.89%] top-[19.82%] h-[65.8367%] w-[18.1653%]",
-    },
+    place: "min-[1200px]:left-[77.5%] min-[1200px]:w-[18.941%]",
+    frame: { src: frameRight, width: 163.488, height: 333.792, class: frameClass },
     screen: screenDetails,
     screenAlt: "Forma app offer details",
-    screenClass: "left-[78.76%] top-[21.5%] h-[62.63%] w-[16.42%]",
+    screenClass,
     chrome: [
-      { src: islandRight, width: 22.632, height: 2.808, class: "left-[85.61%] top-[22.04%] h-[0.5538%] w-[2.5147%]" },
-      { src: cameraRight, width: 4.152, height: 4.152, class: "left-[88.92%] top-[21.91%] h-[0.8189%] w-[0.4613%]" },
-      { src: sideRightA, width: 1.824, height: 13.872, class: "left-[77.5%] top-[28.3%] h-[2.7361%] w-[0.2027%]" },
-      { src: sideRightB, width: 1.824, height: 25.032, class: "left-[77.5%] top-[33.07%] h-[4.9373%] w-[0.2027%]" },
-      { src: sideRightC, width: 1.824, height: 25.104, class: "left-[77.5%] top-[39.08%] h-[4.9515%] w-[0.2027%]" },
-      { src: sideRightD, width: 1.992, height: 41.256, class: "left-[96.22%] top-[34.6%] h-[8.1373%] w-[0.2213%]" },
+      { src: islandRight, width: 22.632, height: 2.808, class: islandClass },
+      { src: cameraRight, width: 4.152, height: 4.152, class: cameraClass },
+      { src: sideRightA, width: 1.824, height: 13.872, class: sideAClass },
+      { src: sideRightB, width: 1.824, height: 25.032, class: sideBClass },
+      { src: sideRightC, width: 1.824, height: 25.104, class: sideCClass },
+      { src: sideRightD, width: 1.992, height: 41.256, class: sideDClass },
     ],
-    shell: {
-      src: shellRight,
-      width: 166.752,
-      height: 337.104,
-      class: "left-[77.71%] top-[19.5%] h-[66.4899%] w-[18.528%]",
-    },
+    shell: { src: shellRight, width: 166.752, height: 337.104, class: shellClass },
   },
 ];
 
 const features = [
-  { index: "0 1", label: "Browse curated offers from premium partners", top: "top-[74.3%]" },
-  { index: "0 2", label: "Apply & confirm in two taps", top: "top-[79.25%]" },
-  { index: "0 3", label: "Deliver content directly inside the app", top: "top-[84.31%]" },
+  { index: "0 1", label: "Browse curated offers from premium partners", top: "min-[1200px]:top-[74.3%]" },
+  { index: "0 2", label: "Apply & confirm in two taps", top: "min-[1200px]:top-[79.25%]" },
+  { index: "0 3", label: "Deliver content directly inside the app", top: "min-[1200px]:top-[84.31%]" },
 ];
+
+const phoneClass =
+  "relative aspect-[170/337] w-36 shrink-0 snap-center md:w-[30%] min-[1200px]:absolute min-[1200px]:top-[19.5%] min-[1200px]:aspect-auto min-[1200px]:h-[66.4899%] min-[1200px]:shrink";
 ---
 
-<div class="grid h-dvh w-full place-items-center overflow-hidden bg-[#000] [container-type:size]">
+<div class="bg-canvasNight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
   <section
-    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-[#000] font-inter text-[#fff] antialiased [container-type:size]"
+    class="bg-canvasNight px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
     aria-label="Forma on mobile"
   >
-    {
-      phones.map((phone) => (
-        <>
-          <Image src={phone.screen} alt={phone.screenAlt} class:list={["pointer-events-none absolute max-w-none object-cover", phone.screenClass]} />
-          <img src={phone.frame.src} alt="" width={phone.frame.width} height={phone.frame.height} class:list={[graphicClass, phone.frame.class]} />
-          {phone.chrome.map((layer) => (
-            <img src={layer.src} alt="" width={layer.width} height={layer.height} class:list={[graphicClass, layer.class]} />
-          ))}
-          <img src={phone.shell.src} alt="" width={phone.shell.width} height={phone.shell.height} class:list={[graphicClass, phone.shell.class]} />
-        </>
-      ))
-    }
+    <div class="flex flex-col gap-10 min-[1200px]:contents">
+      <p class="eyebrow m-0 text-paper min-[1200px]:absolute min-[1200px]:right-[3.5%] min-[1200px]:top-[4.62%] min-[1200px]:whitespace-nowrap">
+        PRODUCT - MOBILE
+      </p>
 
-    <p class="eyebrow absolute right-[3.5%] top-[4.62%] m-0 whitespace-nowrap text-[#fff]">
-      PRODUCT - MOBILE
-    </p>
+      <div class="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-center md:gap-12 min-[1200px]:contents">
+        <div class="flex min-w-0 flex-col gap-6 min-[1200px]:contents">
+          <p class="eyebrow m-0 text-paper min-[1200px]:absolute min-[1200px]:left-[4.36%] min-[1200px]:top-[19.66%] min-[1200px]:whitespace-nowrap">
+            FOR PROFILES
+          </p>
 
-    <p class="eyebrow absolute left-[4.36%] top-[19.66%] m-0 whitespace-nowrap text-[#fff]">
-      FOR PROFILES
-    </p>
+          <h2 class="headline-stack m-0 min-[1200px]:absolute min-[1200px]:left-[3.59%] min-[1200px]:top-[24.97%]">
+            <span class="headline min-[1200px]:whitespace-nowrap">FORMA</span>
+            <span class="headline-italic min-[1200px]:whitespace-nowrap">on mobile.</span>
+          </h2>
 
-    <h2 class="headline-stack absolute left-[3.59%] top-[24.97%] m-0">
-      <span class="headline whitespace-nowrap">FORMA</span>
-      <span class="headline-italic whitespace-nowrap">on mobile.</span>
-    </h2>
+          <p class="deck m-0 text-paper min-[1200px]:absolute min-[1200px]:left-[3.59%] min-[1200px]:top-[48.31%] min-[1200px]:w-[22.11%] min-[1200px]:whitespace-nowrap">
+            Discover, apply, and manage
+            <br class="hidden min-[1200px]:inline" />
+            premium collaborations seamlessly -
+            <br class="hidden min-[1200px]:inline" />
+            from a single app in your pocket.
+          </p>
 
-    <p class="deck absolute left-[3.59%] top-[48.31%] m-0 w-[22.11%] whitespace-nowrap text-[#fff]">
-      Discover, apply, and manage<br />
-      premium collaborations seamlessly -<br />
-      from a single app in your pocket.
-    </p>
+          <button
+            type="button"
+            class="relative flex h-12 w-48 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-paper min-[1200px]:absolute min-[1200px]:left-[3.592%] min-[1200px]:top-[62.853%] min-[1200px]:h-[7.272%] min-[1200px]:w-[14.416%]"
+          >
+            <Image src={pill} alt="" class="pointer-events-none absolute inset-0 h-full w-full max-w-none" />
+            <span class="wordmark relative">
+              EXPLORE FORMA
+            </span>
+          </button>
 
-    <button
-      type="button"
-      class="absolute left-[3.592%] top-[62.853%] flex h-[7.272%] w-[14.416%] cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#fff]"
-    >
-      <Image src={pill} alt="" class="pointer-events-none absolute inset-0 h-full w-full max-w-none" />
-      <span class="relative font-arimo text-[length:calc(9.5/900*100cqw)] font-bold leading-none tracking-[0.0078em] text-[#000]">
-        EXPLORE FORMA
-      </span>
-    </button>
+          <div class="flex flex-col gap-3 min-[1200px]:contents">
+            {
+              features.map((feature) => (
+                <p class:list={["m-0 flex items-baseline gap-3 min-[1200px]:absolute min-[1200px]:left-[3.59%] min-[1200px]:gap-0", feature.top]}>
+                  <span class="feature-index w-8 shrink-0 min-[1200px]:w-[2.28cqw]">{feature.index}</span>
+                  <span class="feature-label min-[1200px]:whitespace-nowrap">{feature.label}</span>
+                </p>
+              ))
+            }
+          </div>
+        </div>
 
-    {
-      features.map((feature) => (
-        <p class:list={["absolute left-[3.59%] m-0 flex items-baseline", feature.top]}>
-          <span class="w-[2.28cqw] shrink-0 text-[length:calc(5.8/900*100cqw)] font-normal leading-none">{feature.index}</span>
-          <span class="whitespace-nowrap text-[length:calc(9.8/900*100cqw)] font-semibold leading-[1.22] tracking-[0.0137em]">{feature.label}</span>
-        </p>
-      ))
-    }
+        <div class="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 md:mx-0 md:justify-end md:px-0 min-[1200px]:contents">
+          {
+            phones.map((phone) => (
+              <div class:list={[phoneClass, phone.place]}>
+                <Image src={phone.screen} alt={phone.screenAlt} class:list={["pointer-events-none absolute max-w-none object-cover", phone.screenClass]} />
+                <img src={phone.frame.src} alt="" width={phone.frame.width} height={phone.frame.height} class:list={[graphicClass, phone.frame.class]} />
+                {phone.chrome.map((layer) => (
+                  <img src={layer.src} alt="" width={layer.width} height={layer.height} class:list={[graphicClass, layer.class]} />
+                ))}
+                <img src={phone.shell.src} alt="" width={phone.shell.width} height={phone.shell.height} class:list={[graphicClass, phone.shell.class]} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
 
-    <p class="eyebrow absolute bottom-[4.26%] right-[3.36%] m-0 whitespace-nowrap text-[#fff]">
-      AVAILABLE ON IOS
-    </p>
+      <p class="eyebrow m-0 text-paper min-[1200px]:absolute min-[1200px]:bottom-[4.26%] min-[1200px]:right-[3.36%] min-[1200px]:whitespace-nowrap">
+        AVAILABLE ON IOS
+      </p>
+    </div>
   </section>
 </div>

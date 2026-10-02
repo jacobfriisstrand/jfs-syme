@@ -42,98 +42,105 @@ const columns: Column[] = [
     label: "01 - CREATE",
     title: "Curated offers in minutes.",
     lines: ["Create your account and launch tailored collaboration", "offers without leaving the workspace."],
-    left: "left-[4.1113%]",
-    bodyTop: "top-[45.27%]",
+    left: "min-[1200px]:left-[4.1113%]",
+    bodyTop: "min-[1200px]:top-[45.27%]",
   },
   {
     label: "02 - CONTROL",
     title: "Approve the right profiles.",
     lines: ["Upload offers, review matched applicants, and approve the", "right talent in a few clicks."],
-    left: "left-[35.7128%]",
-    bodyTop: "top-[45.21%]",
+    left: "min-[1200px]:left-[35.7128%]",
+    bodyTop: "min-[1200px]:top-[45.21%]",
   },
   {
     label: "03 - MEASURE",
     title: "Track every story.",
     lines: ["Monitor stories, posts, reach, and performance live - every", "deliverable in one ledger."],
-    left: "left-[67.3143%]",
-    bodyTop: "top-[45.21%]",
+    left: "min-[1200px]:left-[67.3143%]",
+    bodyTop: "min-[1200px]:top-[45.21%]",
   },
 ];
 
 const dots: Dot[] = [
-  { src: dotRed, width: 7.7, height: 7.5, class: "left-[4.96%] top-[55.52%] h-[1.48%] w-[0.85%] rounded-full" },
-  { src: dotMid, width: 7.4, height: 7.5, class: "left-[6.19%] top-[55.66%] h-[1.48%] w-[0.82%] rounded-full" },
-  { src: dotGreen, width: 7.5, height: 7.5, class: "left-[7.41%] top-[55.66%] h-[1.48%] w-[0.83%] rounded-full" },
+  { src: dotRed, width: 7.7, height: 7.5, class: "left-[1.38%] top-[9.14%] h-[3.9%] w-[0.9%] rounded-full" },
+  { src: dotMid, width: 7.4, height: 7.5, class: "left-[2.68%] top-[9.51%] h-[3.9%] w-[0.87%] rounded-full" },
+  { src: dotGreen, width: 7.5, height: 7.5, class: "left-[3.98%] top-[9.51%] h-[3.9%] w-[0.88%] rounded-full" },
 ];
 ---
 
-<div class="grid h-dvh w-full place-items-center overflow-hidden bg-baseLight [container-type:size]">
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
   <section
-    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-baseLight font-inter text-ink antialiased [container-type:size]"
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
     aria-label="Forma on web"
   >
     {
       rules.map((rule) => (
-        <Image src={rule.src} alt="" class:list={[graphicClass, "object-fill", rule.class]} />
+        <Image src={rule.src} alt="" class:list={[graphicClass, "hidden object-fill min-[1200px]:block", rule.class]} />
       ))
     }
 
-    <Image
-      src={windowChrome}
-      alt=""
-      class:list={[graphicClass, "left-[3.6557%] top-[52.0537%] h-[6.3514%] w-[94.4156%] object-fill"]}
-    />
-    <Image
-      src={windowBody}
-      alt="Forma workspace overview with offer notifications"
-      class:list={[graphicClass, "left-[4.2113%] top-[57.8726%] h-[32.0922%] w-[92.9933%] object-fill"]}
-    />
+    <div class="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-center md:gap-x-10 md:gap-y-8 min-[1200px]:contents">
+      <div class="order-2 flex min-w-0 flex-col gap-6 md:order-none md:col-start-1 md:row-start-1 min-[1200px]:contents">
+        <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[4.0747%] min-[1200px]:top-[4.9312%] min-[1200px]:whitespace-nowrap">
+          PRODUCT - WEB
+        </p>
 
-    {
-      dots.map((dot) => (
-        <img src={dot.src} alt="" width={dot.width} height={dot.height} class:list={[graphicClass, "object-fill", dot.class]} />
-      ))
-    }
+        <h2 class="headline-stack m-0 min-[1200px]:absolute min-[1200px]:left-[3.66%] min-[1200px]:top-[14.79%]">
+          <span class="headline min-[1200px]:whitespace-nowrap">FORMA</span>
+          <span class="headline-italic min-[1200px]:whitespace-nowrap">on web.</span>
+        </h2>
 
-    <p class="eyebrow absolute right-[4.0747%] top-[4.9312%] m-0 whitespace-nowrap">
-      PRODUCT - WEB
-    </p>
+        <p class="deck m-0 max-w-sm min-[1200px]:absolute min-[1200px]:right-[2.7397%] min-[1200px]:top-[11.3615%] min-[1200px]:w-[22.7789%] min-[1200px]:max-w-none min-[1200px]:text-right">
+          Launch, manage, and track premium
+          <br class="hidden min-[1200px]:inline" />
+          collaborations from one workspace built
+          <br class="hidden min-[1200px]:inline" />
+          for brand teams.
+        </p>
+      </div>
 
-    <h2 class="headline-stack absolute left-[3.66%] top-[14.79%] m-0">
-      <span class="headline whitespace-nowrap">FORMA</span>
-      <span class="headline-italic whitespace-nowrap">on web.</span>
-    </h2>
+      <div class="order-1 md:order-none md:col-start-2 md:row-start-1 md:row-span-2 min-[1200px]:contents">
+        <div class="relative aspect-[850/192] w-full min-[1200px]:absolute min-[1200px]:left-[3.6557%] min-[1200px]:top-[52.0537%] min-[1200px]:aspect-auto min-[1200px]:h-[37.9111%] min-[1200px]:w-[94.4156%]">
+          <Image
+            src={windowChrome}
+            alt=""
+            class:list={[graphicClass, "left-0 top-0 h-[16.75%] w-full object-fill"]}
+          />
+          <Image
+            src={windowBody}
+            alt="Forma workspace overview with offer notifications"
+            class:list={[graphicClass, "left-[0.59%] top-[15.35%] h-[84.65%] w-[98.49%] object-fill"]}
+          />
+          {
+            dots.map((dot) => (
+              <img src={dot.src} alt="" width={dot.width} height={dot.height} class:list={[graphicClass, "object-fill", dot.class]} />
+            ))
+          }
+        </div>
+      </div>
 
-    <p class="deck absolute right-[2.7397%] top-[11.3615%] m-0 w-[22.7789%] text-right">
-      Launch, manage, and track premium<br />
-      collaborations from one workspace built<br />
-      for brand teams.
-    </p>
+      <div class="order-3 flex flex-col gap-8 md:order-none md:col-start-1 md:row-start-2 min-[1200px]:contents">
+        {
+          columns.map((column) => (
+            <div class="flex flex-col gap-2 border-t border-baseLightGray pt-4 min-[1200px]:contents">
+              <p class:list={["kicker m-0 min-[1200px]:absolute min-[1200px]:top-[38.5423%] min-[1200px]:whitespace-nowrap", column.left]}>
+                {column.label}
+              </p>
+              <p class:list={["column-title m-0 min-[1200px]:absolute min-[1200px]:top-[41.4221%] min-[1200px]:whitespace-nowrap", column.left]}>
+                {column.title}
+              </p>
+              <p class:list={["column-body m-0 min-[1200px]:absolute min-[1200px]:whitespace-nowrap", column.left, column.bodyTop]}>
+                {column.lines[0]}{" "}
+                <br class="hidden min-[1200px]:inline" />
+                {column.lines[1]}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
 
-    {
-      columns.map((column) => (
-        <>
-          <p class:list={["absolute top-[38.5423%] m-0 whitespace-nowrap font-plex text-[length:calc(6.4/900*100cqw)] font-normal leading-none tracking-[0.09em] text-[#000]", column.left]}>
-            {column.label}
-          </p>
-          <p class:list={["absolute top-[41.4221%] m-0 whitespace-nowrap text-[length:calc(12.4/900*100cqw)] font-semibold leading-[1.21] tracking-[-0.0117em] text-[#000]", column.left]}>
-            {column.title}
-          </p>
-          <p class:list={["absolute m-0 whitespace-nowrap text-[length:calc(9.5/900*100cqw)] font-normal leading-[1.16] tracking-[-0.01em] text-[#4d4b4b]", column.left, column.bodyTop]}>
-            {column.lines[0]}
-            <br />
-            {column.lines[1]}
-          </p>
-        </>
-      ))
-    }
-
-    <p class="absolute left-[9.4893%] top-[55.5845%] m-0 whitespace-nowrap font-plex text-[length:calc(5/900*100cqw)] font-normal leading-none tracking-[0.03em] text-[#4d4b4b]">
-      form app / brand / collabostions
-    </p>
-
-    <p class="eyebrow absolute right-[4.0747%] top-[93.4876%] m-0 whitespace-nowrap">
+    <p class="eyebrow m-0 mt-8 min-[1200px]:absolute min-[1200px]:right-[4.0747%] min-[1200px]:top-[93.4876%] min-[1200px]:mt-0 min-[1200px]:whitespace-nowrap">
       member.formaintl.com
     </p>
   </section>

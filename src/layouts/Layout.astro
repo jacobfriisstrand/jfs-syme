@@ -16,9 +16,15 @@ const { fullBleed = false } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=IBM+Plex+Mono&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,700;1,14..32,400&family=Libre+Baskerville:ital,wght@1,400&display=swap"
+      rel="stylesheet"
+    />
     <slot name="head" />
   </head>
-  <body class:list={[fullBleed ? "m-0 bg-baseLight" : "grid min-h-[100dvh] grid-rows-[auto_1fr_auto]"]}>
+  <body class:list={[fullBleed ? "m-0 overflow-x-clip bg-baseLight" : "grid min-h-[100dvh] grid-rows-[auto_1fr_auto]"]}>
     {!fullBleed && <Navigation />}
     <main class:list={[fullBleed ? "m-0" : "container"]}>
       <slot />

@@ -52,14 +52,6 @@ const data = await fetchData<FetchedData>(`{
 
 <Seo data={[...data.page.seo, ...data.site.favicon]} />
 
-<link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
-<link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  slot="head"
-  href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Fira+Code:wght@300;400&family=IBM+Plex+Mono&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,700;1,14..32,400&family=Libre+Baskerville:ital,wght@1,400&display=swap"
-  rel="stylesheet"
-/>
-
 <Layout fullBleed>
   <Header />
   <Cover />

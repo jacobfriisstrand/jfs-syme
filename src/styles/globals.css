@@ -5,9 +5,46 @@
 @layer base {
   :root {
     --radius: 0.5rem;
-    --ink: #1e1e1e;
-    --ink-muted: #4d4b4b;
-    --ink-faint: #8f8f8f;
+    --radius-panel: calc(12 / 900 * 100cqw);
+    --radius-media: calc(8 / 900 * 100cqw);
+    --base-light-rgb: 248 248 248;
+    --base-dark-rgb: 37 37 37;
+    --base-light-gray-rgb: 217 217 217;
+    --base-dark-gray-rgb: 61 61 61;
+    --ink-rgb: 30 30 30;
+    --ink-muted-rgb: 77 75 75;
+    --ink-faint-rgb: 143 143 143;
+    --success-rgb: 173 235 179;
+    --error-rgb: 255 0 0;
+    --link-rgb: 0 108 255;
+    --paper-rgb: 255 255 255;
+    --canvas-night-rgb: 0 0 0;
+    --canvas-ink-rgb: 15 15 13;
+    --panel-rgb: 16 16 13;
+    --cta-rgb: 12 11 9;
+    --cta-hover-rgb: 42 41 38;
+    --base-light: rgb(var(--base-light-rgb));
+    --base-dark: rgb(var(--base-dark-rgb));
+    --base-light-gray: rgb(var(--base-light-gray-rgb));
+    --base-dark-gray: rgb(var(--base-dark-gray-rgb));
+    --ink: rgb(var(--ink-rgb));
+    --ink-muted: rgb(var(--ink-muted-rgb));
+    --ink-faint: rgb(var(--ink-faint-rgb));
+    --success: rgb(var(--success-rgb));
+    --error: rgb(var(--error-rgb));
+    --link: rgb(var(--link-rgb));
+    --paper: rgb(var(--paper-rgb));
+    --canvas-night: rgb(var(--canvas-night-rgb));
+    --canvas-ink: rgb(var(--canvas-ink-rgb));
+    --panel: rgb(var(--panel-rgb));
+    --cta: rgb(var(--cta-rgb));
+    --cta-hover: rgb(var(--cta-hover-rgb));
+    --shadow-header: 0 8px 24px rgb(var(--ink-rgb) / 0.06);
+    --font-inter: Inter, sans-serif;
+    --font-serif: "Libre Baskerville", Georgia, serif;
+    --font-dm: "DM Sans", sans-serif;
+    --font-plex: "IBM Plex Mono", ui-monospace, monospace;
+    --font-arimo: Arimo, sans-serif;
     --eyebrow-size: calc(7.56 / 900 * 100cqw);
     --eyebrow-leading: calc(8 / 6.3);
     --eyebrow-tracking: 0.0937em;
@@ -50,11 +87,68 @@
     --stat-note-size: calc(8.7 / 900 * 100cqw);
     --stat-note-leading: 1.55;
     --stat-note-tracking: 0.06em;
+    --kicker-size: calc(6.4 / 900 * 100cqw);
+    --kicker-leading: 1;
+    --kicker-tracking: 0.09em;
+    --column-title-size: calc(12.4 / 900 * 100cqw);
+    --column-title-leading: 1.21;
+    --column-title-tracking: -0.0117em;
+    --column-body-size: calc(9.5 / 900 * 100cqw);
+    --column-body-leading: 1.16;
+    --column-body-tracking: -0.01em;
+    --axis-size: calc(5 / 900 * 100cqw);
+    --axis-leading: 1;
+    --axis-tracking: 0.03em;
+    --feature-index-size: calc(5.8 / 900 * 100cqw);
+    --feature-index-leading: 1;
+    --feature-label-size: calc(9.8 / 900 * 100cqw);
+    --feature-label-leading: 1.22;
+    --feature-label-tracking: 0.0137em;
+    --wordmark-size: calc(9.5 / 900 * 100cqw);
+    --wordmark-leading: 1;
+    --wordmark-tracking: 0.0078em;
+    --cta-label-size: calc(8.5 / 900 * 100cqw);
+    --cta-label-leading: 1;
+    --logo-word-size: calc(19.7 / 900 * 100cqw);
+    --logo-word-leading: 1;
+    --logo-word-tracking: 0.0078em;
     --board-w: min(100vw, calc(100dvh * 900 / 507));
     --board-h: calc(var(--board-w) * 507 / 900);
     --header-offset: calc((100dvh - var(--board-h)) / 2 + var(--board-h) * 0.063996);
     --header-bar: calc(var(--board-h) * 0.022485);
     --header-height: calc(var(--header-offset) * 2 + var(--header-bar));
+  }
+
+  @media (max-width: 1199px) {
+    :root {
+      --radius-panel: 0.75rem;
+      --radius-media: 0.5rem;
+      --eyebrow-size: clamp(0.6875rem, 1.5vw, 0.75rem);
+      --headline-size: clamp(2rem, 5.5vw, 2.75rem);
+      --headline-italic-size: clamp(1.875rem, 5.2vw, 2.625rem);
+      --headline-inline-gap: 0.28em;
+      --display-size: clamp(2.25rem, 6vw, 3.25rem);
+      --deck-size: clamp(0.9375rem, 2vw, 1.0625rem);
+      --body-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+      --title-size: clamp(1.125rem, 2.4vw, 1.375rem);
+      --copy-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+      --caption-size: clamp(0.6875rem, 1.4vw, 0.75rem);
+      --quote-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+      --stat-size: clamp(2.75rem, 7vw, 3.5rem);
+      --stat-small-size: clamp(1.75rem, 4.5vw, 2.25rem);
+      --stat-suffix-size: clamp(1.25rem, 3vw, 1.5rem);
+      --stat-label-size: clamp(0.875rem, 1.8vw, 1rem);
+      --stat-note-size: clamp(0.8125rem, 1.6vw, 0.9375rem);
+      --kicker-size: clamp(0.6875rem, 1.4vw, 0.75rem);
+      --column-title-size: clamp(1rem, 2vw, 1.125rem);
+      --column-body-size: clamp(0.875rem, 1.6vw, 1rem);
+      --axis-size: clamp(0.6875rem, 1.4vw, 0.75rem);
+      --feature-index-size: clamp(0.6875rem, 1.4vw, 0.75rem);
+      --feature-label-size: clamp(0.875rem, 1.8vw, 1rem);
+      --wordmark-size: clamp(0.75rem, 1.6vw, 0.875rem);
+      --cta-label-size: clamp(0.75rem, 1.6vw, 0.8125rem);
+      --logo-word-size: clamp(1rem, 2.4vw, 1.25rem);
+    }
   }
 
   html {
@@ -70,7 +164,7 @@
   .eyebrow,
   .cover-label,
   .attribution {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--eyebrow-size);
     font-weight: 400;
     letter-spacing: var(--eyebrow-tracking);
@@ -83,7 +177,7 @@
   }
 
   .headline {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--headline-size);
     font-weight: 700;
     letter-spacing: var(--headline-tracking);
@@ -91,7 +185,7 @@
   }
 
   .headline-italic {
-    font-family: "Libre Baskerville", Georgia, serif;
+    font-family: var(--font-serif);
     font-size: var(--headline-italic-size);
     font-style: italic;
     font-weight: 400;
@@ -113,8 +207,22 @@
     gap: var(--headline-inline-gap);
   }
 
+  @media (max-width: 1199px) {
+    .headline-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.12em;
+    }
+
+    .headline-row {
+      flex-wrap: wrap;
+      row-gap: 0.12em;
+    }
+  }
+
   .display {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--display-size);
     font-weight: 700;
     letter-spacing: var(--display-tracking);
@@ -122,7 +230,7 @@
   }
 
   .deck {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--deck-size);
     font-weight: 400;
     letter-spacing: var(--deck-tracking);
@@ -132,7 +240,7 @@
 
   .body,
   .body-muted {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--body-size);
     font-weight: 400;
     letter-spacing: var(--body-tracking);
@@ -148,7 +256,7 @@
   }
 
   .title {
-    font-family: "DM Sans", sans-serif;
+    font-family: var(--font-dm);
     font-size: var(--title-size);
     font-weight: 700;
     letter-spacing: var(--title-tracking);
@@ -157,14 +265,14 @@
   }
 
   .copy {
-    font-family: "DM Sans", sans-serif;
+    font-family: var(--font-dm);
     font-size: var(--copy-size);
     font-weight: 400;
     line-height: var(--copy-leading);
   }
 
   .caption {
-    font-family: "DM Sans", sans-serif;
+    font-family: var(--font-dm);
     font-size: var(--caption-size);
     font-weight: 400;
     letter-spacing: var(--caption-tracking);
@@ -172,7 +280,7 @@
   }
 
   .quote {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--quote-size);
     font-style: italic;
     font-weight: 400;
@@ -181,15 +289,19 @@
   }
 
   .stat {
-    font-family: Inter, sans-serif;
+    display: flex;
+    align-items: baseline;
+    gap: 0.15em;
+    font-family: var(--font-inter);
     font-size: var(--stat-size);
     font-weight: 400;
+    letter-spacing: -0.03125em;
     line-height: 1;
     color: var(--ink);
   }
 
   .stat-small {
-    font-family: "DM Sans", sans-serif;
+    font-family: var(--font-dm);
     font-size: var(--stat-small-size);
     font-weight: 400;
     letter-spacing: var(--stat-small-tracking);
@@ -198,15 +310,16 @@
   }
 
   .stat-suffix {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--stat-suffix-size);
     font-weight: 400;
+    letter-spacing: 0;
     line-height: 1;
     color: var(--ink);
   }
 
   .stat-label {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--stat-label-size);
     font-weight: 700;
     letter-spacing: var(--stat-label-tracking);
@@ -215,11 +328,88 @@
   }
 
   .stat-note {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter);
     font-size: var(--stat-note-size);
     font-weight: 400;
     letter-spacing: var(--stat-note-tracking);
     line-height: var(--stat-note-leading);
+    color: var(--ink);
+  }
+
+  .kicker {
+    font-family: var(--font-plex);
+    font-size: var(--kicker-size);
+    font-weight: 400;
+    letter-spacing: var(--kicker-tracking);
+    line-height: var(--kicker-leading);
+    color: var(--canvas-night);
+  }
+
+  .column-title {
+    font-family: var(--font-inter);
+    font-size: var(--column-title-size);
+    font-weight: 600;
+    letter-spacing: var(--column-title-tracking);
+    line-height: var(--column-title-leading);
+    color: var(--canvas-night);
+  }
+
+  .column-body {
+    font-family: var(--font-inter);
+    font-size: var(--column-body-size);
+    font-weight: 400;
+    letter-spacing: var(--column-body-tracking);
+    line-height: var(--column-body-leading);
+    color: var(--ink-muted);
+  }
+
+  .axis {
+    font-family: var(--font-plex);
+    font-size: var(--axis-size);
+    font-weight: 400;
+    letter-spacing: var(--axis-tracking);
+    line-height: var(--axis-leading);
+    color: var(--ink-muted);
+  }
+
+  .feature-index {
+    font-family: var(--font-inter);
+    font-size: var(--feature-index-size);
+    font-weight: 400;
+    line-height: var(--feature-index-leading);
+  }
+
+  .feature-label {
+    font-family: var(--font-inter);
+    font-size: var(--feature-label-size);
+    font-weight: 600;
+    letter-spacing: var(--feature-label-tracking);
+    line-height: var(--feature-label-leading);
+  }
+
+  .wordmark {
+    font-family: var(--font-arimo);
+    font-size: var(--wordmark-size);
+    font-weight: 700;
+    letter-spacing: var(--wordmark-tracking);
+    line-height: var(--wordmark-leading);
+    color: var(--canvas-night);
+  }
+
+  .cta-label {
+    font-family: var(--font-arimo);
+    font-size: var(--cta-label-size);
+    font-weight: 700;
+    line-height: var(--cta-label-leading);
+    color: var(--paper);
+  }
+
+  .logo-word {
+    font-family: var(--font-inter);
+    font-size: var(--logo-word-size);
+    font-weight: 700;
+    letter-spacing: var(--logo-word-tracking);
+    line-height: var(--logo-word-leading);
     color: var(--ink);
   }
 

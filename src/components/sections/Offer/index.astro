@@ -1,22 +1,17 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
-import partnerships from "@/assets/offer/partnerships.png";
-import matching from "@/assets/offer/matching.png";
-import execution from "@/assets/offer/execution.png";
-
 interface Offer {
   index: string;
   title: string;
   lines: string[];
-  icon: ImageMetadata;
-  iconClass: string;
+  icon: "partnerships" | "matching" | "execution";
+  iconLeft: string;
   left: string;
   titleTop: string;
   bodyTop: string;
 }
 
-const graphicClass = "pointer-events-none absolute max-w-none";
+const iconClass =
+  "pointer-events-none h-10 w-10 text-ink min-[1200px]:absolute min-[1200px]:top-[53.22%] min-[1200px]:h-[5.65%] min-[1200px]:w-auto";
 
 const offers: Offer[] = [
   {
@@ -28,11 +23,11 @@ const offers: Offer[] = [
       "ensuring quality, relevance, and stronger brand",
       "positioning from the start.",
     ],
-    icon: partnerships,
-    iconClass: "left-[4.822%] top-[52.051%] h-[8.422%] w-[4.833%]",
-    left: "left-[5.678%]",
-    titleTop: "top-[65.7%]",
-    bodyTop: "top-[76.03%]",
+    icon: "partnerships",
+    iconLeft: "min-[1200px]:left-[5.598%]",
+    left: "min-[1200px]:left-[5.678%]",
+    titleTop: "min-[1200px]:top-[65.7%]",
+    bodyTop: "min-[1200px]:top-[76.03%]",
   },
   {
     index: "02 - PROFILE MATCHING",
@@ -43,11 +38,11 @@ const offers: Offer[] = [
       "engagement, and brand alignment to create",
       "authentic, high-performing partnerships.",
     ],
-    icon: matching,
-    iconClass: "left-[36.233%] top-[52.051%] h-[8.422%] w-[3.667%]",
-    left: "left-[36.722%]",
-    titleTop: "top-[65.759%]",
-    bodyTop: "top-[72.23%]",
+    icon: "matching",
+    iconLeft: "min-[1200px]:left-[36.588%]",
+    left: "min-[1200px]:left-[36.722%]",
+    titleTop: "min-[1200px]:top-[65.759%]",
+    bodyTop: "min-[1200px]:top-[72.23%]",
   },
   {
     index: "03 - UNIFIED EXECUTION",
@@ -57,86 +52,100 @@ const offers: Offer[] = [
       "content delivery, communication, and performance",
       "tracking - without ever leaving the workspace.",
     ],
-    icon: execution,
-    iconClass: "left-[66.456%] top-[52.051%] h-[8.422%] w-[4.833%]",
-    left: "left-[67.789%]",
-    titleTop: "top-[65.759%]",
-    bodyTop: "top-[72.23%]",
+    icon: "execution",
+    iconLeft: "min-[1200px]:left-[67.59%]",
+    left: "min-[1200px]:left-[67.789%]",
+    titleTop: "min-[1200px]:top-[65.759%]",
+    bodyTop: "min-[1200px]:top-[72.23%]",
   },
 ];
 ---
 
-<div class="grid h-dvh w-full place-items-center overflow-hidden bg-baseLight [container-type:size]">
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
   <section
-    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-baseLight font-inter text-ink antialiased [container-type:size]"
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
     aria-label="What we offer"
   >
-    <p class="eyebrow absolute right-[2.822%] top-[4.398%] m-0 whitespace-nowrap">
-      WHAT WE OFFER
-    </p>
+    <div class="flex flex-col gap-8 min-[1200px]:contents">
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[2.822%] min-[1200px]:top-[4.398%] min-[1200px]:whitespace-nowrap">
+        WHAT WE OFFER
+      </p>
 
-    <p class="deck absolute right-[2.744%] top-[11.361%] m-0 w-[20.056%] text-right">
-      One platform from outreach to
-      <br />
-      performance - replacing inboxes,
-      <br />
-      spreadsheets, and unmatched lists.
-    </p>
+      <p class="deck m-0 max-w-xs md:max-w-sm min-[1200px]:absolute min-[1200px]:right-[2.744%] min-[1200px]:top-[11.361%] min-[1200px]:w-[20.056%] min-[1200px]:max-w-none min-[1200px]:text-right">
+        One platform from outreach to
+        <br class="hidden min-[1200px]:inline" />
+        performance - replacing inboxes,
+        <br class="hidden min-[1200px]:inline" />
+        spreadsheets, and unmatched lists.
+      </p>
 
-    <h2 class="headline-stack absolute left-[3.92%] top-[24.55%] m-0">
-      <span class="headline whitespace-nowrap">Built to remove friction from</span>
-      <span class="headline-italic whitespace-nowrap">premium collaborations.</span>
-    </h2>
+      <h2 class="headline-stack m-0 min-[1200px]:absolute min-[1200px]:left-[3.92%] min-[1200px]:top-[24.55%]">
+        <span class="headline min-[1200px]:whitespace-nowrap">Built to remove friction from</span>
+        <span class="headline-italic min-[1200px]:whitespace-nowrap">premium collaborations.</span>
+      </h2>
 
-    <div class="absolute left-[3.6%] top-[47.889%] h-[calc(1/900*100cqw)] w-[94.333%] bg-baseLightGray"></div>
-    <div class="absolute left-[34.444%] top-[47.889%] h-[39.645%] w-[calc(1/900*100cqw)] -translate-x-1/2 bg-baseLightGray"></div>
-    <div class="absolute left-[65.856%] top-[47.889%] h-[39.645%] w-[calc(1/900*100cqw)] -translate-x-1/2 bg-baseLightGray"></div>
+      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[3.6%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[calc(1/900*100cqw)] min-[1200px]:w-[94.333%] min-[1200px]:bg-baseLightGray"></div>
+      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[34.444%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[39.645%] min-[1200px]:w-[calc(1/900*100cqw)] min-[1200px]:-translate-x-1/2 min-[1200px]:bg-baseLightGray"></div>
+      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[65.856%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[39.645%] min-[1200px]:w-[calc(1/900*100cqw)] min-[1200px]:-translate-x-1/2 min-[1200px]:bg-baseLightGray"></div>
 
-    {
-      offers.map((offer) => (
-        <>
-          <Image
-            src={offer.icon}
-            alt=""
-            class:list={[graphicClass, "object-contain object-left", offer.iconClass]}
-          />
-          <p
-            class:list={[
-              "caption absolute top-[62.387%] m-0 whitespace-nowrap text-ink",
-              offer.left,
-            ]}
-          >
-            {offer.index}
-          </p>
-          <h3
-            class:list={[
-              "title absolute m-0 whitespace-pre",
-              offer.left,
-              offer.titleTop,
-            ]}
-          >
-            {offer.title}
-          </h3>
-          <p
-            class:list={[
-              "copy absolute m-0 whitespace-nowrap text-ink",
-              offer.left,
-              offer.bodyTop,
-            ]}
-          >
-            {offer.lines.map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
-          </p>
-        </>
-      ))
-    }
+      <div class="grid grid-cols-1 border-t border-baseLightGray md:grid-cols-3 min-[1200px]:contents">
+        {
+          offers.map((offer) => (
+            <article class="flex flex-col gap-4 border-b border-baseLightGray py-8 md:border-b-0 md:border-l md:px-6 md:py-8 first:md:border-l-0 min-[1200px]:contents">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="0.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class:list={[iconClass, offer.iconLeft]}
+              >
+                <circle cx="12" cy="12" r="10.25" />
+                {offer.icon === "partnerships" && (
+                  <g transform="rotate(-40 12 12)">
+                    <circle cx="12" cy="10.85" r="1.65" />
+                    <circle cx="12" cy="13.15" r="1.65" />
+                  </g>
+                )}
+                {offer.icon === "matching" && (
+                  <>
+                    <circle cx="12" cy="12" r="3.15" />
+                    <line x1="9.77" y1="14.23" x2="14.23" y2="9.77" />
+                  </>
+                )}
+                {offer.icon === "execution" && (
+                  <>
+                    <rect x="8.85" y="9.45" width="6.3" height="5.1" rx="0.7" />
+                    <line x1="8.85" y1="11.05" x2="15.15" y2="11.05" />
+                    <line x1="11.1" y1="9.45" x2="11.1" y2="14.55" />
+                  </>
+                )}
+              </svg>
+              <p class:list={["caption m-0 text-ink min-[1200px]:absolute min-[1200px]:top-[62.387%] min-[1200px]:whitespace-nowrap", offer.left]}>
+                {offer.index}
+              </p>
+              <h3 class:list={["title m-0 whitespace-pre-line min-[1200px]:absolute min-[1200px]:whitespace-pre", offer.left, offer.titleTop]}>
+                {offer.title}
+              </h3>
+              <p class:list={["copy m-0 text-ink min-[1200px]:absolute min-[1200px]:whitespace-nowrap", offer.left, offer.bodyTop]}>
+                {offer.lines.map((line, index) => (
+                  <>
+                    {index > 0 && " "}
+                    {index > 0 && <br class="hidden min-[1200px]:inline" />}
+                    {line}
+                  </>
+                ))}
+              </p>
+            </article>
+          ))
+        }
+      </div>
 
-    <p class="eyebrow absolute right-[2%] top-[94.241%] m-0 whitespace-nowrap">
-      REPLACES: DMS - EMAIL - SHEETS - 3RD PARTY TRACKERS
-    </p>
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[2%] min-[1200px]:top-[94.241%] min-[1200px]:whitespace-nowrap">
+        REPLACES: DMS - EMAIL - SHEETS - 3RD PARTY TRACKERS
+      </p>
+    </div>
   </section>
 </div>

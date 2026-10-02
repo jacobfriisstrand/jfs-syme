@@ -9,26 +9,18 @@ import rule4 from "@/assets/numbers/rule-4.png";
 interface Stat {
   value: string;
   suffix: string;
-  tracking: string;
-  valueTop: string;
   label: string;
   lines: string[];
   left: string;
   labelLeft: string;
-  suffixLeft: string;
-  suffixTop: string;
   rule: ImageMetadata;
   ruleClass: string;
 }
-
-const graphicClass = "pointer-events-none absolute max-w-none";
 
 const stats: Stat[] = [
   {
     value: "36",
     suffix: "%",
-    tracking: "tracking-[-0.03125em]",
-    valueTop: "top-[44.181%]",
     label: "of the biggest Danish influencers.",
     lines: [
       "More than a third of Denmark’s top",
@@ -36,36 +28,28 @@ const stats: Stat[] = [
       "come to you instead of the other way",
       "around.",
     ],
-    left: "left-[4.267%]",
-    labelLeft: "left-[4.267%]",
-    suffixLeft: "left-[12.056%]",
-    suffixTop: "top-[49.507%]",
+    left: "min-[1200px]:left-[4.267%]",
+    labelLeft: "min-[1200px]:left-[4.267%]",
     rule: rule1,
-    ruleClass: "left-[3.611%] top-[41.637%] h-[2.071%] w-[23%]",
+    ruleClass: "min-[1200px]:left-[3.611%] min-[1200px]:top-[41.637%] min-[1200px]:h-[2.071%] min-[1200px]:w-[23%]",
   },
   {
     value: "11",
     suffix: "",
-    tracking: "tracking-[0.297em]",
-    valueTop: "top-[43.59%]",
     label: "countries represented.",
     lines: [
       "Work with local and global influencers",
       "across 11 markets - no lengthy outreach",
       "or negotiations.",
     ],
-    left: "left-[27.01%]",
-    labelLeft: "left-[27.733%]",
-    suffixLeft: "",
-    suffixTop: "",
+    left: "min-[1200px]:left-[27.895%]",
+    labelLeft: "min-[1200px]:left-[27.733%]",
     rule: rule2,
-    ruleClass: "left-[26.533%] top-[41.637%] h-[2.071%] w-[24.167%]",
+    ruleClass: "min-[1200px]:left-[26.533%] min-[1200px]:top-[41.637%] min-[1200px]:h-[2.071%] min-[1200px]:w-[24.167%]",
   },
   {
     value: "50",
     suffix: "K",
-    tracking: "tracking-[-0.0156em]",
-    valueTop: "top-[44.181%]",
     label: "followers required.",
     lines: [
       "Every FORMA profile clears a 50K",
@@ -73,84 +57,82 @@ const stats: Stat[] = [
       "joining - ensuring real reach and",
       "professionalism.",
     ],
-    left: "left-[51.222%]",
-    labelLeft: "left-[51.222%]",
-    suffixLeft: "left-[58.878%]",
-    suffixTop: "top-[49.901%]",
+    left: "min-[1200px]:left-[51.222%]",
+    labelLeft: "min-[1200px]:left-[51.222%]",
     rule: rule3,
-    ruleClass: "left-[50.633%] top-[41.637%] h-[2.071%] w-[22.922%]",
+    ruleClass: "min-[1200px]:left-[50.633%] min-[1200px]:top-[41.637%] min-[1200px]:h-[2.071%] min-[1200px]:w-[22.922%]",
   },
   {
     value: "14",
     suffix: "M",
-    tracking: "tracking-[0.125em]",
-    valueTop: "top-[43.59%]",
     label: "total reach.",
     lines: [
       "Combined reach across fashion,",
       "hospitality, and culture - and growing",
       "every cohort.",
     ],
-    left: "left-[73.52%]",
-    labelLeft: "left-[74.611%]",
-    suffixLeft: "left-[81.6%]",
-    suffixTop: "top-[50.099%]",
+    left: "min-[1200px]:left-[74.821%]",
+    labelLeft: "min-[1200px]:left-[74.611%]",
     rule: rule4,
-    ruleClass: "left-[73.522%] top-[41.637%] h-[2.071%] w-[24.167%]",
+    ruleClass: "min-[1200px]:left-[73.522%] min-[1200px]:top-[41.637%] min-[1200px]:h-[2.071%] min-[1200px]:w-[24.167%]",
   },
 ];
 ---
 
-<div class="grid h-dvh w-full place-items-center overflow-hidden bg-baseLight [container-type:size]">
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
   <section
-    class="relative aspect-[900/507] w-[min(100cqw,calc(100cqh*1.775148))] overflow-hidden bg-baseLight font-inter text-ink antialiased [container-type:size]"
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
     aria-label="By the numbers"
   >
-    <p class="eyebrow absolute right-[2.822%] top-[4.398%] m-0 whitespace-nowrap">
-      BY THE NUMBERS
-    </p>
+    <div class="flex flex-col gap-8 min-[1200px]:contents">
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[2.822%] min-[1200px]:top-[4.398%] min-[1200px]:whitespace-nowrap">
+        BY THE NUMBERS
+      </p>
 
-    <p class="deck absolute right-[2.744%] top-[11.361%] m-0 text-right">
-      Concentrated reach across the markets
-      <br />
-      premium brands actually want.
-    </p>
+      <p class="deck m-0 max-w-sm min-[1200px]:absolute min-[1200px]:right-[2.744%] min-[1200px]:top-[11.361%] min-[1200px]:max-w-none min-[1200px]:text-right">
+        Concentrated reach across the markets
+        <br class="hidden min-[1200px]:inline" />
+        premium brands actually want.
+      </p>
 
-    <h2 class="headline-row absolute left-[4.02%] top-[29.8%] m-0 whitespace-nowrap">
-      <span class="headline">Real</span>
-      <span class="sr-only"> </span>
-      <span class="headline-italic">momentum.</span>
-    </h2>
+      <h2 class="headline-row m-0 min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[29.8%] min-[1200px]:whitespace-nowrap">
+        <span class="headline">Real</span>
+        <span class="sr-only"> </span>
+        <span class="headline-italic">momentum.</span>
+      </h2>
 
-    {
-      stats.map((stat) => (
-        <>
-          <Image src={stat.rule} alt="" class:list={[graphicClass, "object-fill", stat.ruleClass]} />
-          <p class:list={["stat absolute m-0 whitespace-nowrap", stat.valueTop, stat.left, stat.tracking]}>
-            {stat.value}
-          </p>
-          {stat.suffix && (
-            <p class:list={["stat-suffix absolute m-0 whitespace-nowrap", stat.suffixTop, stat.suffixLeft]}>
-              {stat.suffix}
-            </p>
-          )}
-          <p class:list={["stat-label absolute top-[58.422%] m-0 whitespace-nowrap", stat.labelLeft]}>
-            {stat.label}
-          </p>
-          <p class:list={["stat-note absolute top-[62.13%] m-0 whitespace-nowrap", stat.labelLeft]}>
-            {stat.lines.map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
-          </p>
-        </>
-      ))
-    }
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-2 min-[1200px]:contents">
+        {
+          stats.map((stat) => (
+            <article class="flex flex-col gap-3 border-t border-baseLightGray pt-4 min-[1200px]:contents min-[1200px]:border-0 min-[1200px]:pt-0">
+              <Image
+                src={stat.rule}
+                alt=""
+                class:list={["pointer-events-none w-full object-fill max-[1199px]:h-2 min-[1200px]:absolute min-[1200px]:max-w-none", stat.ruleClass]}
+              />
+              <p class:list={["stat m-0 min-[1200px]:absolute min-[1200px]:top-[44.181%] min-[1200px]:whitespace-nowrap", stat.left]}>
+                {stat.value}{stat.suffix && <span class="stat-suffix">{stat.suffix}</span>}
+              </p>
+              <p class:list={["stat-label m-0 min-[1200px]:absolute min-[1200px]:top-[58.422%] min-[1200px]:whitespace-nowrap", stat.labelLeft]}>
+                {stat.label}
+              </p>
+              <p class:list={["stat-note m-0 min-[1200px]:absolute min-[1200px]:top-[62.13%] min-[1200px]:whitespace-nowrap", stat.labelLeft]}>
+                {stat.lines.map((line, index) => (
+                  <>
+                    {index > 0 && " "}
+                    {index > 0 && <br class="hidden min-[1200px]:inline" />}
+                    {line}
+                  </>
+                ))}
+              </p>
+            </article>
+          ))
+        }
+      </div>
 
-    <p class="eyebrow absolute right-[2.44%] top-[93.77%] m-0 whitespace-nowrap">
-      NETWORK AS OF Q2 2026
-    </p>
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[2.44%] min-[1200px]:top-[93.77%] min-[1200px]:whitespace-nowrap">
+        NETWORK AS OF Q2 2026
+      </p>
+    </div>
   </section>
 </div>
