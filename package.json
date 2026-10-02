@@ -5,10 +5,14 @@
   "engines": {
     "node": "24.x"
   },
+  "allowScripts": {
+    "esbuild": true,
+    "sharp": true
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/pin-vercel-node-runtime.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

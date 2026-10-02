@@ -84,8 +84,6 @@ export default function SignUpForm({ submitText, thankYouText, emailLabel, usern
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      const responseData = await response.text();
     } catch (error) {
       console.error("Form submission error:", error);
       toast({
