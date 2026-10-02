@@ -1,11 +1,11 @@
 ---
 const buttonClass =
-  "cta-label flex h-12 w-full items-center justify-center rounded-full bg-cta px-6 no-underline transition-colors hover:bg-ctaHover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink min-[1200px]:absolute min-[1200px]:left-[61%] min-[1200px]:h-[calc(30/900*100cqw)] min-[1200px]:w-[17%] min-[1200px]:px-0";
+  "cta-label flex h-12 w-full items-center justify-center rounded-full bg-cta px-6 no-underline transition-colors hover:bg-ctaHover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink min-[1200px]:absolute min-[1200px]:left-[61%] min-[1200px]:h-[calc(30*var(--board-w)/900)] min-[1200px]:w-[17%] min-[1200px]:px-0";
 ---
 
 <div class="w-full bg-baseLight">
   <section
-    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:mx-auto min-[1200px]:aspect-[900/260] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:mx-auto min-[1200px]:h-[calc(var(--board-w)*260/900)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
     aria-label="Become a partner"
   >
     <div class="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(12rem,18rem)] md:items-center md:gap-12 min-[1200px]:contents">

@@ -61,9 +61,9 @@ const offers: Offer[] = [
 ];
 ---
 
-<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
   <section
-    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
     aria-label="What we offer"
   >
     <div class="flex flex-col gap-8 min-[1200px]:contents">
@@ -84,9 +84,9 @@ const offers: Offer[] = [
         <span class="headline-italic min-[1200px]:whitespace-nowrap">premium collaborations.</span>
       </h2>
 
-      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[3.6%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[calc(1/900*100cqw)] min-[1200px]:w-[94.333%] min-[1200px]:bg-baseLightGray"></div>
-      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[34.444%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[39.645%] min-[1200px]:w-[calc(1/900*100cqw)] min-[1200px]:-translate-x-1/2 min-[1200px]:bg-baseLightGray"></div>
-      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[65.856%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[39.645%] min-[1200px]:w-[calc(1/900*100cqw)] min-[1200px]:-translate-x-1/2 min-[1200px]:bg-baseLightGray"></div>
+      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[3.6%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[calc(var(--board-w)/900)] min-[1200px]:w-[94.333%] min-[1200px]:bg-baseLightGray"></div>
+      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[34.444%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[39.645%] min-[1200px]:w-[calc(var(--board-w)/900)] min-[1200px]:-translate-x-1/2 min-[1200px]:bg-baseLightGray"></div>
+      <div class="hidden min-[1200px]:absolute min-[1200px]:left-[65.856%] min-[1200px]:top-[47.889%] min-[1200px]:block min-[1200px]:h-[39.645%] min-[1200px]:w-[calc(var(--board-w)/900)] min-[1200px]:-translate-x-1/2 min-[1200px]:bg-baseLightGray"></div>
 
       <div class="grid grid-cols-1 border-t border-baseLightGray md:grid-cols-3 min-[1200px]:contents">
         {

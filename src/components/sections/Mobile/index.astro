@@ -119,9 +119,9 @@ const phoneClass =
   "relative aspect-[170/337] w-36 shrink-0 snap-center md:w-[30%] min-[1200px]:absolute min-[1200px]:top-[19.5%] min-[1200px]:aspect-auto min-[1200px]:h-[66.4899%] min-[1200px]:shrink";
 ---
 
-<div class="bg-canvasNight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
+<div class="bg-canvasNight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
   <section
-    class="bg-canvasNight px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
+    class="bg-canvasNight px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
     aria-label="Forma on mobile"
   >
     <div class="flex flex-col gap-10 min-[1200px]:contents">
@@ -162,7 +162,7 @@ const phoneClass =
             {
               features.map((feature) => (
                 <p class:list={["m-0 flex items-baseline gap-3 min-[1200px]:absolute min-[1200px]:left-[3.59%] min-[1200px]:gap-0", feature.top]}>
-                  <span class="feature-index w-8 shrink-0 min-[1200px]:w-[2.28cqw]">{feature.index}</span>
+                  <span class="feature-index w-8 shrink-0 min-[1200px]:w-[calc(var(--board-w)*0.0228)]">{feature.index}</span>
                   <span class="feature-label min-[1200px]:whitespace-nowrap">{feature.label}</span>
                 </p>
               ))

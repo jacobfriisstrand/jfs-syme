@@ -37,10 +37,10 @@ function hrefFor(slug: string) {
 
 <footer class="bg-baseLight font-inter text-ink antialiased">
   <div
-    class="mx-auto flex flex-col gap-6 border-t border-ink/10 px-6 py-8 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 md:gap-y-4 md:px-10 min-[1200px]:grid min-[1200px]:w-[var(--board-w)] min-[1200px]:grid-cols-[1fr_auto_1fr] min-[1200px]:items-center min-[1200px]:gap-[2cqw] min-[1200px]:px-[4.02%] min-[1200px]:py-[2.6cqw] min-[1200px]:[container-type:inline-size]"
+    class="mx-auto flex flex-col gap-6 border-t border-ink/10 px-6 py-8 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 md:gap-y-4 md:px-10 min-[1200px]:grid min-[1200px]:w-[var(--board-w)] min-[1200px]:grid-cols-[1fr_auto_1fr] min-[1200px]:items-center min-[1200px]:gap-[calc(var(--board-w)*0.02)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.026)] min-[1200px]:[container-type:inline-size]"
   >
-    <div class="flex items-center gap-4 min-[1200px]:gap-[2.4cqw]">
-      <a href="/" class="block w-16 shrink-0 min-[1200px]:w-[6.9973cqw]" aria-label="Forma">
+    <div class="flex items-center gap-4 min-[1200px]:gap-[calc(var(--board-w)*0.024)]">
+      <a href="/" class="block w-16 shrink-0 min-[1200px]:w-[calc(var(--board-w)*0.069973)]" aria-label="Forma">
         <Image src={logo} alt="" class="block h-auto w-full object-contain object-left" />
       </a>
       <p class="eyebrow m-0 min-[1200px]:whitespace-nowrap">
@@ -51,7 +51,7 @@ function hrefFor(slug: string) {
     </div>
 
     <nav aria-label="Footer" class="min-[1200px]:justify-self-center">
-      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 min-[1200px]:items-center min-[1200px]:gap-[1.8cqw]">
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 min-[1200px]:items-center min-[1200px]:gap-[calc(var(--board-w)*0.018)]">
         {
           data.links.map((link) => (
             <li>
@@ -64,7 +64,7 @@ function hrefFor(slug: string) {
       </ul>
     </nav>
 
-    <div class="flex flex-col items-start gap-2 min-[1200px]:flex-row min-[1200px]:items-center min-[1200px]:justify-end min-[1200px]:gap-[1.8cqw]">
+    <div class="flex flex-col items-start gap-2 min-[1200px]:flex-row min-[1200px]:items-center min-[1200px]:justify-end min-[1200px]:gap-[calc(var(--board-w)*0.018)]">
       <a class={metaClass} href="mailto:sb@formaint.com">
         sb@formaint.com
       </a>

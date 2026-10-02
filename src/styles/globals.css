@@ -5,8 +5,8 @@
 @layer base {
   :root {
     --radius: 0.5rem;
-    --radius-panel: calc(12 / 900 * 100cqw);
-    --radius-media: calc(8 / 900 * 100cqw);
+    --radius-panel: calc(12 / 900 * var(--board-w));
+    --radius-media: calc(8 / 900 * var(--board-w));
     --base-light-rgb: 248 248 248;
     --base-dark-rgb: 37 37 37;
     --base-light-gray-rgb: 217 217 217;
@@ -45,78 +45,79 @@
     --font-dm: "DM Sans", sans-serif;
     --font-plex: "IBM Plex Mono", ui-monospace, monospace;
     --font-arimo: Arimo, sans-serif;
-    --eyebrow-size: calc(7.56 / 900 * 100cqw);
+    --eyebrow-size: calc(7.56 / 900 * var(--board-w));
     --eyebrow-leading: calc(8 / 6.3);
     --eyebrow-tracking: 0.0937em;
     --cover-label-size: var(--eyebrow-size);
-    --headline-size: calc(46 / 900 * 100cqw);
+    --headline-size: calc(46 / 900 * var(--board-w));
     --headline-leading: calc(58 / 46);
     --headline-tracking: -0.0518em;
-    --headline-italic-size: calc(45.2 / 900 * 100cqw);
+    --headline-italic-size: calc(45.2 / 900 * var(--board-w));
     --headline-italic-leading: calc(57 / 45.2);
     --headline-italic-tracking: -0.043em;
-    --headline-stack-step: calc(55 / 900 * 100cqw);
-    --headline-inline-gap: calc(11 / 900 * 100cqw);
-    --display-size: calc(60.2 / 900 * 100cqw);
+    --headline-stack-step: calc(55 / 900 * var(--board-w));
+    --headline-inline-gap: calc(11 / 900 * var(--board-w));
+    --display-size: calc(60.2 / 900 * var(--board-w));
     --display-leading: calc(75 / 60.2);
     --display-tracking: -0.062em;
-    --deck-size: calc(11.1 / 900 * 100cqw);
+    --deck-size: calc(11.1 / 900 * var(--board-w));
     --deck-leading: 1.171;
     --deck-tracking: -0.016em;
-    --body-size: calc(10.3 / 900 * 100cqw);
+    --body-size: calc(10.3 / 900 * var(--board-w));
     --body-leading: 1.4;
     --body-tracking: 0.02em;
-    --title-size: calc(17.9 / 900 * 100cqw);
+    --title-size: calc(17.9 / 900 * var(--board-w));
     --title-leading: 1.2;
     --title-tracking: -0.021em;
-    --copy-size: calc(10.3 / 900 * 100cqw);
+    --copy-size: calc(10.3 / 900 * var(--board-w));
     --copy-leading: 1.36;
-    --caption-size: calc(6.3 / 900 * 100cqw);
+    --caption-size: calc(6.3 / 900 * var(--board-w));
     --caption-leading: 1.43;
     --caption-tracking: 0.12em;
-    --quote-size: calc(14.7 / 900 * 100cqw);
+    --quote-size: calc(14.7 / 900 * var(--board-w));
     --quote-leading: calc(17.716 / 14.7);
     --quote-tracking: -0.1006em;
-    --stat-size: calc(53.6 / 900 * 100cqw);
-    --stat-small-size: calc(36.5 / 900 * 100cqw);
+    --stat-size: calc(53.6 / 900 * var(--board-w));
+    --stat-small-size: calc(36.5 / 900 * var(--board-w));
     --stat-small-leading: 1.178;
     --stat-small-tracking: -0.031em;
-    --stat-suffix-size: calc(23.9 / 900 * 100cqw);
-    --stat-label-size: calc(10 / 900 * 100cqw);
+    --stat-suffix-size: calc(23.9 / 900 * var(--board-w));
+    --stat-label-size: calc(10 / 900 * var(--board-w));
     --stat-label-tracking: 0.03125em;
-    --stat-note-size: calc(8.7 / 900 * 100cqw);
+    --stat-note-size: calc(8.7 / 900 * var(--board-w));
     --stat-note-leading: 1.55;
     --stat-note-tracking: 0.06em;
-    --kicker-size: calc(6.4 / 900 * 100cqw);
+    --kicker-size: calc(6.4 / 900 * var(--board-w));
     --kicker-leading: 1;
     --kicker-tracking: 0.09em;
-    --column-title-size: calc(12.4 / 900 * 100cqw);
+    --column-title-size: calc(12.4 / 900 * var(--board-w));
     --column-title-leading: 1.21;
     --column-title-tracking: -0.0117em;
-    --column-body-size: calc(9.5 / 900 * 100cqw);
+    --column-body-size: calc(9.5 / 900 * var(--board-w));
     --column-body-leading: 1.16;
     --column-body-tracking: -0.01em;
-    --axis-size: calc(5 / 900 * 100cqw);
+    --axis-size: calc(5 / 900 * var(--board-w));
     --axis-leading: 1;
     --axis-tracking: 0.03em;
-    --feature-index-size: calc(5.8 / 900 * 100cqw);
+    --feature-index-size: calc(5.8 / 900 * var(--board-w));
     --feature-index-leading: 1;
-    --feature-label-size: calc(9.8 / 900 * 100cqw);
+    --feature-label-size: calc(9.8 / 900 * var(--board-w));
     --feature-label-leading: 1.22;
     --feature-label-tracking: 0.0137em;
-    --wordmark-size: calc(9.5 / 900 * 100cqw);
+    --wordmark-size: calc(9.5 / 900 * var(--board-w));
     --wordmark-leading: 1;
     --wordmark-tracking: 0.0078em;
-    --cta-label-size: calc(8.5 / 900 * 100cqw);
+    --cta-label-size: calc(8.5 / 900 * var(--board-w));
     --cta-label-leading: 1;
-    --logo-word-size: calc(19.7 / 900 * 100cqw);
+    --logo-word-size: calc(19.7 / 900 * var(--board-w));
     --logo-word-leading: 1;
     --logo-word-tracking: 0.0078em;
     --board-w: min(100vw, calc(100dvh * 900 / 507));
     --board-h: calc(var(--board-w) * 507 / 900);
     --header-offset: calc((100dvh - var(--board-h)) / 2 + var(--board-h) * 0.063996);
     --header-bar: calc(var(--board-h) * 0.022485);
-    --header-height: calc(var(--header-offset) * 2 + var(--header-bar));
+    --header-below: clamp(1.25rem, calc(var(--board-h) * 0.04), 2.5rem);
+    --header-height: calc(var(--header-offset) + var(--header-bar) + var(--header-below));
   }
 
   @media (max-width: 1199px) {
@@ -248,6 +249,7 @@
   }
 
   .body {
+    color: rgb(var(--ink-rgb) / 0.8);
     color: color-mix(in srgb, var(--ink) 80%, transparent);
   }
 

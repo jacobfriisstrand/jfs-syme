@@ -23,27 +23,27 @@ interface PartnerLogo {
 }
 
 const rowOne: Array<PartnerLogo | "issei"> = [
-  { src: radisson, alt: "Radisson Collection", class: "w-[max(4.75rem,10.16cqw)]" },
-  { src: wonHundred, alt: "Won Hundred", class: "w-[max(5rem,10.58cqw)]" },
-  { src: nrd55, alt: "NRD55", class: "w-[max(3.25rem,6.58cqw)]" },
-  { src: vernon, alt: "Vernon", class: "w-[max(4.25rem,8.75cqw)]" },
+  { src: radisson, alt: "Radisson Collection", class: "w-[max(4.75rem,calc(var(--board-w)*0.1016))]" },
+  { src: wonHundred, alt: "Won Hundred", class: "w-[max(5rem,calc(var(--board-w)*0.1058))]" },
+  { src: nrd55, alt: "NRD55", class: "w-[max(3.25rem,calc(var(--board-w)*0.0658))]" },
+  { src: vernon, alt: "Vernon", class: "w-[max(4.25rem,calc(var(--board-w)*0.0875))]" },
   "issei",
 ];
 
 const rowTwo: PartnerLogo[] = [
-  { src: camilleBrinch, alt: "Camille Brinch", class: "w-[max(6rem,12.75cqw)]" },
-  { src: sopavillonen, alt: "Søpavillonen", class: "w-[max(6.25rem,13.58cqw)]" },
-  { src: theMoment, alt: "The Moment", class: "w-[max(5.25rem,11.08cqw)]" },
-  { src: arneAksel, alt: "Arne Aksel", class: "w-[max(3.5rem,6.83cqw)]" },
-  { src: darling, alt: "Darling", class: "w-[max(4.25rem,8.83cqw)]" },
+  { src: camilleBrinch, alt: "Camille Brinch", class: "w-[max(6rem,calc(var(--board-w)*0.1275))]" },
+  { src: sopavillonen, alt: "Søpavillonen", class: "w-[max(6.25rem,calc(var(--board-w)*0.1358))]" },
+  { src: theMoment, alt: "The Moment", class: "w-[max(5.25rem,calc(var(--board-w)*0.1108))]" },
+  { src: arneAksel, alt: "Arne Aksel", class: "w-[max(3.5rem,calc(var(--board-w)*0.0683))]" },
+  { src: darling, alt: "Darling", class: "w-[max(4.25rem,calc(var(--board-w)*0.0883))]" },
 ];
 
 const rowThree: PartnerLogo[] = [
-  { src: lucieKaas, alt: "Lucie Kaas", class: "w-[max(4.75rem,10cqw)]" },
-  { src: aura, alt: "Aura", class: "w-[max(5.75rem,12.42cqw)]" },
-  { src: woods, alt: "woods", class: "w-[max(4.25rem,8.83cqw)]" },
-  { src: babylon, alt: "Babylon", class: "w-[max(1.5rem,3.08cqw)]" },
-  { src: visitDenmark, alt: "VisitDenmark", class: "w-[max(6rem,12.58cqw)]" },
+  { src: lucieKaas, alt: "Lucie Kaas", class: "w-[max(4.75rem,calc(var(--board-w)*0.1))]" },
+  { src: aura, alt: "Aura", class: "w-[max(5.75rem,calc(var(--board-w)*0.1242))]" },
+  { src: woods, alt: "woods", class: "w-[max(4.25rem,calc(var(--board-w)*0.0883))]" },
+  { src: babylon, alt: "Babylon", class: "w-[max(1.5rem,calc(var(--board-w)*0.0308))]" },
+  { src: visitDenmark, alt: "VisitDenmark", class: "w-[max(6rem,calc(var(--board-w)*0.1258))]" },
 ];
 
 const rows = [rowOne, rowTwo, rowThree];
@@ -54,7 +54,7 @@ const logoClass = "h-auto max-w-none shrink-0 object-contain";
 
 <div class="w-full overflow-x-clip bg-baseLight">
   <section
-    class="flex flex-col gap-10 bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:mx-auto min-[1200px]:aspect-[900/363] min-[1200px]:w-[var(--board-w)] min-[1200px]:gap-0 min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
+    class="flex flex-col gap-10 bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:mx-auto min-[1200px]:h-[calc(var(--board-w)*363/900)] min-[1200px]:w-[var(--board-w)] min-[1200px]:gap-0 min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
     aria-label="Partners"
   >
     <h2 class="sr-only">Partners, at a glance.</h2>
@@ -64,14 +64,14 @@ const logoClass = "h-auto max-w-none shrink-0 object-contain";
       <p class="headline-italic m-0 min-[1200px]:whitespace-nowrap">at a glance.</p>
     </div>
 
-    <div class="flex w-screen -translate-x-0 flex-col gap-5 max-[1199px]:relative max-[1199px]:left-1/2 max-[1199px]:-translate-x-1/2 min-[1200px]:absolute min-[1200px]:left-1/2 min-[1200px]:top-[49.48%] min-[1200px]:w-screen min-[1200px]:-translate-x-1/2 min-[1200px]:gap-[calc(18/900*100cqw)]">
+    <div class="flex w-screen -translate-x-0 flex-col gap-5 max-[1199px]:relative max-[1199px]:left-1/2 max-[1199px]:-translate-x-1/2 min-[1200px]:absolute min-[1200px]:left-1/2 min-[1200px]:top-[49.48%] min-[1200px]:w-screen min-[1200px]:-translate-x-1/2 min-[1200px]:gap-[calc(18*var(--board-w)/900)]">
       {
         rows.map((row, rowIndex) => (
           <div class="overflow-hidden">
             <div class:list={["flex w-max motion-reduce:animate-none", motions[rowIndex]]}>
               {[false, true].map((hidden) =>
                 [0, 1, 2].map((copy) => (
-                  <div class="flex shrink-0 items-center gap-6 pr-6 min-[1200px]:gap-[4.5cqw] min-[1200px]:pr-[4.5cqw]" aria-hidden={hidden || copy > 0 || undefined}>
+                  <div class="flex shrink-0 items-center gap-6 pr-6 min-[1200px]:gap-[calc(var(--board-w)*0.045)] min-[1200px]:pr-[calc(var(--board-w)*0.045)]" aria-hidden={hidden || copy > 0 || undefined}>
                     {row.map((partner) =>
                       partner === "issei" ? (
                         <p class="logo-word m-0 shrink-0">

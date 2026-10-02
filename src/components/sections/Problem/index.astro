@@ -52,9 +52,9 @@ const problems: Problem[] = [
 ];
 ---
 
-<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden min-[1200px]:[container-type:size]">
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
   <section
-    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:aspect-[900/507] min-[1200px]:w-[min(100cqw,calc(100cqh*1.775148))] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:size]"
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
     aria-label="The problem"
   >
     <div class="flex flex-col gap-8 min-[1200px]:contents">
@@ -76,7 +76,7 @@ const problems: Problem[] = [
                 <article class="border-t border-baseLightGray py-5 min-[1200px]:contents">
                   <div
                     class:list={[
-                      "hidden min-[1200px]:absolute min-[1200px]:left-[3.6444%] min-[1200px]:block min-[1200px]:h-[calc(1/900*100cqw)] min-[1200px]:w-[57.8333%] min-[1200px]:bg-baseLightGray",
+                      "hidden min-[1200px]:absolute min-[1200px]:left-[3.6444%] min-[1200px]:block min-[1200px]:h-[calc(var(--board-w)/900)] min-[1200px]:w-[57.8333%] min-[1200px]:bg-baseLightGray",
                       problem.ruleTop,
                     ]}
                   />
