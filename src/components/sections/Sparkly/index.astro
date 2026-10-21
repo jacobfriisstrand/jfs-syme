@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import photo from "@/assets/market/case-study.png";
+---
+
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
+  <section
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
+    aria-label="A guest list that already knew"
+  >
+    <div class="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:items-start md:gap-12 min-[1200px]:contents">
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[4.0747%] min-[1200px]:top-[4.931%] min-[1200px]:whitespace-nowrap">
+        CASE STUDY • CAMILLE BRINCH
+      </p>
+
+      <div class="order-2 flex flex-col gap-4 overflow-hidden rounded-[var(--radius-panel)] bg-panel p-4 text-baseLight md:order-1 md:p-6 min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[18.7377%] min-[1200px]:order-none min-[1200px]:h-[70.8679%] min-[1200px]:w-[33.7444%] min-[1200px]:gap-0 min-[1200px]:p-0">
+        <Image
+          src={photo}
+          alt="Hands wearing gold rings holding a drink at the Camille Brinch jewellery launch"
+          class="pointer-events-none aspect-[4/5] w-full max-w-none rounded-[var(--radius-media)] object-cover min-[1200px]:absolute min-[1200px]:left-[6.53%] min-[1200px]:top-[6.73%] min-[1200px]:aspect-auto min-[1200px]:h-[64.6%] min-[1200px]:w-[86.03%]"
+        />
+
+        <p class="caption m-0 text-baseLight min-[1200px]:absolute min-[1200px]:left-[7.24%] min-[1200px]:top-[73.03%] min-[1200px]:whitespace-nowrap">
+          SPARKLY COLLECTION
+        </p>
+
+        <p class="copy m-0 text-baseLight min-[1200px]:absolute min-[1200px]:left-[7.24%] min-[1200px]:top-[76.9%] min-[1200px]:whitespace-nowrap">
+          Gold on the hand, the glass still
+          <br class="hidden min-[1200px]:inline" />
+          on the table. The launch as it
+          <br class="hidden min-[1200px]:inline" />
+          actually looked.
+        </p>
+      </div>
+
+      <div class="order-1 flex min-w-0 flex-col gap-6 md:order-2 min-[1200px]:absolute min-[1200px]:left-[42.2%] min-[1200px]:top-[24%] min-[1200px]:order-none min-[1200px]:w-[53%] min-[1200px]:gap-5">
+        <h2 class="headline-stack m-0">
+          <span class="headline">A guest list</span>
+          <span class="headline-italic">that already knew.</span>
+        </h2>
+
+        <p class="body m-0 max-w-xl">
+          An intimate dinner and afterparty for the Sparkly Collection. Handpicked guests, a tight brand fit, and one shared room.
+        </p>
+
+        <p class="body-muted m-0 max-w-xl">
+          Images the brand could publish as the night happened, without a reshoot.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import suite from "@/assets/clicks/suite.png";
+import portrait from "@/assets/launch/portrait.png";
+import camille from "@/assets/market/case-study.png";
+import wonHundred from "@/assets/problem/case-study.png";
+
+interface Still {
+  src: ImageMetadata;
+  alt: string;
+}
+
+const photos: Still[] = [
+  {
+    src: suite,
+    alt: "Panorama suite in Copenhagen, with a city view beyond mirrored wall panels",
+  },
+  {
+    src: portrait,
+    alt: "Close portrait of Laila Hasanovic with a bronze product swatch on her cheek",
+  },
+  {
+    src: camille,
+    alt: "Hands wearing gold rings holding a drink at the Camille Brinch jewellery launch",
+  },
+  {
+    src: wonHundred,
+    alt: "Guest in a checked coat holding a dog at the Won Hundred AW25 show",
+  },
+];
+
+const stills = [...photos, ...photos.map((photo) => ({ ...photo, alt: "" }))];
+---
+
+<section class="w-full bg-baseLight" aria-label="The work">
+  <ul class="m-0 grid w-full list-none grid-cols-2 gap-0 p-0 md:grid-cols-4">
+    {
+      stills.map((still) => (
+        <li class="min-w-0">
+          <Image src={still.src} alt={still.alt} class="block aspect-[4/5] w-full object-cover" />
+        </li>
+      ))
+    }
+  </ul>
+</section>

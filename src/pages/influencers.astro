@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Mobile from "@/components/sections/Mobile/index.astro";
+import Footer from "@/components/sections/Footer/index.astro";
+import "@/styles/globals.css";
+---
+
+<Layout
+  fullBleed
+  title="For influencers"
+  description="Discover, apply, and manage premium collaborations seamlessly - from a single app in your pocket."
+>
+  <Header overlay />
+  <h1 class="sr-only">For influencers</h1>
+  <Mobile />
+  <Footer />
+</Layout>

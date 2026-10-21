@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import photo from "@/assets/clicks/suite.png";
+
+const beats = [
+  {
+    index: "01",
+    title: "The offer.",
+    text: "Accepted before the dates ever sat in an inbox.",
+  },
+  {
+    index: "02",
+    title: "The desk.",
+    text: "Briefed on who was coming, before the train.",
+  },
+];
+---
+
+<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
+  <section
+    class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
+    aria-label="The season, opened properly"
+  >
+    <div class="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:items-start md:gap-12 min-[1200px]:contents">
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[4.0747%] min-[1200px]:top-[4.931%] min-[1200px]:whitespace-nowrap">
+        CASE STUDY • ALLINGE BADEHOTEL
+      </p>
+
+      <div class="flex min-w-0 flex-col gap-8 min-[1200px]:contents">
+        <h2 class="headline-stack m-0 min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[16%]">
+          <span class="headline">The season,</span>
+          <span class="headline-italic">opened properly.</span>
+        </h2>
+
+        <div class="flex flex-col min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[48%] min-[1200px]:w-[54%]">
+          {
+            beats.map((beat) => (
+              <article class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-t border-baseLightGray py-4">
+                <p class="caption m-0 text-ink">{beat.index}</p>
+                <div class="min-w-0">
+                  <h3 class="title m-0">{beat.title}</h3>
+                  <p class="copy m-0 mt-1 text-ink/80">{beat.text}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 overflow-hidden rounded-[var(--radius-panel)] bg-panel p-4 text-baseLight md:p-6 min-[1200px]:absolute min-[1200px]:left-[63.8778%] min-[1200px]:top-[18.7377%] min-[1200px]:h-[70.8679%] min-[1200px]:w-[33.7444%] min-[1200px]:gap-0 min-[1200px]:p-0">
+        <Image
+          src={photo}
+          alt="Panorama suite with a city view beyond mirrored wall panels"
+          class="pointer-events-none aspect-[4/5] w-full max-w-none rounded-[var(--radius-media)] object-cover object-left min-[1200px]:absolute min-[1200px]:left-[6.53%] min-[1200px]:top-[6.73%] min-[1200px]:aspect-auto min-[1200px]:h-[64.6%] min-[1200px]:w-[86.03%]"
+        />
+
+        <p class="caption m-0 text-baseLight min-[1200px]:absolute min-[1200px]:left-[7.24%] min-[1200px]:top-[73.03%] min-[1200px]:whitespace-nowrap">
+          ALLINGE BADEHOTEL
+        </p>
+
+        <p class="copy m-0 text-baseLight min-[1200px]:absolute min-[1200px]:left-[7.24%] min-[1200px]:top-[76.9%] min-[1200px]:whitespace-nowrap">
+          A made room on the coast,
+          <br class="hidden min-[1200px]:inline" />
+          the collaboration noted
+          <br class="hidden min-[1200px]:inline" />
+          before anyone arrived.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

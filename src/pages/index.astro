@@ -4,15 +4,9 @@ import { fetchData } from "../lib/fetchData";
 import Layout from "@/layouts/Layout.astro";
 import Cover from "@/components/sections/Cover/index.astro";
 import Partners from "@/components/sections/Partners/index.astro";
-import Mobile from "@/components/sections/Mobile/index.astro";
-import Web from "@/components/sections/Web/index.astro";
-import Problem from "@/components/sections/Problem/index.astro";
-import Market from "@/components/sections/Market/index.astro";
-import Offer from "@/components/sections/Offer/index.astro";
-import Numbers from "@/components/sections/Numbers/index.astro";
-import Clicks from "@/components/sections/Clicks/index.astro";
+import Overview from "@/components/sections/Overview/index.astro";
+import Stills from "@/components/sections/Stills/index.astro";
 import Partner from "@/components/sections/Partner/index.astro";
-import Launch from "@/components/sections/Launch/index.astro";
 import Footer from "@/components/sections/Footer/index.astro";
 import Header from "@/components/Header.astro";
 import "@/styles/globals.css";
@@ -53,17 +47,11 @@ const data = await fetchData<FetchedData>(`{
 <Seo data={[...data.page.seo, ...data.site.favicon]} />
 
 <Layout fullBleed>
-  <Header />
+  <Header overlay />
   <Cover />
   <Partners />
-  <Mobile />
-  <Web />
-  <Problem />
-  <Market />
-  <Offer />
-  <Numbers />
-  <Clicks />
-  <Launch />
+  <Overview />
+  <Stills />
   <Partner />
   <Footer />
 </Layout>

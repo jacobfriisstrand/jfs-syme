@@ -25,9 +25,22 @@ const data = await fetchData<FetchedData>(`{
   }
 }`);
 
+const siteLinks = [
+  { href: "/case-studies", label: "Case studies" },
+  { href: "/companies", label: "Companies" },
+  { href: "/influencers", label: "Influencers" },
+  { href: "/prices", label: "Prices" },
+  { href: "/contact", label: "Contact" },
+];
+
 const year = new Date().getFullYear();
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const linkClass =
+  "eyebrow m-0 uppercase transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted";
+
 const metaClass =
-  "eyebrow m-0 no-underline transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted min-[1200px]:whitespace-nowrap";
+  "eyebrow m-0 no-underline transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted";
 
 function hrefFor(slug: string) {
   if (slug.startsWith("/") || slug.startsWith("http")) return slug;
@@ -37,41 +50,60 @@ function hrefFor(slug: string) {
 
 <footer class="bg-baseLight font-inter text-ink antialiased">
   <div
-    class="mx-auto flex flex-col gap-6 border-t border-ink/10 px-6 py-8 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 md:gap-y-4 md:px-10 min-[1200px]:grid min-[1200px]:w-[var(--board-w)] min-[1200px]:grid-cols-[1fr_auto_1fr] min-[1200px]:items-center min-[1200px]:gap-[calc(var(--board-w)*0.02)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.026)] min-[1200px]:[container-type:inline-size]"
+    class="mx-auto flex flex-col gap-6 border-t border-ink/10 px-6 py-8 md:px-10 min-[1200px]:w-[var(--board-w)] min-[1200px]:gap-[calc(var(--board-w)*0.018)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.028)]"
   >
-    <div class="flex items-center gap-4 min-[1200px]:gap-[calc(var(--board-w)*0.024)]">
-      <a href="/" class="block w-16 shrink-0 min-[1200px]:w-[calc(var(--board-w)*0.069973)]" aria-label="Forma">
-        <Image src={logo} alt="" class="block h-auto w-full object-contain object-left" />
-      </a>
-      <p class="eyebrow m-0 min-[1200px]:whitespace-nowrap">
-        {year}
-        <span>&copy;</span>
-        {data.companyName.companyName}
-      </p>
+    <div class="flex flex-col gap-5 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 md:gap-y-3">
+      <div class="flex items-center gap-4 min-[1200px]:gap-[1.1em]">
+        <a href="/" class="block w-20 shrink-0 min-[1200px]:w-[calc(var(--board-w)*0.083968)]" aria-label="Forma">
+          <Image src={logo} alt="" class="block h-auto w-full object-contain object-left" />
+        </a>
+        <p class="eyebrow m-0 whitespace-nowrap">
+          {year}
+          <span>&copy;</span>
+          {data.companyName.companyName}
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <ul class="m-0 flex list-none flex-wrap items-center gap-x-4 gap-y-2 p-0 md:justify-end min-[1200px]:gap-x-[1.2em]">
+          {
+            siteLinks.map((link) => (
+              <li class="flex">
+                <a
+                  class:list={[
+                    linkClass,
+                    current === link.href ? "text-ink underline underline-offset-4" : "no-underline",
+                  ]}
+                  href={link.href}
+                  aria-current={current === link.href ? "page" : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
     </div>
 
-    <nav aria-label="Footer" class="min-[1200px]:justify-self-center">
-      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 min-[1200px]:items-center min-[1200px]:gap-[calc(var(--board-w)*0.018)]">
+    <div class="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 md:gap-y-2">
+      <ul class="m-0 flex list-none flex-wrap items-center gap-x-4 gap-y-2 p-0">
         {
           data.links.map((link) => (
-            <li>
-              <a class={metaClass} href={hrefFor(link.slug)}>
+            <li class="flex">
+              <a class:list={[linkClass, "no-underline"]} href={hrefFor(link.slug)}>
                 {link.pageHeadline}
               </a>
             </li>
           ))
         }
       </ul>
-    </nav>
 
-    <div class="flex flex-col items-start gap-2 min-[1200px]:flex-row min-[1200px]:items-center min-[1200px]:justify-end min-[1200px]:gap-[calc(var(--board-w)*0.018)]">
-      <a class={metaClass} href="mailto:sb@formaintl.com">
-        sb@formaintl.com
-      </a>
-      <a class={metaClass} href="tel:+4531370925">
-        +45 31 37 09 25
-      </a>
-      <p class="eyebrow m-0 min-[1200px]:whitespace-nowrap">COPENHAGEN - GLOBAL</p>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 md:ml-auto md:justify-end min-[1200px]:gap-x-[1.2em]">
+        <a class={metaClass} href="mailto:sb@formaintl.com">sb@formaintl.com</a>
+        <a class={metaClass} href="tel:+4531370925">+45 31 37 09 25</a>
+        <p class="eyebrow m-0 whitespace-nowrap">COPENHAGEN - GLOBAL</p>
+      </div>
     </div>
   </div>
 </footer>

@@ -4,16 +4,19 @@ import Navigation from "@/components/Navigation.astro";
 
 interface Props {
   fullBleed?: boolean;
+  title?: string;
+  description?: string;
 }
 
-const { fullBleed = false } = Astro.props;
+const { fullBleed = false, title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description ?? "Premium collaborations. Simplified."} />
+    {title && <title>{title}</title>}
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

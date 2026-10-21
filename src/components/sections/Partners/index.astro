@@ -10,11 +10,37 @@ import babylon from "@/assets/partners/babylon.png";
 import camilleBrinch from "@/assets/partners/camille-brinch.svg";
 import sopavillonen from "@/assets/partners/sopavillonen.svg";
 import theMoment from "@/assets/partners/the-moment.svg";
-import aura from "@/assets/partners/aura.svg";
 import darling from "@/assets/partners/darling.svg";
 import arneAksel from "@/assets/partners/arne-aksel.svg";
 import woods from "@/assets/partners/woods.svg";
-import visitDenmark from "@/assets/partners/visit-denmark.svg";
+import stateDrinks from "@/assets/partners/state-drinks.png";
+import banzo from "@/assets/partners/banzo.svg";
+import lover from "@/assets/partners/lover.svg";
+import chorines from "@/assets/partners/chorines.png";
+import barMoro from "@/assets/partners/bar-moro.png";
+import threeDays from "@/assets/partners/3-days-of-design.svg";
+import krumphardt from "@/assets/partners/krumphardt.png";
+import heartland from "@/assets/partners/heartland.svg";
+import novoskin from "@/assets/partners/novoskin.png";
+import franklyJuice from "@/assets/partners/frankly-juice.png";
+import oddveggies from "@/assets/partners/oddveggies.svg";
+import kcal from "@/assets/partners/kcal.png";
+import sukaiba from "@/assets/partners/sukaiba.png";
+import logo1664 from "@/assets/partners/1664.svg";
+import mateMate from "@/assets/partners/mate-mate.png";
+import ayaIda from "@/assets/partners/aya-ida.png";
+import aboutVintage from "@/assets/partners/about-vintage.svg";
+import housePaintingService from "@/assets/partners/house-painting-service.svg";
+import allingeBadehotel from "@/assets/partners/allinge-badehotel.png";
+import rodeKors from "@/assets/partners/rode-kors.svg";
+import ish from "@/assets/partners/ish.png";
+import igotspirit from "@/assets/partners/igotspirit.png";
+import pluginHeatclub from "@/assets/partners/plugin-heatclub.png";
+import gumi from "@/assets/partners/gumi.svg";
+import tableau from "@/assets/partners/tableau.png";
+import bryllupsbartender from "@/assets/partners/bryllupsbartender.png";
+import cphFashionWeek from "@/assets/partners/cph-fashion-week.svg";
+import secolo from "@/assets/partners/secolo.svg";
 
 interface PartnerLogo {
   src: ImageMetadata;
@@ -22,12 +48,25 @@ interface PartnerLogo {
   class: string;
 }
 
+const wordmark = "h-[max(1.35rem,calc(var(--board-w)*0.028))] w-auto";
+const wideMark = "h-[max(1.1rem,calc(var(--board-w)*0.018))] w-auto";
+const seal = "h-[max(1.6rem,calc(var(--board-w)*0.034))] w-auto";
+const stack = "h-[max(1.75rem,calc(var(--board-w)*0.04))] w-auto";
+
 const rowOne: Array<PartnerLogo | "issei"> = [
   { src: radisson, alt: "Radisson Collection", class: "w-[max(4.75rem,calc(var(--board-w)*0.1016))]" },
   { src: wonHundred, alt: "Won Hundred", class: "w-[max(5rem,calc(var(--board-w)*0.1058))]" },
   { src: nrd55, alt: "NRD55", class: "w-[max(3.25rem,calc(var(--board-w)*0.0658))]" },
   { src: vernon, alt: "Vernon", class: "w-[max(4.25rem,calc(var(--board-w)*0.0875))]" },
   "issei",
+  { src: stateDrinks, alt: "STATE", class: wordmark },
+  { src: banzo, alt: "Banzo", class: wordmark },
+  { src: lover, alt: "Lover", class: wordmark },
+  { src: chorines, alt: "Chōrines", class: wideMark },
+  { src: barMoro, alt: "Bar Moro", class: wordmark },
+  { src: threeDays, alt: "3daysofdesign", class: wideMark },
+  { src: krumphardt, alt: "Krumphardt", class: wideMark },
+  { src: cphFashionWeek, alt: "Copenhagen Fashion Week", class: wideMark },
 ];
 
 const rowTwo: PartnerLogo[] = [
@@ -36,20 +75,38 @@ const rowTwo: PartnerLogo[] = [
   { src: theMoment, alt: "The Moment", class: "w-[max(5.25rem,calc(var(--board-w)*0.1108))]" },
   { src: arneAksel, alt: "Arne Aksel", class: "w-[max(3.5rem,calc(var(--board-w)*0.0683))]" },
   { src: darling, alt: "Darling", class: "w-[max(4.25rem,calc(var(--board-w)*0.0883))]" },
+  { src: heartland, alt: "Heartland", class: wordmark },
+  { src: novoskin, alt: "Novoskin", class: wordmark },
+  { src: franklyJuice, alt: "Frankly Juice", class: wordmark },
+  { src: oddveggies, alt: "Oddveggies", class: wordmark },
+  { src: kcal, alt: "Kcal", class: wordmark },
+  { src: sukaiba, alt: "Sukaiba", class: wordmark },
+  { src: logo1664, alt: "1664", class: wordmark },
+  { src: secolo, alt: "Secolo", class: wideMark },
 ];
 
 const rowThree: PartnerLogo[] = [
   { src: lucieKaas, alt: "Lucie Kaas", class: "w-[max(4.75rem,calc(var(--board-w)*0.1))]" },
-  { src: aura, alt: "Aura", class: "w-[max(5.75rem,calc(var(--board-w)*0.1242))]" },
   { src: woods, alt: "woods", class: "w-[max(4.25rem,calc(var(--board-w)*0.0883))]" },
   { src: babylon, alt: "Babylon", class: "w-[max(1.5rem,calc(var(--board-w)*0.0308))]" },
-  { src: visitDenmark, alt: "VisitDenmark", class: "w-[max(6rem,calc(var(--board-w)*0.1258))]" },
+  { src: mateMate, alt: "Maté Maté", class: seal },
+  { src: ayaIda, alt: "AYA&IDA", class: seal },
+  { src: aboutVintage, alt: "About Vintage", class: seal },
+  { src: housePaintingService, alt: "House Painting Service", class: seal },
+  { src: allingeBadehotel, alt: "Allinge Badehotel", class: seal },
+  { src: rodeKors, alt: "Røde Kors", class: seal },
+  { src: ish, alt: "ISH", class: stack },
+  { src: igotspirit, alt: "I Got Spirit", class: stack },
+  { src: pluginHeatclub, alt: "Plugin Heat Club", class: stack },
+  { src: gumi, alt: "Gumi", class: wordmark },
+  { src: tableau, alt: "TABLEAU", class: wordmark },
+  { src: bryllupsbartender, alt: "Bryllupsbartender", class: stack },
 ];
 
 const rows = [rowOne, rowTwo, rowThree];
 const motions = ["animate-marquee", "animate-marquee-mid", "animate-marquee-slow"];
 
-const logoClass = "h-auto max-w-none shrink-0 object-contain";
+const logoClass = "max-w-none shrink-0 object-contain";
 ---
 
 <div class="w-full overflow-x-clip bg-baseLight">

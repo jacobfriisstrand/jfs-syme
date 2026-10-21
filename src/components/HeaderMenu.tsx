@@ -43,7 +43,7 @@ export default function HeaderMenu({ menuId }: HeaderMenuProps) {
       className="size-11 text-ink min-[1200px]:hidden"
       aria-expanded={open}
       aria-controls={menuId}
-      aria-label={open ? "Close log in menu" : "Open log in menu"}
+      aria-label={open ? "Close menu" : "Open menu"}
       onClick={() => setOpen((value) => !value)}
     >
       {open ? <X className="size-6" strokeWidth={1.5} aria-hidden="true" /> : <Menu className="size-6" strokeWidth={1.5} aria-hidden="true" />}

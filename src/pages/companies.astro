@@ -1,0 +1,24 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Clicks from "@/components/sections/Clicks/index.astro";
+import Web from "@/components/sections/Web/index.astro";
+import Problem from "@/components/sections/Problem/index.astro";
+import Market from "@/components/sections/Market/index.astro";
+import Numbers from "@/components/sections/Numbers/index.astro";
+import Partner from "@/components/sections/Partner/index.astro";
+import Footer from "@/components/sections/Footer/index.astro";
+import "@/styles/globals.css";
+---
+
+<Layout fullBleed title="For companies" description="Premium brand marketing needs a better way.">
+  <Header overlay />
+  <h1 class="sr-only">For companies</h1>
+  <Clicks />
+  <Web />
+  <Problem />
+  <Market />
+  <Numbers />
+  <Partner />
+  <Footer />
+</Layout>

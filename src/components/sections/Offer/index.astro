@@ -61,17 +61,17 @@ const offers: Offer[] = [
 ];
 ---
 
-<div class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
+<div id="header-sentinel" class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
   <section
     class="bg-baseLight px-6 py-16 font-inter text-ink antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
     aria-label="What we offer"
   >
     <div class="flex flex-col gap-8 min-[1200px]:contents">
-      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[2.822%] min-[1200px]:top-[4.398%] min-[1200px]:whitespace-nowrap">
+      <p class="eyebrow m-0 min-[1200px]:absolute min-[1200px]:right-[2.822%] min-[1200px]:top-[calc(var(--board-h)*0.086481+var(--header-below)+0.75rem)] min-[1200px]:whitespace-nowrap">
         WHAT WE OFFER
       </p>
 
-      <p class="deck m-0 max-w-xs md:max-w-sm min-[1200px]:absolute min-[1200px]:right-[2.744%] min-[1200px]:top-[11.361%] min-[1200px]:w-[20.056%] min-[1200px]:max-w-none min-[1200px]:text-right">
+      <p class="deck m-0 max-w-xs md:max-w-sm min-[1200px]:absolute min-[1200px]:right-[2.744%] min-[1200px]:top-[calc(var(--board-h)*0.086481+var(--header-below)+0.75rem+6.963%)] min-[1200px]:w-[20.056%] min-[1200px]:max-w-none min-[1200px]:text-right">
         One platform from outreach to
         <br class="hidden min-[1200px]:inline" />
         performance - replacing inboxes,

@@ -1,0 +1,89 @@
+---
+interface PageSummary {
+  index: string;
+  label: string;
+  hook: string;
+  summary: string;
+  href: string;
+}
+
+const pages: PageSummary[] = [
+  {
+    index: "01",
+    label: "CASE STUDIES",
+    hook: "From 33 emails to 3 clicks.",
+    summary:
+      "A previously slow, multi-stakeholder process compressed into a precurated offer, and launches produced end to end.",
+    href: "/case-studies",
+  },
+  {
+    index: "02",
+    label: "COMPANIES",
+    hook: "Premium brand marketing needs a better way.",
+    summary: "Launch, manage, and track premium collaborations from one workspace built for brand teams.",
+    href: "/companies",
+  },
+  {
+    index: "03",
+    label: "INFLUENCERS",
+    hook: "Forma on mobile.",
+    summary: "Browse curated offers, apply in two taps, and deliver content from a single app in your pocket.",
+    href: "/influencers",
+  },
+  {
+    index: "04",
+    label: "PRICES",
+    hook: "Built to remove friction.",
+    summary: "One platform from outreach to performance, with partnerships, matching, and execution in one workspace.",
+    href: "/prices",
+  },
+  {
+    index: "05",
+    label: "CONTACT",
+    hook: "Request an introduction.",
+    summary: "We are currently onboarding a limited number of selected partners.",
+    href: "/contact",
+  },
+];
+
+const rowClass =
+  "group grid grid-cols-1 gap-3 py-8 no-underline outline-none md:grid-cols-[2.75rem_minmax(0,1.15fr)_minmax(0,1fr)_auto] md:items-start md:gap-x-8 md:py-10 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-paper";
+---
+
+<div class="bg-canvasInk min-[1200px]:grid min-[1200px]:w-full min-[1200px]:place-items-center">
+  <section
+    class="bg-canvasInk px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:w-[var(--board-w)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.07)]"
+    aria-label="The pages, in brief"
+  >
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <h2 class="headline-stack m-0">
+        <span class="headline">The pages,</span>
+        <span class="headline-italic">in brief.</span>
+      </h2>
+      <p class="eyebrow m-0 text-paper/70">CONTENTS</p>
+    </div>
+
+    <ul class="m-0 mt-10 list-none border-t border-paper/15 p-0 md:mt-14">
+      {
+        pages.map((page) => (
+          <li class="border-b border-paper/15">
+            <a class={rowClass} href={page.href}>
+              <span class="eyebrow text-paper/70">{page.index}</span>
+              <span class="flex min-w-0 flex-col gap-2">
+                <span class="eyebrow text-paper/70">{page.label}</span>
+                <span class="title text-paper">{page.hook}</span>
+              </span>
+              <span class="body text-paper/80 md:pt-6">{page.summary}</span>
+              <span class="eyebrow inline-flex items-center gap-2 text-paper/70 transition-colors group-hover:text-paper group-focus-visible:text-paper md:pt-6">
+                OPEN
+                <svg viewBox="0 0 16 16" class="h-[1em] w-[1em] transition-transform group-hover:translate-x-1 motion-reduce:transition-none" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</div>

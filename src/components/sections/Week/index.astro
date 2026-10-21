@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import photo from "@/assets/problem/case-study.png";
+
+const steps = [
+  { index: "01", title: "Show.", text: "The right room." },
+  { index: "02", title: "Seat.", text: "Already matched." },
+  { index: "03", title: "After.", text: "The same night." },
+];
+---
+
+<div class="bg-canvasInk min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center min-[1200px]:overflow-hidden">
+  <section
+    class="bg-canvasInk px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:px-0 min-[1200px]:py-0 min-[1200px]:[container-type:inline-size]"
+    aria-label="A week, already seated"
+  >
+    <div class="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-start md:gap-12 min-[1200px]:contents">
+      <p class="eyebrow m-0 text-paper min-[1200px]:absolute min-[1200px]:right-[4.0747%] min-[1200px]:top-[4.931%] min-[1200px]:whitespace-nowrap">
+        CASE STUDY • COPENHAGEN FASHION WEEK
+      </p>
+
+      <div class="flex min-w-0 flex-col gap-8 min-[1200px]:absolute min-[1200px]:left-[4.02%] min-[1200px]:top-[16%] min-[1200px]:w-[42%] min-[1200px]:gap-6">
+        <div class="flex flex-col gap-5">
+          <h2 class="headline-stack m-0">
+            <span class="headline">A week,</span>
+            <span class="headline-italic">already seated.</span>
+          </h2>
+          <p class="body m-0 text-paper">
+            Profiles matched to the shows they belonged in. Seats, access, and the evening after, arranged as one offer.
+          </p>
+        </div>
+
+        <div class="flex flex-col">
+          {
+            steps.map((step) => (
+              <article class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-t border-paper/15 py-3">
+                <p class="caption m-0 text-paper/70">{step.index}</p>
+                <p class="m-0">
+                  <span class="title text-paper">{step.title}</span>{" "}
+                  <span class="copy text-paper/75">{step.text}</span>
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <Image
+        src={photo}
+        alt="Guest in a checked coat holding a dog backstage during Copenhagen Fashion Week"
+        class="pointer-events-none aspect-[4/5] w-full max-w-none object-cover object-top md:aspect-[3/4] min-[1200px]:absolute min-[1200px]:left-[50%] min-[1200px]:top-[16%] min-[1200px]:aspect-auto min-[1200px]:h-[68%] min-[1200px]:w-[46%]"
+      />
+    </div>
+  </section>
+</div>

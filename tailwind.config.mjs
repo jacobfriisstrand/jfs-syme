@@ -64,9 +64,9 @@ export default {
         },
       },
       animation: {
-        marquee: "marquee 36s linear infinite",
-        "marquee-mid": "marquee 48s linear infinite",
-        "marquee-slow": "marquee 42s linear infinite",
+        marquee: "marquee 127s linear infinite",
+        "marquee-mid": "marquee 134s linear infinite",
+        "marquee-slow": "marquee 94s linear infinite",
       },
     },
   },

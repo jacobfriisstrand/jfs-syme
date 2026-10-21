@@ -1,0 +1,79 @@
+---
+interface ContactDetails {
+  contactLinkName: string;
+  contactEmail: string;
+  pressLinkName: string;
+  pressEmail: string;
+}
+
+interface Props {
+  contact: ContactDetails;
+}
+
+const { contact } = Astro.props;
+
+const buttonClass =
+  "cta-label flex h-11 w-full items-center justify-center rounded-full bg-cta px-6 no-underline transition-colors hover:bg-ctaHover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink min-[1200px]:h-12";
+
+const channels = [
+  {
+    label: contact.contactLinkName,
+    value: contact.contactEmail,
+    href: `mailto:${contact.contactEmail}`,
+  },
+  {
+    label: contact.pressLinkName,
+    value: contact.pressEmail,
+    href: `mailto:${contact.pressEmail}`,
+  },
+  {
+    label: "Phone",
+    value: "+45 31 37 09 25",
+    href: "tel:+4531370925",
+  },
+];
+---
+
+<div id="header-sentinel" class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center">
+<section
+  class="flex h-[calc(100svh-3.5rem)] flex-col justify-between bg-baseLight px-6 py-6 font-inter text-ink antialiased md:grid md:h-[calc(100svh-3.5rem)] md:grid-cols-2 md:items-center md:gap-12 md:px-10 md:py-8 min-[1200px]:mx-auto min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:gap-[calc(var(--board-w)*0.06)] min-[1200px]:px-[4.02%] min-[1200px]:pb-[calc(var(--board-w)*0.04)] min-[1200px]:pt-[calc(var(--board-h)*0.086481+var(--header-below)+0.75rem)]"
+  aria-label="Contact"
+>
+  <div class="min-w-0">
+    <p class="eyebrow m-0">Copenhagen - Global</p>
+
+    <h1 class="headline-stack m-0 mt-4 min-[1200px]:mt-[calc(var(--board-w)*0.028)]">
+      <span class="headline min-[1200px]:whitespace-nowrap">Request an</span>
+      <span class="headline-italic min-[1200px]:whitespace-nowrap">introduction.</span>
+    </h1>
+
+    <p class="body m-0 mt-4 max-w-xl min-[1200px]:mt-[calc(var(--board-w)*0.028)]">
+      We are currently onboarding a limited number of selected partners.
+    </p>
+  </div>
+
+  <div class="flex min-w-0 flex-col gap-5 min-[1200px]:gap-[calc(var(--board-w)*0.028)]">
+    <ul class="m-0 flex list-none flex-col p-0">
+      {
+        channels.map((channel) => (
+          <li class="flex items-baseline justify-between gap-4 border-t border-baseLightGray py-3 min-[1200px]:py-[calc(var(--board-w)*0.014)]">
+            <p class="eyebrow m-0 shrink-0">{channel.label}</p>
+            <a class="body m-0 min-w-0 text-right text-ink no-underline transition-colors hover:text-inkMuted" href={channel.href}>
+              {channel.value}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex flex-col gap-3">
+      <a class={buttonClass} href={`mailto:${contact.contactEmail}?subject=${encodeURIComponent("Request an Introduction - FORMA")}`}>
+        REQUEST AN INTRODUCTION
+      </a>
+      <a class={buttonClass} href="https://member.formaintl.com/?view=registration" target="_blank" rel="noreferrer">
+        REGISTER AS A PARTNER
+      </a>
+    </div>
+  </div>
+</section>
+</div>

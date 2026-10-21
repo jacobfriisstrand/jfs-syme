@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Offer from "@/components/sections/Offer/index.astro";
+import Partner from "@/components/sections/Partner/index.astro";
+import Footer from "@/components/sections/Footer/index.astro";
+import "@/styles/globals.css";
+---
+
+<Layout
+  fullBleed
+  title="Prices"
+  description="One platform from outreach to performance - replacing inboxes, spreadsheets, and unmatched lists."
+>
+  <Header overlay />
+  <h1 class="sr-only">Prices</h1>
+  <Offer />
+  <Partner />
+  <Footer />
+</Layout>
