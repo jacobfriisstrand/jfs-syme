@@ -1,11 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
-import Launch from "@/components/sections/Launch/index.astro";
-import Sparkly from "@/components/sections/Sparkly/index.astro";
-import Show from "@/components/sections/Show/index.astro";
-import Season from "@/components/sections/Season/index.astro";
-import Week from "@/components/sections/Week/index.astro";
+import Cases from "@/components/sections/Cases/index.astro";
 import Partner from "@/components/sections/Partner/index.astro";
 import Footer from "@/components/sections/Footer/index.astro";
 import "@/styles/globals.css";
@@ -14,15 +10,11 @@ import "@/styles/globals.css";
 <Layout
   fullBleed
   title="Case studies"
-  description="From a precurated offer to the night itself. Launches, shows, and stays, produced end to end."
+  description="Collaborations from the offer to the night itself. Dinners, shows, festivals, and the rooms in between."
 >
   <Header overlay />
   <h1 class="sr-only">Case studies</h1>
-  <Launch />
-  <Sparkly />
-  <Show />
-  <Season />
-  <Week />
+  <Cases />
   <Partner />
   <Footer />
 </Layout>

@@ -1,0 +1,132 @@
+---
+import { Image } from "astro:assets";
+import type { CaseStudy } from "./studies";
+
+interface Props {
+  study: CaseStudy;
+  index: number;
+  first?: boolean;
+}
+
+const { study, index, first = false } = Astro.props;
+const ink = index % 2 === 0;
+const mediaLeft = index % 2 === 1;
+const label = ["Case study", study.brand, study.withName].filter(Boolean).join(" • ");
+const facts = study.facts ?? [];
+const steps = study.steps ?? [];
+const image = study.image;
+const imageWidths = image
+  ? [...new Set([480, 768, 1200, 1600].filter((width) => width < image.width).concat(image.width))].sort((a, b) => a - b)
+  : [];
+---
+
+<div
+  id={first ? "header-sentinel" : undefined}
+  class:list={[
+    ink ? "bg-canvasInk text-paper" : "bg-baseLight text-ink",
+    "min-[1200px]:grid min-[1200px]:w-full min-[1200px]:place-items-center",
+    first && "min-[1200px]:pt-[var(--header-height)]",
+  ]}
+>
+  <section
+    id={study.slug}
+    class:list={[
+      "scroll-mt-24 px-6 py-16 font-inter antialiased md:px-10 md:py-20",
+      "min-[1200px]:w-[var(--board-w)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.05)]",
+    ]}
+    aria-labelledby={`${study.slug}-title`}
+  >
+    <p class:list={["eyebrow m-0 uppercase", ink ? "text-paper/70 md:text-right" : "md:text-right"]}>{label}</p>
+
+    <div class="mt-8 grid grid-cols-1 items-start gap-10 md:mt-10 md:grid-cols-2 md:gap-12 min-[1200px]:mt-[calc(var(--board-w)*0.04)] min-[1200px]:gap-16">
+      <div class:list={["flex min-w-0 flex-col gap-6", mediaLeft && "md:order-2"]}>
+        <p class:list={["eyebrow m-0 uppercase", ink ? "text-paper/55" : "text-inkMuted"]}>{study.place}</p>
+        <h2 id={`${study.slug}-title`} class="m-0 flex flex-col gap-1">
+          <span class="headline">{study.headline}</span>
+          <span class="headline-italic">{study.headlineItalic}</span>
+        </h2>
+        <p class:list={["body m-0 max-w-xl", ink && "text-paper/80"]}>{study.summary}</p>
+        <p class:list={["body-muted m-0 max-w-xl", ink && "text-paper/55"]}>{study.outcome}</p>
+
+        {
+          facts.length > 0 && (
+            <ul class="m-0 flex list-none flex-wrap gap-x-10 gap-y-4 p-0">
+              {facts.map((fact) => (
+                <li class="flex min-w-0 flex-col gap-1">
+                  <p class:list={["title m-0", ink && "text-paper"]}>{fact.value}</p>
+                  <p class:list={["caption m-0 uppercase", ink ? "text-paper/60" : "text-inkMuted"]}>{fact.label}</p>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        {
+          steps.length > 0 && (
+            <div class="flex flex-col">
+              {steps.map((step, stepIndex) => (
+                <article
+                  class:list={[
+                    "grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-t py-3",
+                    ink ? "border-paper/15" : "border-baseLightGray",
+                  ]}
+                >
+                  <p class:list={["caption m-0", ink ? "text-paper/60" : "text-inkMuted"]}>
+                    {String(stepIndex + 1).padStart(2, "0")}
+                  </p>
+                  <p class="m-0 flex flex-col gap-1">
+                    <span class:list={["title", ink && "text-paper"]}>{step.title}</span>
+                    <span class:list={["copy", ink ? "text-paper/75" : "text-ink/80"]}>{step.text}</span>
+                  </p>
+                </article>
+              ))}
+            </div>
+          )
+        }
+
+        {
+          study.quote && (
+            <blockquote class:list={["m-0 border-t pt-5", ink ? "border-paper/15" : "border-baseLightGray"]}>
+              <p class="quote m-0 text-pretty tracking-normal">{study.quote}</p>
+              {
+                study.attribution && (
+                  <footer class:list={["attribution m-0 mt-4 uppercase", ink ? "text-paper/65" : "text-inkMuted"]}>
+                    {study.attribution}
+                  </footer>
+                )
+              }
+            </blockquote>
+          )
+        }
+      </div>
+
+      <figure
+        class:list={[
+          "m-0 overflow-hidden rounded-[var(--radius-panel)] bg-panel p-4 text-baseLight md:p-6",
+          mediaLeft && "md:order-1",
+        ]}
+      >
+        {
+          image ? (
+            <Image
+              src={image}
+              alt={study.imageAlt}
+              widths={imageWidths}
+              sizes="(min-width: 768px) 46vw, 100vw"
+              format="webp"
+              quality={70}
+              class="aspect-[4/3] w-full rounded-[var(--radius-media)] object-cover md:aspect-[4/5]"
+            />
+          ) : (
+            <div class="flex aspect-[4/3] items-center rounded-[var(--radius-media)] bg-canvasNight p-6 md:aspect-[4/5] md:p-8">
+              <p class="headline-italic m-0 text-balance text-paper">{study.caption}</p>
+            </div>
+          )
+        }
+        <figcaption class="mt-4">
+          <p class="copy m-0">{study.detail}</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>

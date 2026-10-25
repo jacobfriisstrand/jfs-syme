@@ -1,0 +1,8 @@
+---
+import Board from "./Board.astro";
+import { studies } from "./studies";
+---
+
+{
+  studies.map((study, index) => <Board study={study} index={index} first={index === 0} />)
+}
