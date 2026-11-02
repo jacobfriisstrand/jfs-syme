@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import { partnerRows } from "@/components/sections/Partners/logos";
+
+const motions = ["animate-marquee", "animate-marquee-mid", "animate-marquee-slow"];
+const slot =
+  "flex h-[max(1.75rem,calc(var(--board-w)*0.032))] w-[max(6.5rem,calc(var(--board-w)*0.09))] shrink-0 items-center justify-center";
+---
+
+<div class="pointer-events-none absolute inset-0 z-0 flex flex-col justify-evenly overflow-hidden opacity-20" aria-hidden="true">
+  {
+    partnerRows.map((row, rowIndex) => (
+      <div class="overflow-hidden">
+        <div class:list={["flex w-max items-center motion-reduce:animate-none", motions[rowIndex]]}>
+          {[0, 1].map((half) => (
+            <div class="flex shrink-0 items-center" aria-hidden={half > 0 || undefined}>
+              {[0, 1, 2].map(() => (
+                <div class="flex shrink-0 items-center gap-8 pr-8">
+                  {row.map((partner) =>
+                    partner === "issei" ? (
+                      <p class:list={[slot, "logo-word m-0 brightness-0 invert"]}>ISSEI</p>
+                    ) : (
+                      <span class={slot}>
+                        <Image src={partner.src} alt="" loading="eager" class="h-full w-full object-contain brightness-0 invert" />
+                      </span>
+                    ),
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>

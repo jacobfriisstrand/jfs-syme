@@ -1,8 +1,13 @@
-<div id="cover" class="bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:place-items-center">
-<section class="bg-baseLight font-inter text-ink antialiased min-[1200px]:relative min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:overflow-hidden min-[1200px]:[container-type:inline-size]" aria-label="Forma">
-  <h1 class="sr-only">Premium collaborations. Simplified.</h1>
+---
+import mark from "@/assets/forma-mark.svg?raw";
+---
 
-  <div class="flex min-h-[calc(100dvh-3.5rem)] flex-col justify-between px-6 py-16 md:px-10 md:py-20 min-[1200px]:contents">
+<div id="cover" class="w-full max-w-[100vw] overflow-hidden bg-baseLight min-[1200px]:grid min-[1200px]:h-dvh min-[1200px]:w-full min-[1200px]:max-w-none min-[1200px]:place-items-center">
+<section class="relative w-full max-w-full overflow-hidden bg-baseLight font-inter text-ink antialiased min-[1200px]:h-[var(--board-h)] min-[1200px]:w-[var(--board-w)] min-[1200px]:max-w-none min-[1200px]:[container-type:inline-size]" aria-label="Forma">
+  <h1 class="sr-only">Premium collaborations. Simplified.</h1>
+  <div class="field-mark" aria-hidden="true" set:html={mark} />
+
+  <div class="relative z-10 flex min-h-[calc(100dvh-3.5rem)] flex-col justify-between px-6 py-16 md:px-10 md:py-20 min-[1200px]:contents">
     <div class="headline-stack m-0 my-auto min-[1200px]:absolute min-[1200px]:left-[3.6053%] min-[1200px]:top-[34.5286%] min-[1200px]:my-0">
       <p class="headline m-0 min-[1200px]:whitespace-nowrap">Premium collaborations.</p>
       <p class="headline-italic m-0 min-[1200px]:whitespace-nowrap">Simplified.</p>

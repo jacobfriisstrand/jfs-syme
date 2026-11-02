@@ -1,4 +1,6 @@
 ---
+import LogoField from "@/components/sections/Overview/LogoField.astro";
+
 interface PageSummary {
   index: string;
   label: string;
@@ -52,10 +54,11 @@ const rowClass =
 
 <div class="bg-canvasInk min-[1200px]:grid min-[1200px]:w-full min-[1200px]:place-items-center">
   <section
-    class="bg-canvasInk px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:w-[var(--board-w)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.07)]"
+    class="relative overflow-hidden bg-canvasInk px-6 py-16 font-inter text-paper antialiased md:px-10 md:py-20 min-[1200px]:w-[var(--board-w)] min-[1200px]:px-[4.02%] min-[1200px]:py-[calc(var(--board-w)*0.07)]"
     aria-label="The pages, in brief"
   >
-    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <LogoField />
+    <div class="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <h2 class="headline-stack m-0">
         <span class="headline">The pages,</span>
         <span class="headline-italic">in brief.</span>
@@ -63,7 +66,7 @@ const rowClass =
       <p class="eyebrow m-0 text-paper/70">CONTENTS</p>
     </div>
 
-    <ul class="m-0 mt-10 list-none border-t border-paper/15 p-0 md:mt-14">
+    <ul class="relative z-10 m-0 mt-10 list-none border-t border-paper/15 p-0 md:mt-14">
       {
         pages.map((page) => (
           <li class="border-b border-paper/15">
