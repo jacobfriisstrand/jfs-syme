@@ -2,16 +2,22 @@
 import { Image } from "astro:assets";
 import { partnerRows } from "@/components/sections/Partners/logos";
 
-const motions = ["animate-marquee", "animate-marquee-mid", "animate-marquee-slow"];
+// Middle row is the reference: marquee-mid runs 134s over half its track.
+// Every logo uses the same slot, so track width scales with logo count.
+const middleDuration = 134;
+const middleCount = partnerRows[1]?.length || 1;
 const slot =
   "flex h-[max(1.75rem,calc(var(--board-w)*0.032))] w-[max(6.5rem,calc(var(--board-w)*0.09))] shrink-0 items-center justify-center";
 ---
 
 <div class="pointer-events-none absolute inset-0 z-0 flex flex-col justify-evenly overflow-hidden opacity-20" aria-hidden="true">
   {
-    partnerRows.map((row, rowIndex) => (
+    partnerRows.map((row) => (
       <div class="overflow-hidden">
-        <div class:list={["flex w-max items-center motion-reduce:animate-none", motions[rowIndex]]}>
+        <div
+          class="flex w-max items-center animate-marquee-mid motion-reduce:animate-none"
+          style={`animation-duration: ${(middleDuration * row.length) / middleCount}s`}
+        >
           {[0, 1].map((half) => (
             <div class="flex shrink-0 items-center" aria-hidden={half > 0 || undefined}>
               {[0, 1, 2].map(() => (
