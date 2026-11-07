@@ -1,36 +1,54 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import suite from "@/assets/clicks/suite.png";
+import runway from "@/assets/stills/won-hundred-runway.webp";
+import dinner from "@/assets/stills/candlelit-dinner.webp";
 import portrait from "@/assets/launch/portrait.png";
-import camille from "@/assets/market/case-study.png";
-import wonHundred from "@/assets/problem/case-study.png";
+import castle from "@/assets/stills/heartland-castle.webp";
+import totes from "@/assets/stills/night-totes.webp";
+import suite from "@/assets/clicks/suite.png";
+import juice from "@/assets/stills/juice.webp";
+import toast from "@/assets/stills/dinner-toast.webp";
 
 interface Still {
   src: ImageMetadata;
   alt: string;
 }
 
-const photos: Still[] = [
+const stills: Still[] = [
   {
-    src: suite,
-    alt: "Panorama suite in Copenhagen, with a city view beyond mirrored wall panels",
+    src: runway,
+    alt: "A model walking the Won Hundred AW25 runway in a denim set and knit boots",
+  },
+  {
+    src: dinner,
+    alt: "Guests along a candlelit dinner table",
   },
   {
     src: portrait,
     alt: "Close portrait of Laila Hasanovic with a bronze product swatch on her cheek",
   },
   {
-    src: camille,
-    alt: "Hands wearing gold rings holding a drink at the Camille Brinch jewellery launch",
+    src: castle,
+    alt: "Egeskov Castle at Heartland, with a blue sculpture beside the moat",
   },
   {
-    src: wonHundred,
-    alt: "Guest in a checked coat holding a dog at the Won Hundred AW25 show",
+    src: totes,
+    alt: "Two guests with white tote bags, posed in front of a night window",
+  },
+  {
+    src: suite,
+    alt: "Panorama suite in Copenhagen, with a city view beyond mirrored wall panels",
+  },
+  {
+    src: juice,
+    alt: "A guest drinking from a green juice bottle in the sun",
+  },
+  {
+    src: toast,
+    alt: "Guests raising glasses around a dinner table",
   },
 ];
-
-const stills = [...photos, ...photos.map((photo) => ({ ...photo, alt: "" }))];
 ---
 
 <section class="w-full bg-baseLight" aria-label="The work">
