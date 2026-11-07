@@ -10,6 +10,7 @@ import julefuglen from "@/assets/cases/julefuglen.webp";
 import drawingRoom from "@/assets/cases/drawing-room.webp";
 import concha from "@/assets/cases/concha.webp";
 import gumi from "@/assets/cases/gumi.webp";
+import suite from "@/assets/clicks/suite.png";
 
 export interface CaseFact {
   value: string;
@@ -53,7 +54,8 @@ export const studies: CaseStudy[] = [
     outcome: "Every guest shared stories, introducing their audiences to Radisson as a place to dine, drink and experience Copenhagen.",
     caption: "Uro at the Royal",
     detail: "An evening inside Danish design. With Uro among the guests.",
-    imageAlt: "Uro, Danish music artist, at Radisson Collection Royal Hotel.",
+    image: suite,
+    imageAlt: "The Arne Jacobsen suite at Radisson Collection Royal Hotel, with Copenhagen beyond the mirrored wall.",
     facts: [
       { value: "20", label: "At dinner" },
       { value: "20", label: "For drinks" },
