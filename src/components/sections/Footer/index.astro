@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { fetchData } from "@/lib/fetchData";
+import { pagePath } from "@/lib/colorLabPath";
 import logo from "@/assets/forma-logo.png";
 
 interface FooterLink {
@@ -34,7 +35,7 @@ const siteLinks = [
 ];
 
 const year = new Date().getFullYear();
-const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const current = pagePath(Astro.url.pathname);
 
 const linkClass =
   "eyebrow m-0 uppercase transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted";

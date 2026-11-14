@@ -1,6 +1,9 @@
 ---
 import Footer from "@/components/Footer.astro";
 import Navigation from "@/components/Navigation.astro";
+import ColorLab from "@/components/ColorLab.tsx";
+import { COLOR_LAB_PREFIX } from "@/lib/colorLabPath";
+import { COLOR_LAB_STORAGE_KEY, COLOR_TOKEN_KEYS } from "@/lib/colorTokens";
 
 interface Props {
   fullBleed?: boolean;
@@ -9,6 +12,58 @@ interface Props {
 }
 
 const { fullBleed = false, title, description } = Astro.props;
+const colorLab = Astro.locals.colorLab === true;
+const colorLabScript = `(() => {
+  try {
+    const storageKey = ${JSON.stringify(COLOR_LAB_STORAGE_KEY)};
+    const keys = ${JSON.stringify(COLOR_TOKEN_KEYS)};
+    const raw = localStorage.getItem(storageKey);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return;
+    for (const key of keys) {
+      const value = parsed[key];
+      if (typeof value !== "string" || !/^(?:[0-9]{1,3} ){2}[0-9]{1,3}$/.test(value)) continue;
+      if (value.split(" ").some((channel) => Number(channel) > 255)) continue;
+      document.documentElement.style.setProperty(key, value);
+    }
+  } catch {
+    /* ignore unreadable color storage */
+  }
+})();`;
+const colorLabLinksScript = `(() => {
+  const prefix = ${JSON.stringify(COLOR_LAB_PREFIX)};
+  const prefixHref = (href) => {
+    if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return href;
+    let url;
+    try {
+      url = new URL(href, location.origin);
+    } catch {
+      return href;
+    }
+    if (url.origin !== location.origin) return href;
+    if (url.pathname === prefix || url.pathname.startsWith(prefix + "/")) return href;
+    const path = url.pathname === "/" ? prefix : prefix + url.pathname;
+    return path + url.search + url.hash;
+  };
+  const rewrite = () => {
+    for (const anchor of document.querySelectorAll("a[href]")) {
+      const href = anchor.getAttribute("href");
+      const next = prefixHref(href);
+      if (next && next !== href) anchor.setAttribute("href", next);
+    }
+  };
+  rewrite();
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const anchor = target.closest("a[href]");
+    if (!anchor) return;
+    const href = anchor.getAttribute("href");
+    const next = prefixHref(href);
+    if (next && next !== href) anchor.setAttribute("href", next);
+  });
+})();`;
 ---
 
 <!doctype html>
@@ -17,6 +72,7 @@ const { fullBleed = false, title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content={description ?? "Premium collaborations. Simplified."} />
     {title && <title>{title}</title>}
+    {colorLab && <meta name="robots" content="noindex" />}
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,6 +82,7 @@ const { fullBleed = false, title, description } = Astro.props;
       rel="stylesheet"
     />
     <slot name="head" />
+    {colorLab && <script is:inline set:html={colorLabScript} />}
   </head>
   <body class:list={[fullBleed ? "m-0 overflow-x-clip bg-baseLight" : "grid min-h-[100dvh] grid-rows-[auto_1fr_auto]"]}>
     {!fullBleed && <Navigation />}
@@ -33,6 +90,8 @@ const { fullBleed = false, title, description } = Astro.props;
       <slot />
     </main>
     {!fullBleed && <Footer />}
+    {colorLab && <script is:inline set:html={colorLabLinksScript} />}
+    {colorLab && <ColorLab client:idle />}
   </body>
 </html>
 

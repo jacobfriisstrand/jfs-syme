@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "@/assets/forma-logo.png";
 import HeaderMenu from "@/components/HeaderMenu.tsx";
+import { pagePath } from "@/lib/colorLabPath";
 
 interface Props {
   overlay?: boolean;
@@ -17,7 +18,7 @@ const links = [
   { href: "/contact", label: "CONTACT" },
 ];
 
-const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const current = pagePath(Astro.url.pathname);
 
 const itemClass =
   "eyebrow m-0 whitespace-nowrap border-0 bg-transparent px-0 py-2 text-left no-underline transition-colors hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-inkMuted min-[1200px]:p-0";
