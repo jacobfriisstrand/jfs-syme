@@ -13,5 +13,6 @@ interface ImportMeta {
 declare namespace App {
   interface Locals {
     colorLab: boolean;
+    colorPreset: string | null;
   }
 }

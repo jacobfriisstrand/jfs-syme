@@ -1,3 +1,5 @@
+import { colorPresetTarget } from "@/lib/colorPresets";
+
 export const COLOR_LAB_PREFIX = "/colortest";
 
 /** Path to render for a color-lab URL, or null when the request is a normal page. */
@@ -8,8 +10,10 @@ export function colorLabTarget(pathname: string): string | null {
   return rest.endsWith("/") ? rest.slice(0, -1) : rest;
 }
 
-/** Page path used for the current-link state, with the color-lab prefix removed. */
+/** Page path used for the current-link state, with a color prefix removed. */
 export function pagePath(pathname: string): string {
+  const preset = colorPresetTarget(pathname);
+  if (preset) return preset.target.replace(/\/$/, "") || "/";
   const target = colorLabTarget(pathname);
   const path = target ?? pathname;
   return path.replace(/\/$/, "") || "/";

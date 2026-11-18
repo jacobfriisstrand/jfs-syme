@@ -3,6 +3,7 @@ import Footer from "@/components/Footer.astro";
 import Navigation from "@/components/Navigation.astro";
 import ColorLab from "@/components/ColorLab.tsx";
 import { COLOR_LAB_PREFIX } from "@/lib/colorLabPath";
+import { colorPresetById, colorPresetStyle } from "@/lib/colorPresets";
 import { COLOR_LAB_STORAGE_KEY, COLOR_TOKEN_KEYS } from "@/lib/colorTokens";
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
 
 const { fullBleed = false, title, description } = Astro.props;
 const colorLab = Astro.locals.colorLab === true;
+const colorPreset = colorPresetById(Astro.locals.colorPreset);
+const linkPrefix = colorPreset ? `/${colorPreset.id}` : colorLab ? COLOR_LAB_PREFIX : null;
 const colorLabScript = `(() => {
   try {
     const storageKey = ${JSON.stringify(COLOR_LAB_STORAGE_KEY)};
@@ -32,7 +35,7 @@ const colorLabScript = `(() => {
   }
 })();`;
 const colorLabLinksScript = `(() => {
-  const prefix = ${JSON.stringify(COLOR_LAB_PREFIX)};
+  const prefix = ${JSON.stringify(linkPrefix)};
   const prefixHref = (href) => {
     if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return href;
     let url;
@@ -67,12 +70,12 @@ const colorLabLinksScript = `(() => {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-palette={colorPreset?.id} style={colorPreset ? colorPresetStyle(colorPreset) : undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description ?? "Premium collaborations. Simplified."} />
     {title && <title>{title}</title>}
-    {colorLab && <meta name="robots" content="noindex" />}
+    {(colorLab || colorPreset) && <meta name="robots" content="noindex" />}
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -90,8 +93,11 @@ const colorLabLinksScript = `(() => {
       <slot />
     </main>
     {!fullBleed && <Footer />}
-    {colorLab && <script is:inline set:html={colorLabLinksScript} />}
+    {linkPrefix && <script is:inline set:html={colorLabLinksScript} />}
     {colorLab && <ColorLab client:idle />}
+    {colorPreset && (
+      <p class="eyebrow pointer-events-none fixed bottom-4 left-4 z-[60] m-0 text-ink">{colorPreset.label}</p>
+    )}
   </body>
 </html>
 

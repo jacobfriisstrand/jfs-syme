@@ -459,3 +459,11 @@
     transform-origin: center;
   }
 }
+
+html[data-palette="color4"] .cta-label {
+  color: rgb(42 36 32);
+}
+
+html[data-palette="color4"] :is(.eyebrow, .caption, .attribution)[class*="text-paper/"] {
+  color: rgb(142 197 255);
+}
