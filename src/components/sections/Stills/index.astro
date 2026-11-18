@@ -13,16 +13,19 @@ import toast from "@/assets/stills/dinner-toast.webp";
 interface Still {
   src: ImageMetadata;
   alt: string;
+  href?: string;
 }
 
 const stills: Still[] = [
   {
     src: runway,
     alt: "A model walking the Won Hundred AW25 runway in a denim set and knit boots",
+    href: "https://www.instagram.com/p/DLAwG76oSfX/?img_index=1",
   },
   {
     src: dinner,
     alt: "Guests along a candlelit dinner table",
+    href: "https://www.instagram.com/p/DZ-lsZ6oGJA/",
   },
   {
     src: portrait,
@@ -31,24 +34,32 @@ const stills: Still[] = [
   {
     src: castle,
     alt: "Egeskov Castle at Heartland, with a blue sculpture beside the moat",
+    href: "https://www.instagram.com/p/DZ-lsZ6oGJA/",
   },
   {
     src: totes,
     alt: "Two guests with white tote bags, posed in front of a night window",
+    href: "https://www.instagram.com/p/DKchfOooIAj/?img_index=1",
   },
   {
     src: suite,
     alt: "Panorama suite in Copenhagen, with a city view beyond mirrored wall panels",
+    href: "https://www.instagram.com/p/DKurMiUINPW/",
   },
   {
     src: juice,
     alt: "A guest drinking from a green juice bottle in the sun",
+    href: "https://www.instagram.com/p/DOG8zOhCDda/",
   },
   {
     src: toast,
     alt: "Guests raising glasses around a dinner table",
+    href: "https://www.instagram.com/p/DeuRhgyCBCv/?img_index=1",
   },
 ];
+
+const linkClass =
+  "block outline-none transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-ink";
 ---
 
 <section class="w-full bg-baseLight" aria-label="The work">
@@ -56,7 +67,13 @@ const stills: Still[] = [
     {
       stills.map((still) => (
         <li class="min-w-0">
-          <Image src={still.src} alt={still.alt} class="block aspect-[4/5] w-full object-cover" />
+          {still.href ? (
+            <a class={linkClass} href={still.href} target="_blank" rel="noopener noreferrer">
+              <Image src={still.src} alt={still.alt} class="block aspect-[4/5] w-full object-cover" />
+            </a>
+          ) : (
+            <Image src={still.src} alt={still.alt} class="block aspect-[4/5] w-full object-cover" />
+          )}
         </li>
       ))
     }

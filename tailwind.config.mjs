@@ -62,11 +62,16 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "field-breathe": {
+          "0%, 100%": { opacity: "0.12" },
+          "50%": { opacity: "0.28" },
+        },
       },
       animation: {
         marquee: "marquee 127s linear infinite",
         "marquee-mid": "marquee 134s linear infinite",
         "marquee-slow": "marquee 94s linear infinite",
+        "field-breathe": "field-breathe 18s ease-in-out infinite",
       },
     },
   },

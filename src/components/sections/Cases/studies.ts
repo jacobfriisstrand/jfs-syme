@@ -12,11 +12,6 @@ import concha from "@/assets/cases/concha.webp";
 import gumi from "@/assets/cases/gumi.webp";
 import suite from "@/assets/clicks/suite.png";
 
-export interface CaseFact {
-  value: string;
-  label: string;
-}
-
 export interface CaseStep {
   title: string;
   text: string;
@@ -37,7 +32,6 @@ export interface CaseStudy {
   imageAlt: string;
   quote?: string;
   attribution?: string;
-  facts?: CaseFact[];
   steps?: CaseStep[];
 }
 
@@ -56,11 +50,6 @@ export const studies: CaseStudy[] = [
     detail: "An evening inside Danish design. With Uro among the guests.",
     image: suite,
     imageAlt: "The Arne Jacobsen suite at Radisson Collection Royal Hotel, with Copenhagen beyond the mirrored wall.",
-    facts: [
-      { value: "20", label: "At dinner" },
-      { value: "20", label: "For drinks" },
-      { value: "40", label: "Guests" },
-    ],
     steps: [
       { title: "Discover.", text: "Champagne, live music and a tour of Arne Jacobsen’s suite." },
       { title: "Dine.", text: "Dinner at ISSEI, followed by lounge drinks and DJ MAXNER." },
@@ -81,11 +70,6 @@ export const studies: CaseStudy[] = [
     detail: "Lisbon at sunset. Music into the night.",
     image: theMoment,
     imageAlt: "A DJ behind the decks at sunset, beneath YARD and THE MOMENT signs.",
-    facts: [
-      { value: "8,319", label: "Likes" },
-      { value: "37", label: "Comments" },
-      { value: "20", label: "Sends" },
-    ],
     steps: [
       { title: "Match.", text: "Find a Portuguese creator whose audience fits The Moment." },
       { title: "Connect.", text: "Introduce Diogo and coordinate the invitation." },
@@ -105,7 +89,6 @@ export const studies: CaseStudy[] = [
     detail: "Heat, poetry and presence. A shared pause at Plugin.",
     image: pluginPoetry,
     imageAlt: "Guests cooling off under outdoor showers at Plugin.",
-    facts: [{ value: "45", label: "Guests" }],
     steps: [
       { title: "Curate.", text: "Bring together 45 profiles suited to Plugin." },
       { title: "Create.", text: "Arrange live poetry, guided saunagus and brand partners." },
@@ -126,10 +109,6 @@ export const studies: CaseStudy[] = [
     detail: "A sunny gathering at Plugin. Ahead of the Sparkly launch.",
     image: pluginSparkly,
     imageAlt: "Two guests sharing a sunny moment over drinks at Plugin.",
-    facts: [
-      { value: "45", label: "Guests" },
-      { value: "25", label: "At the launch" },
-    ],
     steps: [
       { title: "Curate.", text: "Bring together 45 guests for the Sparkly preview." },
       { title: "Preview.", text: "Arrange saunagus and brand partners at Plugin." },
@@ -150,11 +129,6 @@ export const studies: CaseStudy[] = [
     detail: "Festival days. A place to slow down.",
     image: heartlandGlamping,
     imageAlt: "Bell tents and chairs in Heartland’s glamping area.",
-    facts: [
-      { value: "1", label: "Post" },
-      { value: "3", label: "Stories" },
-      { value: "2", label: "Guests" },
-    ],
     steps: [
       { title: "Match.", text: "Connect Heartland with Emil Thorup." },
       { title: "Coordinate.", text: "Arrange the stay, festival access and content agreement." },
@@ -175,7 +149,6 @@ export const studies: CaseStudy[] = [
     detail: "Egeskov Castle as the backdrop. A day together at Heartland.",
     image: heartlandFestival,
     imageAlt: "Emilia Silberg in front of Egeskov Castle at Heartland Festival.",
-    facts: [{ value: "45", label: "Guests" }],
     steps: [
       { title: "Gather.", text: "Breakfast together at Bar Moro." },
       { title: "Travel.", text: "Coordinated transport and festival access." },
@@ -196,11 +169,6 @@ export const studies: CaseStudy[] = [
     detail: "Before the runway. Behind the scenes at Copenhagen Fashion Week.",
     image: wonHundred,
     imageAlt: "A backstage moment at Won Hundred, with a guest in a light knit.",
-    facts: [
-      { value: "80", label: "Guests" },
-      { value: "15", label: "Front row" },
-      { value: "2", label: "Styled" },
-    ],
     steps: [
       { title: "Curate.", text: "Bring together 80 guests, including 15 front-row profiles." },
       { title: "Style.", text: "Arrange personal styling and full show outfits for two profiles." },
@@ -221,10 +189,6 @@ export const studies: CaseStudy[] = [
     detail: "Two collections, two evenings. Dinner before the dancefloor.",
     image: camilleBrinch,
     imageAlt: "Guests toasting with cocktails over a zebra-patterned dinner table, with jewellery visible.",
-    facts: [
-      { value: "2", label: "Launches" },
-      { value: "30–40", label: "Guests each" },
-    ],
     steps: [
       { title: "Curate.", text: "Bring together 30–40 dinner guests for each launch." },
       { title: "Celebrate.", text: "Dinner, jewellery, tattoos and tooth gems." },
@@ -245,11 +209,6 @@ export const studies: CaseStudy[] = [
     detail: "A little bird. A shared effort. Christmas gifts for 52 families.",
     image: julefuglen,
     imageAlt: "The wooden Julefugl on a gift box outside Røde Kors’ Nørrebro network house.",
-    facts: [
-      { value: "30", label: "Profiles" },
-      { value: "400+", label: "Gifts" },
-      { value: "52", label: "Families" },
-    ],
     steps: [
       { title: "Send.", text: "Empty gift boxes, a wooden bird and an invitation to do your part." },
       { title: "Collect.", text: "Profiles fill the boxes with new, unused products." },
@@ -270,10 +229,6 @@ export const studies: CaseStudy[] = [
     detail: "A social dinner with Secolo and Tableau. Part of 3daysofdesign.",
     image: drawingRoom,
     imageAlt: "Guests gathered in The Drawing Room, listening to speakers and capturing the moment.",
-    facts: [
-      { value: "60", label: "At dinner" },
-      { value: "100", label: "Afterparty" },
-    ],
     steps: [
       { title: "Gather.", text: "Welcome 60 guests to The Drawing Room during 3daysofdesign." },
       { title: "Dine.", text: "A social dinner with Secolo and Tableau." },
@@ -296,11 +251,6 @@ export const studies: CaseStudy[] = [
     imageAlt: "Guests chatting over drinks outside Concha beneath the restaurant sign.",
     quote: "“wonderful evening”",
     attribution: "Qasim Khan · Owner and Head Chef, Concha",
-    facts: [
-      { value: "38", label: "Guests" },
-      { value: "40,000", label: "Views" },
-      { value: "51", label: "Sends" },
-    ],
   },
   {
     slug: "gumi",
@@ -316,10 +266,6 @@ export const studies: CaseStudy[] = [
     detail: "A private dinner above the city. Fashion Week with friends.",
     image: gumi,
     imageAlt: "Two guests posing beside the dinner table at Sukaiba, one wearing sunglasses and holding a cocktail.",
-    facts: [
-      { value: "35", label: "Guests" },
-      { value: "2", label: "Sprinters" },
-    ],
     steps: [
       { title: "Dine.", text: "A private dinner overlooking Copenhagen at Sukaiba." },
       { title: "Transfer.", text: "Two Sprinters provided by 1STLIMO SERVICE." },

@@ -12,7 +12,6 @@ const { study, index, first = false } = Astro.props;
 const ink = index % 2 === 0;
 const mediaLeft = index % 2 === 1;
 const label = ["Case study", study.brand, study.withName].filter(Boolean).join(" • ");
-const facts = study.facts ?? [];
 const steps = study.steps ?? [];
 const image = study.image;
 const imageWidths = image
@@ -49,19 +48,6 @@ const imageWidths = image
         </h2>
         <p class:list={["body m-0 max-w-xl", ink && "text-paper/80"]}>{study.summary}</p>
         <p class:list={["body-muted m-0 max-w-xl", ink && "text-paper/55"]}>{study.outcome}</p>
-
-        {
-          facts.length > 0 && (
-            <ul class="m-0 flex list-none flex-wrap gap-x-10 gap-y-4 p-0">
-              {facts.map((fact) => (
-                <li class="flex min-w-0 flex-col gap-1">
-                  <p class:list={["title m-0", ink && "text-paper"]}>{fact.value}</p>
-                  <p class:list={["caption m-0 uppercase", ink ? "text-paper/60" : "text-inkMuted"]}>{fact.label}</p>
-                </li>
-              ))}
-            </ul>
-          )
-        }
 
         {
           steps.length > 0 && (
